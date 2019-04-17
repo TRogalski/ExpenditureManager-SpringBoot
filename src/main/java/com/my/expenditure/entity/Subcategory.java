@@ -1,15 +1,15 @@
 package com.my.expenditure.entity;
 
+import org.omg.CORBA.INITIALIZE;
+
 import javax.persistence.*;
 
 @Entity
-@Table(name = "categories")
-public class Category {
+@Table(name="subcategories")
+public class Subcategory {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-//    TODO one to many with expenditure
-//    TODO one to many subcategory (optional)
-    
+    //TODO many to one with category (optional)
 }
