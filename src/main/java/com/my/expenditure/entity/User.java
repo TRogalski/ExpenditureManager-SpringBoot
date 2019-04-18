@@ -24,6 +24,19 @@ public class User {
     @OneToMany(mappedBy = "user")
     private List<Subcategory> subcategories = new ArrayList<>();
 
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", expenditures=" + expenditures +
+                ", categories=" + categories +
+                ", subcategories=" + subcategories +
+                '}';
+    }
 
     public Long getId() {
         return id;

@@ -13,13 +13,17 @@ public class MyUserPrincipal implements UserDetails {
     private User user;
 
     public MyUserPrincipal(User user) {
-        this.user=user;
+        this.user = user;
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         List<GrantedAuthority> roleUser = AuthorityUtils.commaSeparatedStringToAuthorityList("ROLE_USER");
         return roleUser;
+    }
+
+    public User getUser() {
+        return user;
     }
 
     @Override
