@@ -14,6 +14,18 @@ public class Expenditure {
     private String date;
     private String created;
     private String modified;
-//    TODO many to one with category
-//    TODO many to one with user
+
+    @ManyToOne
+    @JoinColumn(name="category_id")
+    private Category category;
+
+    @ManyToOne
+    @JoinColumn(name="subcategory_id")
+    private Subcategory subcategory;
+
+    @ManyToOne
+    @JoinColumn(name="user_id")
+    private User user;
+
+
 }

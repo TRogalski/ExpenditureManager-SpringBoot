@@ -1,6 +1,8 @@
 package com.my.expenditure.entity;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -12,8 +14,15 @@ public class User {
     private String lastName;
     private String email;
     private String password;
-//    private String created;
-//TODO one to many with expenditure
+
+    @OneToMany(mappedBy = "user")
+    private List<Expenditure> expenditures = new ArrayList<>();
+
+    @OneToMany(mappedBy = "user")
+    private List<Category> categories = new ArrayList<>();
+
+    @OneToMany(mappedBy = "user")
+    private List<Subcategory> subcategories = new ArrayList<>();
 
 
     public Long getId() {
@@ -44,7 +53,7 @@ public class User {
         return email;
     }
 
-    public String getUsername(){
+    public String getUsername() {
         return email;
     }
 
