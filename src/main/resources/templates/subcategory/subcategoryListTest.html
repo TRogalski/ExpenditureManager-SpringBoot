@@ -6,6 +6,11 @@
 </head>
 <body>
 <div th:insert="includes/nav-bar::nav-bar"></div>
-<p>Success!</p>
+<table>
+    <tr th:each="subcategory: ${subcategories}">
+        <td th:text="${subcategory.id}" />
+        <td th:text="${subcategory.name}" />
+    </tr>
+</table>
 </body>
 </html>
