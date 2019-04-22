@@ -1,5 +1,7 @@
 package com.my.expenditure.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +17,7 @@ public class Subcategory {
     @ManyToOne
     private Category category;
 
+    @JsonIgnore
     @ManyToOne
     private User user;
 

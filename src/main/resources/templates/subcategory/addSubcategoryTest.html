@@ -5,20 +5,7 @@
     <title>Title</title>
 </head>
 <body>
-<div th:insert="includes/nav-bar::nav-bar"></div>
-<form method="post" th:object="${subcategory}">
-    <p>
-        <label for="name">name</label>
-        <input type="text" th:field="*{name}" id="name">
-    </p>
-    <p>
-        <select th:field="*{category}">
-            <option th:each="category:${categories}"
-                    th:value="${category.id}"
-                    th:utext="${category.name}"/>
-        </select>
-    </p>
 
-</form>
+
 </body>
 </html>

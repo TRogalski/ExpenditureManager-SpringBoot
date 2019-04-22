@@ -1,5 +1,7 @@
 package com.my.expenditure.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -23,6 +25,7 @@ public class Expenditure {
     @JoinColumn(name="subcategory_id")
     private Subcategory subcategory;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name="user_id")
     private User user;
@@ -97,5 +100,29 @@ public class Expenditure {
 
     public void setModified(String modified) {
         this.modified = modified;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    public Subcategory getSubcategory() {
+        return subcategory;
+    }
+
+    public void setSubcategory(Subcategory subcategory) {
+        this.subcategory = subcategory;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

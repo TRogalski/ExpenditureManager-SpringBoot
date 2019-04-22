@@ -5,6 +5,7 @@ import com.my.expenditure.entity.Subcategory;
 import com.my.expenditure.entity.User;
 import com.my.expenditure.repository.CategoryRepository;
 import com.my.expenditure.repository.SubcategoryRepository;
+import com.my.expenditure.repository.UserRepository;
 import com.my.expenditure.service.MyUserPrincipal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -14,7 +15,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.security.Principal;
 import java.util.List;
 
 @Controller
@@ -27,6 +30,9 @@ public class CategoryController {
     @Autowired
     private SubcategoryRepository subcategoryRepository;
 
+    @Autowired
+    private UserRepository userRepository;
+
     @RequestMapping(value = "/add", method = RequestMethod.GET)
     private String getAddCategoryView(Model model) {
         model.addAttribute("category", new Category());
@@ -34,10 +40,8 @@ public class CategoryController {
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
-    private String addCategory(@ModelAttribute Category category) {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        MyUserPrincipal myUserPrincipal = (MyUserPrincipal) authentication.getPrincipal();
-        User user = myUserPrincipal.getUser();
+    private String addCategory(@ModelAttribute Category category, Principal principal) {
+        User user = userRepository.findFirstByEmail(principal.getName());
         category.setUser(user);
         categoryRepository.save(category);
         return "redirect:list";
@@ -55,10 +59,8 @@ public class CategoryController {
     }
 
     @RequestMapping(value = "/addsub", method = RequestMethod.POST)
-    private String addSubcategory(@ModelAttribute Subcategory subcategory) {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        MyUserPrincipal myUserPrincipal = (MyUserPrincipal) authentication.getPrincipal();
-        User user = myUserPrincipal.getUser();
+    private String addSubcategory(@ModelAttribute Subcategory subcategory, Principal principal) {
+        User user = userRepository.findFirstByEmail(principal.getName());
         subcategory.setUser(user);
         subcategoryRepository.save(subcategory);
         return "redirect:sublist";
@@ -67,23 +69,24 @@ public class CategoryController {
     @RequestMapping(value = "/sublist", method = RequestMethod.GET)
     private String subList() {
         return "subcategory/subcategoryListTest";
-
     }
 
     @ModelAttribute("categories")
-    public List<Category> categories() {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        MyUserPrincipal myUserPrincipal = (MyUserPrincipal) authentication.getPrincipal();
-        User user = myUserPrincipal.getUser();
+    public List<Category> categories(Principal principal) {
+        User user = userRepository.findFirstByEmail(principal.getName());
         return categoryRepository.findAllByUser(user);
     }
 
     @ModelAttribute("subcategories")
-    public List<Subcategory> subcategories() {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        MyUserPrincipal myUserPrincipal = (MyUserPrincipal) authentication.getPrincipal();
-        User user = myUserPrincipal.getUser();
+    public List<Subcategory> subcategories(Principal principal) {
+        User user = userRepository.findFirstByEmail(principal.getName());
         return subcategoryRepository.findAllByUser(user);
+    }
+
+    @RequestMapping(value = "/who", method = RequestMethod.GET)
+    @ResponseBody
+    public String whoLogged(Principal principal) {
+        return principal.getName();
     }
 
 }

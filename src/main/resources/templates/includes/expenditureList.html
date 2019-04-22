@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body th:fragment="expenditure_list">
+
+<div th:if="${expenditures!=null and !expenditures.empty}">
+    <table>
+        <thead>
+        <th>
+            <tr>Category</tr>
+            <tr>Name</tr>
+            <tr>Amount</tr>
+            <tr>Description</tr>
+            <!--<tr>Created</tr>-->
+        </th>
+        </thead>
+        <tbody id="expenditure_records">
+        <tr th:each="expenditure:${expenditures}">
+            <td th:text="${expenditure.category.name}"/>
+            <td th:text="${expenditure.name}"/>
+            <td th:text="${expenditure.amount}"/>
+            <td th:text="${expenditure.description}"/>
+            <td></td>
+            <!--<td th:text="${expenditure.created}"/>-->
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div th:if="${expenditures==null or expenditures.empty}">
+    <p>
+        No expenditures for this period
+    </p>
+</div>
+
+</body>
+</html>

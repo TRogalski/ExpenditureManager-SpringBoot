@@ -1,5 +1,7 @@
 package com.my.expenditure.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,6 +14,7 @@ public class Category {
     private Long id;
     private String name;
 
+    @JsonIgnore
     @ManyToOne
     private User user;
 

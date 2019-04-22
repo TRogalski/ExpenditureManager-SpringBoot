@@ -6,11 +6,12 @@
 </head>
 <body>
 <div th:insert="includes/navigationBar::navigation_bar"></div>
-<form method="post" th:object="${category}">
-    <p>
-        <label for="name">name</label>
-        <input type="text" th:field="*{name}" id="name"/>
-    </p>
-</form>
+<table>
+    <tr th:each="expenditure:${expenditures}">
+        <td th:text="${expenditure.name}"/>
+        <td th:text="${expenditure.amount}"/>
+        <td th:text="${expenditure.created}"/>
+    </tr>
+</table>
 </body>
 </html>
