@@ -6,33 +6,19 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
     $('#date_picker').on('changeDate', function () {
-
-        //change hidden value on click  - not needed
-        // $('#date_picker_input').val(
-        //     $('#date_picker').datepicker('getFormattedDate')
-        // );
-
         getExpendituresAssignedToDate($('#date_picker').datepicker('getFormattedDate'));
-
-        console.log("zmieniono date!");
     });
 
 
 })
 
-
-// var expenditure_records = document.getElementById("expenditure_records");
-//
-// expenditure_records.addEventListener('click', function () {
-//     console.log("kliknieto mnie!")
-// })
-
+//Show elements based on element clicked
 
 function getExpendituresAssignedToDate(date) {
     fetch("http://localhost:8084/expenditure/date/" + date).then(function (response) {
         return response.json();
     }).then(function (dateExpendituresJson) {
-        console.log(JSON.stringify(dateExpendituresJson));
+        // console.log(JSON.stringify(dateExpendituresJson));
         appendReceivedElements(dateExpendituresJson)
     });
 
@@ -46,8 +32,15 @@ function removeEnlistedElements() {
     }
 }
 
-function appendReceivedElements(dateExpendituresJson){
-    for(var i=0;i<dateExpendituresJson.length;i++){
-        console.log(dateExpendituresJson[i])
+function appendReceivedElements(dateExpendituresJson) {
+
+    for (var i = 0; i < dateExpendituresJson.length; i++) {
+        var tableRow = $(`<tr>
+                            <td>${dateExpendituresJson[i].category.name}</td>
+                            <td>${dateExpendituresJson[i].name}</td>
+                            <td>${dateExpendituresJson[i].amount}</td>
+                            <td>${dateExpendituresJson[i].description}</td>
+                       </tr>`);
+        $("#expenditure_records").append(tableRow)
     }
 }
