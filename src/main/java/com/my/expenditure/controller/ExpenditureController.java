@@ -33,34 +33,36 @@ public class ExpenditureController {
     @Autowired
     private UserRepository userRepository;
 
-    @RequestMapping(value = "/add",method = RequestMethod.GET)
-    public String getAddExpenditureView(Model model){
-        model.addAttribute("expenditure",new Expenditure());
+    @RequestMapping(value = "/add/{date}", method = RequestMethod.GET)
+    public String getAddExpenditureView(@PathVariable String date, Model model) {
+        Expenditure expenditure = new Expenditure();
+        expenditure.setDate(date);
+        model.addAttribute("expenditure", expenditure);
         return "expenditure/add";
     }
 
-    @RequestMapping(value = "/add",method = RequestMethod.POST)
-    public String addExpenditure(@ModelAttribute Expenditure expenditure, Principal principal){
-        User user=userRepository.findFirstByEmail(principal.getName());
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    public String addExpenditure(@ModelAttribute Expenditure expenditure, Principal principal) {
+        User user = userRepository.findFirstByEmail(principal.getName());
         expenditure.setUser(user);
         expenditure.setCreated(String.valueOf(LocalDate.now()));
         expeditureRepository.save(expenditure);
-        return "redirect:list";
+        return "redirect:/";
     }
 
-    @RequestMapping(value="/list",method=RequestMethod.GET)
-    private String getListView(Model model, Principal principal){
-        User user=userRepository.findFirstByEmail(principal.getName());
-        model.addAttribute("expenditures",expeditureRepository.findAllByUser(user));
+    @RequestMapping(value = "/list", method = RequestMethod.GET)
+    private String getListView(Model model, Principal principal) {
+        User user = userRepository.findFirstByEmail(principal.getName());
+        model.addAttribute("expenditures", expeditureRepository.findAllByUser(user));
         return "expenditure/list";
     }
 
 
-    @RequestMapping(value="/date/{date}",method = RequestMethod.GET)
+    @RequestMapping(value = "/date/{date}", method = RequestMethod.GET)
     @ResponseBody
-    private List<Expenditure> getJson(@PathVariable String date, Principal principal){
-        User user=userRepository.findFirstByEmail(principal.getName());
-        return expeditureRepository.findAllByUserAndDate(date,user);
+    private List<Expenditure> getJson(@PathVariable String date, Principal principal) {
+        User user = userRepository.findFirstByEmail(principal.getName());
+        return expeditureRepository.findAllByUserAndDate(date, user);
     }
 
     @ModelAttribute("categories")

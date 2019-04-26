@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', function () {
-
     $('#date_picker').datepicker({
         format: 'yyyy-mm-dd',
     }).datepicker("setDate", 'now');
@@ -9,6 +8,9 @@ document.addEventListener('DOMContentLoaded', function () {
         getExpendituresAssignedToDate($('#date_picker').datepicker('getFormattedDate'));
     });
 
+    $('#add_expenditure').on('click',function(){
+        window.location="http://localhost:8084/expenditure/add/"+$('#date_picker').datepicker('getFormattedDate');
+    })
 
 })
 
@@ -19,14 +21,20 @@ function getExpendituresAssignedToDate(date) {
         return response.json();
     }).then(function (dateExpendituresJson) {
         // console.log(JSON.stringify(dateExpendituresJson));
+
+        var toDelete = document.getElementById("expenditure_records");
+
+        if (toDelete != null) {
+            removeEnlistedElements(toDelete)
+        }
+
         appendReceivedElements(dateExpendituresJson)
     });
 
-    removeEnlistedElements()
 }
 
-function removeEnlistedElements() {
-    var toDelete = document.getElementById("expenditure_records");
+function removeEnlistedElements(toDelete) {
+
     while (toDelete.hasChildNodes()) {
         toDelete.removeChild(toDelete.lastChild);
     }
@@ -44,3 +52,4 @@ function appendReceivedElements(dateExpendituresJson) {
         $("#expenditure_records").append(tableRow)
     }
 }
+

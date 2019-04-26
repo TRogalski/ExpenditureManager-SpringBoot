@@ -6,7 +6,7 @@
 </head>
 <body>
 <div th:insert="includes/navigationBar::navigation_bar"></div>
-<form method="post" th:object="${expenditure}">
+<form method="post" th:object="${expenditure}" action="/expenditure/add">
     <p>
         <label for="name">name</label>
         <input type="text" th:field="*{name}" id="name"/>
@@ -34,6 +34,9 @@
                     th:value="${subcategory.id}"
                     th:utext="${subcategory.name}"/>
         </select>
+    </p>
+    <p>
+        <input type="hidden" th:field="*{date}" id="date">
     </p>
     <button type="submit" value="add"/>
 </form>
