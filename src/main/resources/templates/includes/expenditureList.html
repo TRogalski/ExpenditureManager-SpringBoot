@@ -1,10 +1,4 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body th:fragment="expenditure_list">
+<body th:fragment="expenditure_list" xmlns:th="http://java.sun.com/JSP/Page">
 
 <div th:if="${expenditures!=null and !expenditures.empty}">
     <table class="table">
@@ -29,7 +23,7 @@
             <td th:text="${expenditure.description}"/>
             <td th:text="${expenditure.created}"/>
             <td>
-                <a th:href="|expenditure/remove/${expenditure.id}|">
+                <a href="#modal_delete" data-toggle="modal" th:data-expenditure-id="${expenditure.id}">
                     <span class="glyphicon glyphicon-remove"></span>
                 </a>
             </td>
@@ -38,6 +32,7 @@
     </table>
 </div>
 
+
 <div th:if="${expenditures==null or expenditures.empty}">
     <p>
         No expenditures for this period
@@ -45,4 +40,3 @@
 </div>
 
 </body>
-</html>

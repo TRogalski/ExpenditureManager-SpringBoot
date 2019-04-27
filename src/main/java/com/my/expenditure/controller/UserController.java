@@ -16,7 +16,6 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.validation.Valid;
 
 @Controller
-@SessionAttributes({"currentUser"})
 @RequestMapping(value = "/user")
 public class UserController {
 

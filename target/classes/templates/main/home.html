@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
-    <script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
     <!-- Bootstrap datepicker JS and CSS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"></script>
@@ -18,7 +18,10 @@
 
 <!--datepicker-->
 <div id="date_picker"></div>
-<!--<input type="hidden" id="date_picker_input">-->
+
+<!--modal delete-->
+<div th:insert="includes/modalDelete::modal_delete"/>
+
 
 <button id="add_expenditure">Add</button>
 <div th:insert="includes/expenditureList::expenditure_list"/>
@@ -28,6 +31,6 @@
 
 <!--javascript-->
 <script type="text/javascript" th:src="@{/js/datePicker.js}"></script>
-
+<script type="text/javascript" th:src="@{/js/expenditureRemove.js}"></script>
 </body>
 </html>

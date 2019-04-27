@@ -52,7 +52,7 @@ function appendReceivedElements(dateExpendituresJson) {
                             <td>${dateExpendituresJson[i].description}</td>
                             <td>${dateExpendituresJson[i].created}</td>
                             <td>
-                                <a th:href="expenditure/remove/${dateExpendituresJson[i].id}">
+                                <a th:href="expenditure/delete/${dateExpendituresJson[i].id}">
                                     <span class="glyphicon glyphicon-remove"></span>
                                 </a>
                             </td>

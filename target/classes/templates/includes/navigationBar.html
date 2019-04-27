@@ -1,19 +1,23 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
-<body>
-<nav class="navbar navbar-inverse" th:fragment="navigation_bar">
+<nav class="navbar navbar-inverse" th:fragment="navigation_bar" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
     <div class="container-fluid">
         <div class="navbar-header">
             <a class="navbar-brand" href="#">Expenditure manager</a>
         </div>
         <ul class="nav navbar-nav">
             <li class="active"><a href="/">Home</a></li>
-            <li><a href="/user/login">login</a></li>
-            <li><a href="/user/register">register</a></li>
-            <li><a href="/user/logout">logout</a></li>
-            <li><a href="/user/logout">logout</a></li>
+
+            <!--<div sec:authorize="#{isAuthenticated()}">-->
+            <!--<a th:href="@{/logout}">Log out</a>-->
+            <!--</div>-->
+            <!--<div sec:authorize="#{isAnonymous()}">-->
+            <!--<a th:href="@{/login}">Log in</a>-->
+            <!--</div>-->
+
+
+            <li sec:authorize="isAnonymous()"><a href="/user/login">login</a></li>
+            <li sec:authorize="isAnonymous()"><a href="/user/register">register</a></li>
+            <li sec:authorize="isAuthenticated()"><a href="/logout">logout</a></li>
         </ul>
     </div>
 </nav>
-</body>
-</html>

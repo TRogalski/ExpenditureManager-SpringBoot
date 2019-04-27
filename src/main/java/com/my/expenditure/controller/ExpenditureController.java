@@ -61,11 +61,10 @@ public class ExpenditureController {
         return expeditureRepository.findAllByUserAndDate(user, date);
     }
 
-    @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
-    private String removeExpenditure(@PathVariable Long id) {
+    @RequestMapping(value = "/delete", method = RequestMethod.POST)
+    private String deleteExpenditure(@RequestParam("id") Long id) {
         Expenditure expenditure = expeditureRepository.getOne(id);
         expeditureRepository.delete(expenditure);
-
         return "redirect:/";
     }
 

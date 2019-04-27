@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
+<head th:insert="includes/header::header">
     <title>Register</title>
 </head>
 <body>
@@ -8,7 +8,7 @@
 <form method="post" th:object="${user}">
     <p>
         <label for="firstName">First name</label>
-        <input type="text" th:field="*{firstName}" id="firstName"/><
+        <input type="text" th:field="*{firstName}" id="firstName"/>
     </p>
     <p>
         <label for="lastName">Last name</label>
