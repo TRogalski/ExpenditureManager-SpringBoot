@@ -7,9 +7,8 @@
 <body>
 <div th:insert="includes/navigationBar::navigation_bar"></div>
 <table>
-    <tr th:each="category: ${categories}">
-        <td th:text="${category.id}" />
-        <td th:text="${category.name}" />
+    <tr th:each="tag:${tags}">
+        <td th:text="${tag.name}"/>
     </tr>
 </table>
 </body>

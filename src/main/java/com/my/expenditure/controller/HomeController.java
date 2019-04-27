@@ -24,7 +24,8 @@ public class HomeController {
     public String getHomeView(Model model, Principal principal) {
         User user = userRepository.findFirstByEmail(principal.getName());
         String date = String.valueOf(LocalDate.now());
-        model.addAttribute("expenditures", expeditureRepository.findAllByUserAndDate(date, user));
+        model.addAttribute("expenditures", expeditureRepository.findAllByUserAndDate(user,date));
+
         return "main/home";
     }
 

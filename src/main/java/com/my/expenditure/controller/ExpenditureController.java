@@ -1,12 +1,10 @@
 package com.my.expenditure.controller;
 
-import com.my.expenditure.entity.Category;
 import com.my.expenditure.entity.Expenditure;
-import com.my.expenditure.entity.Subcategory;
+import com.my.expenditure.entity.Tag;
 import com.my.expenditure.entity.User;
-import com.my.expenditure.repository.CategoryRepository;
 import com.my.expenditure.repository.ExpeditureRepository;
-import com.my.expenditure.repository.SubcategoryRepository;
+import com.my.expenditure.repository.TagRepository;
 import com.my.expenditure.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.security.Principal;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/expenditure")
@@ -25,10 +24,7 @@ public class ExpenditureController {
     private ExpeditureRepository expeditureRepository;
 
     @Autowired
-    private CategoryRepository categoryRepository;
-
-    @Autowired
-    private SubcategoryRepository subcategoryRepository;
+    private TagRepository tagRepository;
 
     @Autowired
     private UserRepository userRepository;
@@ -62,19 +58,20 @@ public class ExpenditureController {
     @ResponseBody
     private List<Expenditure> getJson(@PathVariable String date, Principal principal) {
         User user = userRepository.findFirstByEmail(principal.getName());
-        return expeditureRepository.findAllByUserAndDate(date, user);
+        return expeditureRepository.findAllByUserAndDate(user, date);
     }
 
-    @ModelAttribute("categories")
-    public List<Category> categories(Principal principal) {
+    @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
+    private String removeExpenditure(@PathVariable Long id) {
+        Expenditure expenditure = expeditureRepository.getOne(id);
+        expeditureRepository.delete(expenditure);
+
+        return "redirect:/";
+    }
+
+    @ModelAttribute("tags")
+    public List<Tag> tags(Principal principal) {
         User user = userRepository.findFirstByEmail(principal.getName());
-        return categoryRepository.findAllByUser(user);
+        return tagRepository.findAllByUser(user);
     }
-
-    @ModelAttribute("subcategories")
-    public List<Subcategory> subcategories(Principal principal) {
-        User user = userRepository.findFirstByEmail(principal.getName());
-        return subcategoryRepository.findAllByUser(user);
-    }
-
 }

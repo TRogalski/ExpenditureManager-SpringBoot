@@ -7,33 +7,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name="subcategories")
-public class Subcategory {
+@Table(name="tags")
+public class Tag {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
 
-    @ManyToOne
-    private Category category;
-
     @JsonIgnore
     @ManyToOne
+    @JoinColumn(name="user_id")
     private User user;
 
-    @OneToMany(mappedBy = "subcategory")
-    private List<Expenditure> expenditures = new ArrayList<>();
+    @JsonIgnore
+    @ManyToMany(mappedBy = "tags")
+    List<Expenditure> expenditures = new ArrayList<>();
 
-    @Override
-    public String toString() {
-        return "Subcategory{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", category=" + category +
-                ", user=" + user +
-                ", expenditures=" + expenditures +
-                '}';
-    }
 
     public Long getId() {
         return id;
@@ -51,19 +41,27 @@ public class Subcategory {
         this.name = name;
     }
 
-    public Category getCategory() {
-        return category;
-    }
-
-    public void setCategory(Category category) {
-        this.category = category;
-    }
-
     public User getUser() {
         return user;
     }
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public List<Expenditure> getExpenditures() {
+        return expenditures;
+    }
+
+    public void setExpenditures(List<Expenditure> expenditures) {
+        this.expenditures = expenditures;
+    }
+
+    @Override
+    public String toString() {
+        return "Tag{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
     }
 }

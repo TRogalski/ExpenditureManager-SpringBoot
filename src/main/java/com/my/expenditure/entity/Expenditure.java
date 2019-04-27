@@ -3,6 +3,8 @@ package com.my.expenditure.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "expenditures")
@@ -17,18 +19,16 @@ public class Expenditure {
     private String created;
     private String modified;
 
-    @ManyToOne
-    @JoinColumn(name="category_id")
-    private Category category;
-
-    @ManyToOne
-    @JoinColumn(name="subcategory_id")
-    private Subcategory subcategory;
-
     @JsonIgnore
     @ManyToOne
-    @JoinColumn(name="user_id")
+    @JoinColumn(name = "user_id")
     private User user;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "expenditures_tags",
+            joinColumns = @JoinColumn(name = "expenditure_id"),
+            inverseJoinColumns = @JoinColumn(name = "tag_id"))
+    private List<Tag> tags = new ArrayList<>();
 
     @Override
     public String toString() {
@@ -40,8 +40,6 @@ public class Expenditure {
                 ", date='" + date + '\'' +
                 ", created='" + created + '\'' +
                 ", modified='" + modified + '\'' +
-                ", category=" + category +
-                ", subcategory=" + subcategory +
                 ", user=" + user +
                 '}';
     }
@@ -102,20 +100,12 @@ public class Expenditure {
         this.modified = modified;
     }
 
-    public Category getCategory() {
-        return category;
+    public List<Tag> getTags() {
+        return tags;
     }
 
-    public void setCategory(Category category) {
-        this.category = category;
-    }
-
-    public Subcategory getSubcategory() {
-        return subcategory;
-    }
-
-    public void setSubcategory(Subcategory subcategory) {
-        this.subcategory = subcategory;
+    public void setTags(List<Tag> tags) {
+        this.tags = tags;
     }
 
     public User getUser() {

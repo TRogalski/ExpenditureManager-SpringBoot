@@ -7,23 +7,32 @@
 <body th:fragment="expenditure_list">
 
 <div th:if="${expenditures!=null and !expenditures.empty}">
-    <table>
+    <table class="table">
         <thead>
-        <th>
-            <tr>Category</tr>
-            <tr>Name</tr>
-            <tr>Amount</tr>
-            <tr>Description</tr>
-            <!--<tr>Created</tr>-->
-        </th>
+        <tr>
+            <th scope="col">Tag</th>
+            <th scope="col">Name</th>
+            <th scope="col">Amount</th>
+            <th scope="col">Description</th>
+            <th scope="col">Created</th>
+            <th scope="col">#</th>
+        </tr>
         </thead>
         <tbody id="expenditure_records">
         <tr th:each="expenditure:${expenditures}">
-            <td th:text="${expenditure.category.name}"/>
+
+            <td>
+                <span th:each="tag, iterStat : ${expenditure.tags}" th:text="!${iterStat.last} ? ${tag.name} + '; ': ${tag.name}">No tags selected</span>
+            </td>
             <td th:text="${expenditure.name}"/>
-            <td th:text="${expenditure.amount}"/>
+            <td th:text="${#numbers.formatDecimal(expenditure.amount,1,2)}"/>
             <td th:text="${expenditure.description}"/>
-            <!--<td th:text="${expenditure.created}"/>-->
+            <td th:text="${expenditure.created}"/>
+            <td>
+                <a th:href="|expenditure/remove/${expenditure.id}|">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+            </td>
         </tr>
         </tbody>
     </table>

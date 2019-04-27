@@ -19,10 +19,7 @@ public class User {
     private List<Expenditure> expenditures = new ArrayList<>();
 
     @OneToMany(mappedBy = "user")
-    private List<Category> categories = new ArrayList<>();
-
-    @OneToMany(mappedBy = "user")
-    private List<Subcategory> subcategories = new ArrayList<>();
+    private List<Tag> tags = new ArrayList<>();
 
     @Override
     public String toString() {
@@ -33,9 +30,15 @@ public class User {
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 ", expenditures=" + expenditures +
-                ", categories=" + categories +
-                ", subcategories=" + subcategories +
                 '}';
+    }
+
+    public List<Expenditure> getExpenditures() {
+        return expenditures;
+    }
+
+    public void setExpenditures(List<Expenditure> expenditures) {
+        this.expenditures = expenditures;
     }
 
     public Long getId() {

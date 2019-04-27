@@ -1,20 +1,19 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
 <body>
-<div th:fragment="navigation_bar">
-    <a href="/category/sublist">Subcategory list</a>
-    <a href="/category/list">Category list</a>
-    <a href="/category/addsub">Subcategory add</a>
-    <a href="/category/add">Category add</a>
-    <a href="/user/login">login</a>
-    <a href="/user/register">register</a>
-    <a href="/logout">logout</a>
-    <a href="/expenditure/add">Expenditure add</a>
-    <a href="/expenditure/list">Expenditure list</a>
-</div>
+<nav class="navbar navbar-inverse" th:fragment="navigation_bar">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">Expenditure manager</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li class="active"><a href="/">Home</a></li>
+            <li><a href="/user/login">login</a></li>
+            <li><a href="/user/register">register</a></li>
+            <li><a href="/user/logout">logout</a></li>
+            <li><a href="/user/logout">logout</a></li>
+        </ul>
+    </div>
+</nav>
 </body>
 </html>

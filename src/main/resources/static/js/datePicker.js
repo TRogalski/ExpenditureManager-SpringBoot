@@ -8,8 +8,8 @@ document.addEventListener('DOMContentLoaded', function () {
         getExpendituresAssignedToDate($('#date_picker').datepicker('getFormattedDate'));
     });
 
-    $('#add_expenditure').on('click',function(){
-        window.location="http://localhost:8084/expenditure/add/"+$('#date_picker').datepicker('getFormattedDate');
+    $('#add_expenditure').on('click', function () {
+        window.location = "http://localhost:8084/expenditure/add/" + $('#date_picker').datepicker('getFormattedDate');
     })
 
 })
@@ -40,16 +40,40 @@ function removeEnlistedElements(toDelete) {
     }
 }
 
-function appendReceivedElements(dateExpendituresJson) {
 
+//JSON display functions
+
+function appendReceivedElements(dateExpendituresJson) {
     for (var i = 0; i < dateExpendituresJson.length; i++) {
         var tableRow = $(`<tr>
-                            <td>${dateExpendituresJson[i].category.name}</td>
+                            <td>${convertTagListToString(dateExpendituresJson[i].tags)}</td>
                             <td>${dateExpendituresJson[i].name}</td>
-                            <td>${dateExpendituresJson[i].amount}</td>
+                            <td>${dateExpendituresJson[i].amount.toFixed(2)}</td>
                             <td>${dateExpendituresJson[i].description}</td>
+                            <td>${dateExpendituresJson[i].created}</td>
+                            <td>
+                                <a th:href="expenditure/remove/${dateExpendituresJson[i].id}">
+                                    <span class="glyphicon glyphicon-remove"></span>
+                                </a>
+                            </td>
                        </tr>`);
         $("#expenditure_records").append(tableRow)
     }
+}
+
+function convertTagListToString(tagList) {
+
+    var formattedString = "";
+
+    for (var i = 0; i < tagList.length; i++) {
+        if (i < tagList.length - 1) {
+            formattedString += tagList[i].name + "; "
+        } else if (tagList.length == 0) {
+            return "No tags selected"
+        } else {
+            formattedString += tagList[i].name
+        }
+    }
+    return formattedString;
 }
 

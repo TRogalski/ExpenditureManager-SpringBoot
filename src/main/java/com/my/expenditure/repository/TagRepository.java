@@ -1,6 +1,6 @@
 package com.my.expenditure.repository;
 
-import com.my.expenditure.entity.Category;
+import com.my.expenditure.entity.Tag;
 import com.my.expenditure.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface CategoryRepository extends JpaRepository<Category, Long> {
+public interface TagRepository extends JpaRepository<Tag, Long> {
 
-    List<Category> findAllByUser(User user);
+    List<Tag> findAllByUser(User user);
 }

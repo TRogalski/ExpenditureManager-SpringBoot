@@ -6,11 +6,13 @@
 </head>
 <body>
 <div th:insert="includes/navigationBar::navigation_bar"></div>
-<form method="post" th:object="${category}">
+<form method="post" th:object="${tag}" action="/tag/add">
     <p>
         <label for="name">name</label>
         <input type="text" th:field="*{name}" id="name"/>
     </p>
+    <button type="submit" value="add"/>
 </form>
 </body>
 </html>
+

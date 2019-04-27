@@ -20,19 +20,11 @@
         <input type="number" step="0.01" th:field="*{amount}" id="amount">
     </p>
     <p>
-        <label for="category">category</label>
-        <select th:field="*{category}" id="category">
-            <option th:each="category:${categories}"
-                    th:value="${category.id}"
-                    th:utext="${category.name}"/>
-        </select>
-    </p>
-    <p>
-        <lablel for="subcategory">subcategory</lablel>
-        <select th:field="*{subcategory}" id="subcategory">
-            <option th:each="subcategory:${subcategories}"
-                    th:value="${subcategory.id}"
-                    th:utext="${subcategory.name}"/>
+        <label for="tag">tags</label>
+        <select multiple th:field="*{tags}" id="tag">
+            <option th:each="tag:${tags}"
+                    th:value="${tag.id}"
+                    th:utext="${tag.name}"/>
         </select>
     </p>
     <p>
@@ -43,10 +35,3 @@
 </body>
 </html>
 
-<!--private Long id;-->
-<!--private String name;-->
-<!--private String description;-->
-<!--private Double amount;-->
-<!--private String date;-->
-<!--private String created;-->
-<!--private String modified;-->
