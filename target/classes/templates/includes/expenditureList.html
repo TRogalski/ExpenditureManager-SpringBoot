@@ -1,6 +1,6 @@
 <body th:fragment="expenditure_list" xmlns:th="http://java.sun.com/JSP/Page">
 
-<div th:if="${expenditures!=null and !expenditures.empty}">
+<!--<div th:if="${expenditures!=null and !expenditures.empty}">-->
     <table class="table">
         <thead>
         <tr>
@@ -16,7 +16,8 @@
         <tr th:each="expenditure:${expenditures}">
 
             <td>
-                <span th:each="tag, iterStat : ${expenditure.tags}" th:text="!${iterStat.last} ? ${tag.name} + '; ': ${tag.name}">No tags selected</span>
+                <span th:each="tag, iterStat : ${expenditure.tags}"
+                      th:text="!${iterStat.last} ? ${tag.name} + '; ': ${tag.name}">No tags selected</span>
             </td>
             <td th:text="${expenditure.name}"/>
             <td th:text="${#numbers.formatDecimal(expenditure.amount,1,2)}"/>
@@ -30,13 +31,13 @@
         </tr>
         </tbody>
     </table>
-</div>
+<!--</div>-->
 
 
-<div th:if="${expenditures==null or expenditures.empty}">
-    <p>
-        No expenditures for this period
-    </p>
-</div>
+<!--<div th:if="${expenditures==null or expenditures.empty}">-->
+    <!--<p>-->
+        <!--No expenditures for this period-->
+    <!--</p>-->
+<!--</div>-->
 
 </body>

@@ -1,7 +1,7 @@
 package com.my.expenditure.controller;
 
 import com.my.expenditure.entity.User;
-import com.my.expenditure.repository.ExpeditureRepository;
+import com.my.expenditure.repository.ExpenditureRepository;
 import com.my.expenditure.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,7 +15,7 @@ import java.time.LocalDate;
 public class HomeController {
 
     @Autowired
-    private ExpeditureRepository expeditureRepository;
+    private ExpenditureRepository expenditureRepository;
 
     @Autowired
     private UserRepository userRepository;
@@ -24,7 +24,7 @@ public class HomeController {
     public String getHomeView(Model model, Principal principal) {
         User user = userRepository.findFirstByEmail(principal.getName());
         String date = String.valueOf(LocalDate.now());
-        model.addAttribute("expenditures", expeditureRepository.findAllByUserAndDate(user,date));
+        model.addAttribute("expenditures", expenditureRepository.findAllByUserAndDate(user,date));
 
         return "main/home";
     }

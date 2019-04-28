@@ -1,11 +1,13 @@
 package com.my.expenditure.controller;
 
+import com.google.gson.Gson;
 import com.my.expenditure.entity.Expenditure;
 import com.my.expenditure.entity.Tag;
 import com.my.expenditure.entity.User;
-import com.my.expenditure.repository.ExpeditureRepository;
+import com.my.expenditure.repository.ExpenditureRepository;
 import com.my.expenditure.repository.TagRepository;
 import com.my.expenditure.repository.UserRepository;
+import com.my.expenditure.service.expenditure.ExpenditureStatsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,20 +16,22 @@ import org.springframework.web.bind.annotation.*;
 import java.security.Principal;
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Optional;
 
 @Controller
 @RequestMapping("/expenditure")
 public class ExpenditureController {
 
     @Autowired
-    private ExpeditureRepository expeditureRepository;
+    private ExpenditureRepository expenditureRepository;
 
     @Autowired
     private TagRepository tagRepository;
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private ExpenditureStatsService expenditureStatsService;
 
     @RequestMapping(value = "/add/{date}", method = RequestMethod.GET)
     public String getAddExpenditureView(@PathVariable String date, Model model) {
@@ -42,14 +46,14 @@ public class ExpenditureController {
         User user = userRepository.findFirstByEmail(principal.getName());
         expenditure.setUser(user);
         expenditure.setCreated(String.valueOf(LocalDate.now()));
-        expeditureRepository.save(expenditure);
+        expenditureRepository.save(expenditure);
         return "redirect:/";
     }
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     private String getListView(Model model, Principal principal) {
         User user = userRepository.findFirstByEmail(principal.getName());
-        model.addAttribute("expenditures", expeditureRepository.findAllByUser(user));
+        model.addAttribute("expenditures", expenditureRepository.findAllByUser(user));
         return "expenditure/list";
     }
 
@@ -58,14 +62,21 @@ public class ExpenditureController {
     @ResponseBody
     private List<Expenditure> getJson(@PathVariable String date, Principal principal) {
         User user = userRepository.findFirstByEmail(principal.getName());
-        return expeditureRepository.findAllByUserAndDate(user, date);
+        return expenditureRepository.findAllByUserAndDate(user, date);
     }
 
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
     private String deleteExpenditure(@RequestParam("id") Long id) {
-        Expenditure expenditure = expeditureRepository.getOne(id);
-        expeditureRepository.delete(expenditure);
+        Expenditure expenditure = expenditureRepository.getOne(id);
+        expenditureRepository.delete(expenditure);
         return "redirect:/";
+    }
+
+    @RequestMapping(value="/stats/{date}")
+    @ResponseBody
+    private String getMonthTotal(@PathVariable String date, Principal principal){
+        User user = userRepository.findFirstByEmail(principal.getName());
+        return expenditureStatsService.getStats(user, date).toString();
     }
 
     @ModelAttribute("tags")

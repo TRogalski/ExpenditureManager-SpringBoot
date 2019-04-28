@@ -1,6 +1,6 @@
 package com.my.expenditure.configuration;
 
-import com.my.expenditure.service.MyUserDetailsService;
+import com.my.expenditure.service.user.MyUserDetailsService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;

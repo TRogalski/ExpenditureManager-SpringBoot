@@ -1,4 +1,4 @@
-package com.my.expenditure.service;
+package com.my.expenditure.service.user;
 
 import com.my.expenditure.entity.User;
 import org.springframework.security.core.GrantedAuthority;
