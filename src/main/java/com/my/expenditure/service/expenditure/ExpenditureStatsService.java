@@ -1,12 +1,9 @@
 package com.my.expenditure.service.expenditure;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.gson.Gson;
-import com.google.gson.JsonObject;
 import com.my.expenditure.entity.Expenditure;
 import com.my.expenditure.entity.User;
 import com.my.expenditure.repository.ExpenditureRepository;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,29 +19,22 @@ public class ExpenditureStatsService {
     @Autowired
     private ExpenditureRepository expenditureRepository;
 
-    public JsonObject getStats(User user, String date) {
-        JsonObject jsonObject = new JsonObject();
-
-        jsonObject.addProperty("date", date);
-        jsonObject.addProperty("MonthTotal", getCurrentMonthTotal(user, date));
-        jsonObject.addProperty("YearTotal", getCurrentYearTotal(user, date));
-
-        Gson gson = new Gson();
-        String timeSeries = gson.toJson(getCurrentYearMonthTotals(user, date));
-        jsonObject.addProperty("timeSeries", timeSeries);
+    public JSONObject getStats(User user, String date) {
+        JSONObject jsonObject = new JSONObject()
+                .put("date", date)
+                .put("monthTotal", getCurrentMonthTotal(user, date))
+                .put("yearTotal", getCurrentYearTotal(user, date))
+                .put("timeSeries", getCurrentYearMonthTotals(user, date));
         return jsonObject;
     }
 
 
     private Double getCurrentMonthTotal(User user, String date) {
-
-        JsonObject jsonObject = new JsonObject();
         Double currentMonthTotal = expenditureRepository.getCurrentMonthTotal(user, date);
         return currentMonthTotal;
     }
 
     private Double getCurrentYearTotal(User user, String date) {
-        JsonObject jsonObject = new JsonObject();
         Double currentYearTotal = expenditureRepository.getCurrentMonthTotal(user, date);
         return currentYearTotal;
     }
@@ -58,23 +48,16 @@ public class ExpenditureStatsService {
             timeSeries.put(String.valueOf(i), 0.0);
         }
 
-        Double temp = 0.0;
+        Double monthExpenditure = 0.0;
         String month;
 
         for (Expenditure expenditure : expenditures) {
             month = String.valueOf(LocalDate.parse(expenditure.getDate()).getMonthValue());
-            temp = timeSeries.get(month);
-            timeSeries.put(month, temp + expenditure.getAmount());
+            monthExpenditure = timeSeries.get(month);
+            timeSeries.put(month, monthExpenditure + expenditure.getAmount());
         }
 
-        List<Double> timeSeriesList = new ArrayList<>();
-
-
-        for (String item : timeSeries.keySet()) {
-            timeSeriesList.add(timeSeries.get(item));
-        }
-
-        return timeSeriesList;
+        return new ArrayList<>(timeSeries.values());
     }
 //
 //    private Double getCurrentMonthTagsTotal(User user, String date, List<Tag> tags) {
