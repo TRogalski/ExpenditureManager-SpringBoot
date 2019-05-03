@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     $('#add_expenditure').on('click', function () {
-        window.location = "http://localhost:8084/expenditure/add/" + $('#date_picker').datepicker('getFormattedDate');
+        window.location.href = "/expenditure/add/" + $('#date_picker').datepicker('getFormattedDate');
     })
 
 })

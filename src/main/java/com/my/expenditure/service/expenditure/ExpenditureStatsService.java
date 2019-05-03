@@ -22,10 +22,16 @@ public class ExpenditureStatsService {
     public JSONObject getStats(User user, String date) {
         JSONObject jsonObject = new JSONObject()
                 .put("date", date)
+
+                .put("currentYear", getCurrentYear(user,date))
                 .put("monthTotal", getCurrentMonthTotal(user, date))
                 .put("yearTotal", getCurrentYearTotal(user, date))
                 .put("timeSeries", getCurrentYearMonthTotals(user, date));
         return jsonObject;
+    }
+
+    private Integer getCurrentYear(User user, String date) {
+        return LocalDate.parse(date).getYear();
     }
 
 

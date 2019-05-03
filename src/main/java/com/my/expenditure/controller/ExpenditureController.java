@@ -49,6 +49,22 @@ public class ExpenditureController {
         return "redirect:/";
     }
 
+    @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
+    public String getEditxpenditureView(@PathVariable Long id, Model model) {
+        Expenditure expenditure = expenditureRepository.getOne(id);
+        model.addAttribute("expenditure", expenditure);
+        return "expenditure/edit";
+    }
+
+    @RequestMapping(value = "/edit", method = RequestMethod.POST)
+    public String editExpenditure(@ModelAttribute Expenditure expenditure, Principal principal) {
+        User user = userRepository.findFirstByEmail(principal.getName());
+        expenditure.setUser(user);
+        expenditure.setModified(String.valueOf(LocalDate.now()));
+        expenditureRepository.save(expenditure);
+        return "redirect:/";
+    }
+
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     private String getListView(Model model, Principal principal) {
         User user = userRepository.findFirstByEmail(principal.getName());

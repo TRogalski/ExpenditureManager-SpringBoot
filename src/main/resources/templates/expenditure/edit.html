@@ -4,11 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <head th:insert="includes/header::header">
-    <title>Add Expenditure</title>
-</head>
+        <title>Add Expenditure</title>
+    </head>
 <body>
 <div th:insert="includes/navigationBar::navigation_bar"></div>
-<form method="post" th:object="${expenditure}" action="/expenditure/add">
+<form method="post" th:object="${expenditure}" action="/expenditure/edit">
     <p>
         <label for="name">name</label>
         <input type="text" th:field="*{name}" id="name"/>
@@ -30,7 +30,9 @@
         </select>
     </p>
     <p>
+        <input type="hidden" th:field="*{created}" id="created">
         <input type="hidden" th:field="*{date}" id="date">
+        <input type="hidden" th:field="*{id}" id="id">
     </p>
     <button type="submit">Save</button>
 </form>

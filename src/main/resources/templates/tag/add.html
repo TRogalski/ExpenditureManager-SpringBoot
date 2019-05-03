@@ -1,8 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en"  xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <head th:insert="includes/header::header">
+    <title>Add tag</title>
 </head>
 <body>
 <div th:insert="includes/navigationBar::navigation_bar"></div>
@@ -11,7 +13,7 @@
         <label for="name">name</label>
         <input type="text" th:field="*{name}" id="name"/>
     </p>
-    <button type="submit" value="add"/>
+    <button type="submit">Save</button>
 </form>
 </body>
 </html>

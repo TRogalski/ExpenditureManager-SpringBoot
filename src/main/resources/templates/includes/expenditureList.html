@@ -1,43 +1,38 @@
-<body th:fragment="expenditure_list" xmlns:th="http://java.sun.com/JSP/Page">
+<body th:fragment="expenditure_list" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 
-<!--<div th:if="${expenditures!=null and !expenditures.empty}">-->
-    <table class="table">
-        <thead>
-        <tr>
-            <th scope="col">Tag</th>
-            <th scope="col">Name</th>
-            <th scope="col">Amount</th>
-            <th scope="col">Description</th>
-            <th scope="col">Created</th>
-            <th scope="col">#</th>
-        </tr>
-        </thead>
-        <tbody id="expenditure_records">
-        <tr th:each="expenditure:${expenditures}">
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">Tag</th>
+        <th scope="col">Name</th>
+        <th scope="col">Amount</th>
+        <th scope="col">Description</th>
+        <th scope="col">Created</th>
+        <th scope="col">#</th>
+    </tr>
+    </thead>
+    <tbody id="expenditure_records">
+    <tr th:each="expenditure:${expenditures}">
 
-            <td>
+        <td>
                 <span th:each="tag, iterStat : ${expenditure.tags}"
                       th:text="!${iterStat.last} ? ${tag.name} + '; ': ${tag.name}">No tags selected</span>
-            </td>
-            <td th:text="${expenditure.name}"/>
-            <td th:text="${#numbers.formatDecimal(expenditure.amount,1,2)}"/>
-            <td th:text="${expenditure.description}"/>
-            <td th:text="${expenditure.created}"/>
-            <td>
-                <a href="#modal_delete" data-toggle="modal" th:data-expenditure-id="${expenditure.id}">
-                    <span class="glyphicon glyphicon-remove"></span>
-                </a>
-            </td>
-        </tr>
-        </tbody>
-    </table>
-<!--</div>-->
-
-
-<!--<div th:if="${expenditures==null or expenditures.empty}">-->
-    <!--<p>-->
-        <!--No expenditures for this period-->
-    <!--</p>-->
-<!--</div>-->
+        </td>
+        <td th:text="${expenditure.name}"/>
+        <td th:text="${#numbers.formatDecimal(expenditure.amount,1,2)}"/>
+        <td th:text="${expenditure.description}"/>
+        <td th:text="${expenditure.created}"/>
+        <td>
+            <a href="#modal_delete" data-toggle="modal" th:data-expenditure-id="${expenditure.id}">
+                <span class="glyphicon glyphicon-remove"></span>
+            </a>
+            <a th:href="@{'/expenditure/edit/'+${expenditure.id}}">
+                <span class="glyphicon glyphicon-pencil"></span>
+            </a>
+        </td>
+    </tr>
+    </tbody>
+</table>
 
 </body>

@@ -1,13 +1,16 @@
 package com.my.expenditure.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.h2.result.MergedResult;
+import org.hibernate.Hibernate;
+import org.springframework.data.repository.cdi.Eager;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name="tags")
+@Table(name = "tags")
 public class Tag {
 
     @Id
@@ -17,7 +20,7 @@ public class Tag {
 
     @JsonIgnore
     @ManyToOne
-    @JoinColumn(name="user_id")
+    @JoinColumn(name = "user_id")
     private User user;
 
     @JsonIgnore
@@ -64,4 +67,6 @@ public class Tag {
                 ", name='" + name + '\'' +
                 '}';
     }
+
 }
+

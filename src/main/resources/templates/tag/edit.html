@@ -4,15 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <head th:insert="includes/header::header">
-    <title>Add tag</title>
-</head>
+        <title>Edit tag</title>
+    </head>
 <body>
 <div th:insert="includes/navigationBar::navigation_bar"></div>
-<form method="post" th:object="${tag}" action="/tag/add">
+<form method="post" th:object="${tag}" action="/tag/edit">
     <p>
         <label for="name">name</label>
         <input type="text" th:field="*{name}" id="name"/>
     </p>
+    <input type="hidden" th:field="*{id}" id="id"/>
     <button type="submit">Save</button>
 </form>
 </body>

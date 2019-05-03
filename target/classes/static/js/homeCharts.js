@@ -29,7 +29,7 @@ var chart = new Chart(ctx, {
         },
         title: {
             display: true,
-            text: 'TBD 2019',
+            text: "Expenditures as of " + expenditureStatisticsJson.currentYear,
 
         },
         fontsize:8
