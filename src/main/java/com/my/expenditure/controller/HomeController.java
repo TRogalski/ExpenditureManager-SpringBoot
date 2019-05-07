@@ -25,9 +25,7 @@ public class HomeController {
         User user = userRepository.findFirstByEmail(principal.getName());
         String date = String.valueOf(LocalDate.now());
         model.addAttribute("expenditures", expenditureRepository.findAllByUserAndDate(user,date));
-
         return "main/home";
     }
-
 
 }

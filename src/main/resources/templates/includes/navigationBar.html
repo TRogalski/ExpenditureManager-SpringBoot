@@ -6,10 +6,10 @@
             <a class="navbar-brand" href="/">Expenditure manager</a>
         </div>
         <ul class="nav navbar-nav">
-            <li class="active"><a href="/">Home</a></li>
             <li sec:authorize="isAnonymous()"><a href="/user/login">login</a></li>
             <li sec:authorize="isAnonymous()"><a href="/user/register">register</a></li>
-            <li sec:authorize="isAuthenticated()"><a href="/tag/list">tags</a></li>
+            <li sec:authorize="isAuthenticated()"><a href="/expenditure/menu">Expenditures</a></li>
+            <li sec:authorize="isAuthenticated()"><a href="/tag/list">Tags</a></li>
             <li sec:authorize="isAuthenticated()"><a href="/logout">logout</a></li>
         </ul>
     </div>

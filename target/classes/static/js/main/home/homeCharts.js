@@ -33,8 +33,8 @@ function updateCharts(date){
 
             // Configuration options go here
             options: {
-                maintainAspectRatio: false,
-                responsive: false,
+                maintainAspectRatio: true,
+                responsive: true,
                 events: ['click'],
                 legend:{
                     display:false

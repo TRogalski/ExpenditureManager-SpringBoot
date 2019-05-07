@@ -1,6 +1,7 @@
 package com.my.expenditure.repository;
 
 import com.my.expenditure.entity.Expenditure;
+import com.my.expenditure.entity.Tag;
 import com.my.expenditure.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -31,5 +32,12 @@ public interface ExpenditureRepository extends JpaRepository<Expenditure, Long> 
 
     @Query("SELECT e FROM Expenditure e WHERE YEAR(e.date)=YEAR(:date) and e.user=:user")
     List<Expenditure> getCurrentYearMonthlyExpenditures(@Param("user") User user, @Param("date") String date);
+
+    @Query("SELECT e FROM Expenditure e " +
+            "WHERE :tag MEMBER OF e.tags " +
+            "AND MONTH(e.date)=MONTH(:date) " +
+            "AND YEAR(e.date)=YEAR(:date) " +
+            "AND e.user=:user")
+    List<Expenditure> findAllByTagAndDateAndUser(@Param("tag") Tag tag, @Param("date") String date, @Param("user") User user);
 
 }

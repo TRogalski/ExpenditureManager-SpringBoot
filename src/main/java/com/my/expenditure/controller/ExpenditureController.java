@@ -46,7 +46,7 @@ public class ExpenditureController {
         expenditure.setUser(user);
         expenditure.setCreated(String.valueOf(LocalDate.now()));
         expenditureRepository.save(expenditure);
-        return "redirect:/";
+        return "redirect:menu";
     }
 
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
@@ -72,6 +72,14 @@ public class ExpenditureController {
         return "expenditure/list";
     }
 
+    @RequestMapping(value = "/list/{date}/{id}", method = RequestMethod.GET)
+    private String getListView(@PathVariable String date, @PathVariable Long id, Model model, Principal principal) {
+        User user = userRepository.findFirstByEmail(principal.getName());
+        Tag tag = tagRepository.getOne(id);
+        model.addAttribute("expenditures", expenditureRepository.findAllByTagAndDateAndUser(tag,date,user));
+        return "expenditure/list";
+    }
+
 
     @RequestMapping(value = "/date/{date}", method = RequestMethod.GET)
     @ResponseBody
@@ -87,11 +95,19 @@ public class ExpenditureController {
         return "redirect:/";
     }
 
-    @RequestMapping(value="/stats/{date}")
+    @RequestMapping(value = "/stats/{date}")
     @ResponseBody
-    private String getMonthTotal(@PathVariable String date, Principal principal){
+    private String getMonthTotal(@PathVariable String date, Principal principal) {
         User user = userRepository.findFirstByEmail(principal.getName());
         return expenditureStatsService.getStats(user, date).toString();
+    }
+
+    @RequestMapping(value = "/menu")
+    private String getExpenditureHomeView(Model model, Principal principal) {
+        User user = userRepository.findFirstByEmail(principal.getName());
+        String date = String.valueOf(LocalDate.now());
+        model.addAttribute("expenditures", expenditureRepository.findAllByUserAndDate(user, date));
+        return "expenditure/menu";
     }
 
     @ModelAttribute("tags")

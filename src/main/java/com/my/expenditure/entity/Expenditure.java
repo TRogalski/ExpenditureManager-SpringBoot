@@ -1,7 +1,6 @@
 package com.my.expenditure.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import org.h2.result.MergedResult;
 
 import javax.persistence.*;
 import java.util.ArrayList;

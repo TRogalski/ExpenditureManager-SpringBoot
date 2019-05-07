@@ -32,8 +32,7 @@ public class ExpenditureStatsService {
                 .put("monthTotal", getCurrentMonthTotal(user, date))
                 .put("yearTotal", getCurrentYearTotal(user, date))
                 .put("timeSeries", getCurrentYearMonthTotals(user, date))
-                .put("topTags",getCurrentMonthTopTags(user,date));
-
+                .put("topTags", getCurrentMonthTopTags(user, date));
 
 
         return jsonObject;
@@ -76,30 +75,49 @@ public class ExpenditureStatsService {
     }
 
     public JSONArray getCurrentMonthTopTags(User user, String date) {
-        Map<Tag, Double> topCurrentMonthTags = new LinkedHashMap<>();
+        Map<Tag, Double> topCurrentMonthTagsTotals = new LinkedHashMap<>();
+        Map<Tag,Integer> topCurrentMonthTagsCounts = new LinkedHashMap<>();
 
         List<Expenditure> expenditures = expenditureRepository.findAllByUserAndMonth(user, date);
 
+        Double unassignedTotal = 0.0;
+        Integer unassignedCount = 0;
+
         for (Expenditure expenditure : expenditures) {
+            if (expenditure.getTags().isEmpty()) {
+                unassignedTotal += expenditure.getAmount();
+                unassignedCount++;
+            }
             for (Tag tag : expenditure.getTags()) {
-                if (topCurrentMonthTags.containsKey(tag)) {
-                    topCurrentMonthTags.put(tag, topCurrentMonthTags.get(tag) + expenditure.getAmount());
+                if (topCurrentMonthTagsTotals.containsKey(tag)) {
+                    topCurrentMonthTagsTotals.put(tag, topCurrentMonthTagsTotals.get(tag) + expenditure.getAmount());
+                    topCurrentMonthTagsCounts.put(tag, topCurrentMonthTagsCounts.get(tag) + 1);
                 } else {
-                    topCurrentMonthTags.put(tag, expenditure.getAmount());
+                    topCurrentMonthTagsTotals.put(tag, expenditure.getAmount());
+                    topCurrentMonthTagsCounts.put(tag, 1);
                 }
             }
         }
 
         JSONArray jsonArray = new JSONArray();
 
-        for(Tag tag:topCurrentMonthTags.keySet()){
+        for (Tag tag : topCurrentMonthTagsTotals.keySet()) {
             JSONObject jsonObject = new JSONObject();
-            jsonObject.put("id",tag.getId());
-            jsonObject.put("name",tag.getName());
-            jsonObject.put("monthTotal",topCurrentMonthTags.get(tag));
+            jsonObject.put("id", tag.getId());
+            jsonObject.put("name", tag.getName());
+            jsonObject.put("monthTotal", topCurrentMonthTagsTotals.get(tag));
+            jsonObject.put("monthCount", topCurrentMonthTagsCounts.get(tag));
             jsonArray.put(jsonObject);
         }
 
+        if (unassignedTotal > 0.0) {
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("id", "None");
+            jsonObject.put("name", "Unassigned");
+            jsonObject.put("monthTotal", unassignedTotal);
+            jsonObject.put("monthCount",unassignedCount);
+            jsonArray.put(jsonObject);
+        }
         return jsonArray;
     }
 
