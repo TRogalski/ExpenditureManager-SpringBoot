@@ -41,6 +41,7 @@ function removeEnlistedExpenditures(toDelete) {
 
 //Display expenditures assigned to date
 function appendReceivedElements(dateExpendituresJson) {
+
     for (var i = 0; i < dateExpendituresJson.length; i++) {
         var tableRow = $(`<tr>
                             <td>${convertTagListToString(dateExpendituresJson[i].tags)}</td>

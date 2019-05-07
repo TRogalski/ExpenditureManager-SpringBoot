@@ -38,14 +38,23 @@ function removeEnlistedTags(toDelete) {
 }
 
 function appendReceivedTags(dateExpendituresJson) {
-    for (var i = 0; i < dateExpendituresJson.topTags.length; i++) {
+
+
+    var topTags=dateExpendituresJson.topTags;
+
+
+    topTags.sort(function (a, b) {
+        return b.monthTotal-a.monthTotal;
+    });
+
+    for (var i = 0; i < topTags.length; i++) {
         var listElement = $(`<tr>
-                                <td>${dateExpendituresJson.topTags[i].name}</td>
-                                <td>${dateExpendituresJson.topTags[i].monthTotal}</td>
-                                <td>${(dateExpendituresJson.topTags[i].monthTotal / dateExpendituresJson.monthTotal * 100).toFixed(2)}</td>
+                                <td>${topTags[i].name}</td>
+                                <td>${topTags[i].monthTotal}</td>
+                                <td>${(topTags[i].monthTotal / dateExpendituresJson.monthTotal * 100).toFixed(2)}</td>
                                 <td>
-                                    <a href="http://localhost:8084/expenditure/list/${dateExpendituresJson.date}/${dateExpendituresJson.topTags[i].id}">
-                                        ${dateExpendituresJson.topTags[i].monthCount}
+                                    <a href="http://localhost:8084/expenditure/list/${dateExpendituresJson.date}/${topTags[i].id}">
+                                        ${topTags[i].monthCount}
                                     </a>
                                 </td>
                             </tr>`);
