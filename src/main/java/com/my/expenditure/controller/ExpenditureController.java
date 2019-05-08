@@ -89,24 +89,29 @@ public class ExpenditureController {
     }
 
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
-    private String deleteExpenditure(@RequestParam("id") Long id) {
+    private String deleteExpenditure(@RequestParam("id") Long id,
+                                     @RequestParam("date") String date,
+                                     @RequestParam("redirectPage") String redirectPage,
+                                     Model model) {
         Expenditure expenditure = expenditureRepository.getOne(id);
         expenditureRepository.delete(expenditure);
-        return "redirect:/";
+        model.addAttribute("date", date);
+        return "redirect:"+redirectPage;
     }
 
-    @RequestMapping(value = "/stats/{date}")
+    @RequestMapping(value = "/stats/{date}", method=RequestMethod.GET)
     @ResponseBody
     private String getMonthTotal(@PathVariable String date, Principal principal) {
         User user = userRepository.findFirstByEmail(principal.getName());
         return expenditureStatsService.getStats(user, date).toString();
     }
 
-    @RequestMapping(value = "/menu")
-    private String getExpenditureHomeView(Model model, Principal principal) {
+    @RequestMapping(value = "/menu", method=RequestMethod.GET)
+    private String getExpenditureHomeView(@ModelAttribute("date") String date,
+                                          Model model, Principal principal) {
         User user = userRepository.findFirstByEmail(principal.getName());
-        String date = String.valueOf(LocalDate.now());
         model.addAttribute("expenditures", expenditureRepository.findAllByUserAndDate(user, date));
+        model.addAttribute("date", date);
         return "expenditure/menu";
     }
 

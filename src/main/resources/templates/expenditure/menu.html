@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="en"  xmlns="http://www.w3.org/1999/xhtml"
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
@@ -16,20 +16,61 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 </head>
 <body>
-<div th:insert="includes/navigationBar::navigation_bar"></div>
-
-<!--datepicker-->
-<div id="date_picker"></div>
+<div class="container-fluid">
+    <div th:insert="includes/navigationBar::navigation_bar"></div>
+    <div class="row">
+        <div class="col-md-2">
+            <!--datepicker-->
+            <div id="date_picker"></div>
+            <input type="hidden" name="date" id="date" th:value="${date}">
+        </div>
+        <div class="col-md-10">
+            <button id="add_expenditure">Add</button>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">Tag</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Amount</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Created</th>
+                    <th scope="col">#</th>
+                </tr>
+                </thead>
+                <tbody id="expenditure_records">
+                <tr th:each="expenditure:${expenditures}">
+                    <td>
+                <span th:each="tag, iterStat : ${expenditure.tags}"
+                      th:text="!${iterStat.last} ? ${tag.name} + '; ': ${tag.name}">No tags selected</span>
+                    </td>
+                    <td th:text="${expenditure.name}"/>
+                    <td th:text="${#numbers.formatDecimal(expenditure.amount,1,2)}"/>
+                    <td th:text="${expenditure.description}"/>
+                    <td th:text="${expenditure.created}"/>
+                    <td>
+                        <a href="#modal_delete" data-toggle="modal" th:data-expenditure-id="${expenditure.id}">
+                            <span class="glyphicon glyphicon-remove"></span>
+                        </a>
+                        <a th:href="@{'/expenditure/edit/'+${expenditure.id}}">
+                            <span class="glyphicon glyphicon-pencil"></span>
+                        </a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
 
 <!--modal delete-->
-<div class="modal" id="modal_delete" th:fragment="modal_delete"  xmlns="http://www.w3.org/1999/xhtml"
-     xmlns:th="http://www.thymeleaf.org">
+<div class="modal" id="modal_delete">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-body">
                 <p>Are you sure you want to remove this record?</p>
                 <form action="/expenditure/delete" method="post">
                     <input type="hidden" name="id" id="id"/>
+                    <input type="hidden" name="redirectPage" id="redirectPage"/>
                     <button type="submit" class="btn btn-default" value="Yes">Yes</button>
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 </form>
@@ -37,9 +78,6 @@
         </div>
     </div>
 </div>
-
-<button id="add_expenditure">Add</button>
-<div th:insert="includes/expenditureList::expenditure_list"/>
 
 <!--javascript-->
 <script type="text/javascript" th:src="@{/js/expenditure/menu/datePicker.js}"></script>

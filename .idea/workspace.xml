@@ -2,8 +2,30 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="550acbc9-80d3-46e7-b143-e580d06cf125" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/my/expenditure/controller/ExpenditureController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/my/expenditure/controller/ExpenditureController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/expenditure/menu/datePicker.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/expenditure/menu/datePicker.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/main/home/datePicker.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/main/home/datePicker.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/expenditure/menu/expenditureRemove.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/expenditure/menu/expenditureRemove.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/expenditure/add.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/expenditure/add.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/expenditure/edit.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/expenditure/edit.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/expenditure/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/expenditure/list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/expenditure/menu.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/expenditure/menu.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/includes/expenditureList.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/main/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/main/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/tag/add.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/tag/add.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/tag/edit.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/tag/edit.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/tag/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/tag/list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/js/expenditure/menu/datePicker.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/expenditure/menu/datePicker.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/js/expenditure/menu/expenditureRemove.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/expenditure/menu/expenditureRemove.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/expenditure/add.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/expenditure/add.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/expenditure/edit.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/expenditure/edit.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/expenditure/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/expenditure/list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/expenditure/menu.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/expenditure/menu.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/includes/expenditureList.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/main/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/main/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/tag/add.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/tag/add.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/tag/edit.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/tag/edit.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/tag/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/tag/list.html" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -17,65 +39,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/my/expenditure/controller/ExpenditureController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-501">
-              <caret line="56" column="5" lean-forward="true" selection-start-line="56" selection-start-column="5" selection-end-line="56" selection-end-column="5" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/expenditure/list.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="219">
-              <caret line="35" column="26" selection-start-line="35" selection-start-column="26" selection-end-line="35" selection-end-column="26" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/expenditure/menu/datePicker.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="159">
-              <caret line="43" selection-start-line="43" selection-end-line="43" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/expenditure/add.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="9" selection-start-line="9" selection-end-line="9" selection-end-column="62" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/expenditure/edit.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret selection-end-line="8" selection-end-column="6" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/includes/expenditureList.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret selection-end-line="38" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/my/expenditure/repository/ExpenditureRepository.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="540">
-              <caret line="36" column="44" lean-forward="true" selection-start-line="36" selection-start-column="44" selection-end-line="36" selection-end-column="44" />
+            <state relative-caret-position="294">
+              <caret line="111" column="73" selection-start-line="111" selection-start-column="73" selection-end-line="111" selection-end-column="73" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -84,28 +49,58 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/main/home/datePicker.js">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/expenditure/list.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="235">
-              <caret line="50" column="33" lean-forward="true" selection-start-line="50" selection-start-column="33" selection-end-line="50" selection-end-column="33" />
+            <state relative-caret-position="309">
+              <caret line="35" column="102" selection-start-line="35" selection-start-column="102" selection-end-line="35" selection-end-column="102" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/main/home/statisticsUpdate.js">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/main/home.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="1" column="11" lean-forward="true" selection-start-line="1" selection-start-column="11" selection-end-line="1" selection-end-column="45" />
+            <state relative-caret-position="300">
+              <caret line="20" column="22" selection-start-line="20" selection-start-column="22" selection-end-line="20" selection-end-column="22" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/main/home/homeCharts.js">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/expenditure/menu/expenditureRemove.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="8" column="2" lean-forward="true" selection-start-line="8" selection-start-column="2" selection-end-line="8" selection-end-column="2" />
+            <state relative-caret-position="45">
+              <caret line="3" selection-start-line="3" selection-end-line="3" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/my/expenditure/controller/HomeController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="349">
+              <caret line="24" selection-start-line="24" selection-end-line="26" selection-end-column="98" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/expenditure/menu/datePicker.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="45">
+              <caret line="3" column="44" selection-start-line="3" selection-start-column="44" selection-end-line="3" selection-end-column="44" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/expenditure/menu.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="234">
+              <caret line="50" column="110" selection-start-line="50" selection-start-column="110" selection-end-line="50" selection-end-column="110" />
             </state>
           </provider>
         </entry>
@@ -129,8 +124,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/resources/templates/subcategory/subcategoryListTest.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/subcategory/addSubcategoryTest.html" />
         <option value="$PROJECT_DIR$/src/main/java/com/my/expenditure/entity/Category.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/my/expenditure/controller/CategoryController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/my/expenditure/entity/Subcategory.java" />
@@ -151,12 +144,7 @@
         <option value="$PROJECT_DIR$/src/main/java/com/my/expenditure/entity/User.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/my/expenditure/entity/Tag.java" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/includes/expenditureList.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/expenditure/edit.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/expenditure/add.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/tag/add.html" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/tag/Edit.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/tag/list.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/tag/edit.html" />
         <option value="$PROJECT_DIR$/src/main/java/com/my/expenditure/controller/TagController.java" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/includes/header.html" />
         <option value="$PROJECT_DIR$/src/main/resources/static/js/expenditure/home/datePicker.js" />
@@ -170,16 +158,23 @@
         <option value="$PROJECT_DIR$/src/main/resources/templates/includes/navigationBar.html" />
         <option value="$PROJECT_DIR$/src/main/java/com/my/expenditure/configuration/SecurityConfig.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/my/expenditure/controller/HomeController.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/expenditure/menu.html" />
         <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
         <option value="$PROJECT_DIR$/src/main/java/com/my/expenditure/service/expenditure/ExpenditureStatsService.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/main/home.html" />
         <option value="$PROJECT_DIR$/src/main/java/com/my/expenditure/repository/TagRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/my/expenditure/repository/ExpenditureRepository.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/my/expenditure/controller/ExpenditureController.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/expenditure/list.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/static/js/expenditure/menu/datePicker.js" />
         <option value="$PROJECT_DIR$/src/main/resources/static/js/main/home/datePicker.js" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/expenditure/edit.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/expenditure/add.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/tag/add.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/tag/edit.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/js/main/home/expenditureRemove.js" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/tag/list.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/js/expenditure/menu/datePicker.js" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/main/home.html" />
+        <option value="$PROJECT_DIR$/src/main/java/com/my/expenditure/controller/ExpenditureController.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/js/expenditure/menu/expenditureRemove.js" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/expenditure/menu.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/expenditure/list.html" />
       </list>
     </option>
   </component>
@@ -191,8 +186,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="400" />
-    <option name="y" value="126" />
+    <option name="x" value="289" />
+    <option name="y" value="30" />
     <option name="width" value="1542" />
     <option name="height" value="1030" />
   </component>
@@ -202,8 +197,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -452,27 +447,29 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1557263826568" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1557349684356" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/src/main/java/com/my/expenditure/service" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/pom.xml" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
-      <recent name="com.my.expenditure.service.expenditure" />
-      <recent name="com.my.expenditure.service" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/main/resources/static/js/expenditure/home" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/resources/static/js/main/home" />
       <recent name="$PROJECT_DIR$/src/main/resources/static/js/expenditure/menu" />
       <recent name="$PROJECT_DIR$/src/main/resources/static/js/main" />
       <recent name="$PROJECT_DIR$/src/main/resources/templates/expenditure" />
       <recent name="$PROJECT_DIR$/src/main/resources/templates/main" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.my.expenditure.service.expenditure" />
+      <recent name="com.my.expenditure.service" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources/static/js/main/home" />
+      <recent name="$PROJECT_DIR$/src/main/resources/static/js/expenditure/home" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -528,17 +525,18 @@
       <workItem from="1556914728177" duration="2442000" />
       <workItem from="1556964931461" duration="17539000" />
       <workItem from="1557252100246" duration="10443000" />
+      <workItem from="1557348571032" duration="8300000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="162073000" />
+    <option name="totallyTimeSpent" value="170373000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="400" y="126" width="1542" height="1030" extended-state="0" />
+    <frame x="289" y="30" width="1542" height="1030" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.34625667" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.29144385" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -578,7 +576,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/subcategory/addSubcategoryTest.html" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/my/expenditure/entity/Subcategory.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/my/expenditure/controller/CategoryController.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/my/expenditure/entity/Category.java" />
@@ -680,13 +677,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/tag/edit.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="6" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/static.css" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/my/expenditure/controller/TagController.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -705,13 +695,6 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/tag/add.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="25" selection-start-line="15" selection-start-column="25" selection-end-line="15" selection-end-column="25" />
         </state>
       </provider>
     </entry>
@@ -736,13 +719,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/homeCharts.js" />
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/includes/header.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" selection-start-line="6" selection-end-line="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/my/expenditure/configuration/SecurityConfig.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="334">
@@ -753,22 +729,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/includes/navigationBar.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="14" lean-forward="true" selection-start-line="6" selection-start-column="14" selection-end-line="6" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/static/css/home.css">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/expenditure/menu.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="354">
-          <caret line="42" selection-start-line="42" selection-end-line="42" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
       <provider selected="true" editor-type-id="text-editor">
@@ -787,16 +749,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/my/expenditure/controller/HomeController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="349">
-          <caret line="24" selection-start-line="24" selection-end-line="26" selection-end-column="98" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/my/expenditure/service/expenditure/ExpenditureStatsService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="304">
@@ -804,27 +756,6 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/main/home.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="384">
-          <caret line="38" column="25" selection-start-line="38" selection-start-column="25" selection-end-line="38" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/expenditure/menu/expenditureRemove.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/tag/list.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="8" selection-start-line="12" selection-start-column="8" selection-end-line="12" selection-end-column="8" />
         </state>
       </provider>
     </entry>
@@ -845,62 +776,121 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/main/home/statisticsUpdate.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="11" lean-forward="true" selection-start-line="1" selection-start-column="11" selection-end-line="1" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/main/home/homeCharts.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="2" lean-forward="true" selection-start-line="8" selection-start-column="2" selection-end-line="8" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/my/expenditure/repository/ExpenditureRepository.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="540">
-          <caret line="36" column="44" lean-forward="true" selection-start-line="36" selection-start-column="44" selection-end-line="36" selection-end-column="44" />
+          <caret line="36" column="44" selection-start-line="36" selection-start-column="44" selection-end-line="36" selection-end-column="44" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/expenditure/add.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" selection-start-line="9" selection-end-line="9" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/main/home/homeCharts.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-291">
+          <caret line="8" column="2" selection-start-line="8" selection-start-column="2" selection-end-line="8" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/main/home/statisticsUpdate.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="11" selection-start-line="1" selection-start-column="11" selection-end-line="1" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/main/home/datePicker.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" selection-start-line="19" selection-end-line="19" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/includes/expenditureList.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="38" />
+        <state relative-caret-position="405">
+          <caret line="27" column="57" selection-start-line="3" selection-end-line="35" selection-end-column="8" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/expenditure/edit.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="8" selection-end-column="6" />
+        <state relative-caret-position="-66">
+          <caret line="10" column="66" lean-forward="true" selection-start-line="10" selection-start-column="66" selection-end-line="10" selection-end-column="66" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/expenditure/add.html">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/includes/navigationBar.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="9" selection-start-line="9" selection-end-line="9" selection-end-column="62" />
+        <state relative-caret-position="90">
+          <caret line="6" column="14" lean-forward="true" selection-start-line="6" selection-start-column="14" selection-end-line="6" selection-end-column="14" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/expenditure/list.html">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/includes/header.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="219">
-          <caret line="35" column="26" selection-start-line="35" selection-start-column="26" selection-end-line="35" selection-end-column="26" />
+        <state relative-caret-position="105">
+          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/tag/add.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" column="6" selection-start-line="18" selection-start-column="6" selection-end-line="18" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/tag/edit.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="6" selection-start-line="19" selection-start-column="6" selection-end-line="19" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/main/home/expenditureRemove.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/my/expenditure/controller/HomeController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="349">
+          <caret line="24" selection-start-line="24" selection-end-line="26" selection-end-column="98" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/tag/list.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="34" selection-start-line="34" selection-end-line="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/main/home.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="20" column="22" selection-start-line="20" selection-start-column="22" selection-end-line="20" selection-end-column="22" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/my/expenditure/controller/ExpenditureController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-501">
-          <caret line="56" column="5" lean-forward="true" selection-start-line="56" selection-start-column="5" selection-end-line="56" selection-end-column="5" />
+        <state relative-caret-position="294">
+          <caret line="111" column="73" selection-start-line="111" selection-start-column="73" selection-end-line="111" selection-end-column="73" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -909,15 +899,29 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/expenditure/menu/datePicker.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="159">
-          <caret line="43" selection-start-line="43" selection-end-line="43" />
+        <state relative-caret-position="45">
+          <caret line="3" column="44" selection-start-line="3" selection-start-column="44" selection-end-line="3" selection-end-column="44" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/main/home/datePicker.js">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/expenditure/menu/expenditureRemove.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="235">
-          <caret line="50" column="33" lean-forward="true" selection-start-line="50" selection-start-column="33" selection-end-line="50" selection-end-column="33" />
+        <state relative-caret-position="45">
+          <caret line="3" selection-start-line="3" selection-end-line="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/expenditure/menu.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="50" column="110" selection-start-line="50" selection-start-column="110" selection-end-line="50" selection-end-column="110" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/expenditure/list.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="309">
+          <caret line="35" column="102" selection-start-line="35" selection-start-column="102" selection-end-line="35" selection-end-column="102" />
         </state>
       </provider>
     </entry>

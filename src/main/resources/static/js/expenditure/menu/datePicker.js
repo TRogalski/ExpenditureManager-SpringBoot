@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
     $('#date_picker').datepicker({
         format: 'yyyy-mm-dd',
-    }).datepicker("setDate", 'now');
+    }).datepicker("setDate", $('#date').val());
 
     $('#date_picker').on('changeDate', function () {
         getExpendituresAssignedToDate($('#date_picker').datepicker('getFormattedDate'));
@@ -9,8 +9,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     $('#add_expenditure').on('click', function () {
         window.location.href = "/expenditure/add/" + $('#date_picker').datepicker('getFormattedDate');
-    })
-
+    });
 })
 
 //Show elements based on element clicked
@@ -29,7 +28,6 @@ function getExpendituresAssignedToDate(date) {
 
         appendReceivedElements(dateExpendituresJson)
     });
-
 }
 
 function removeEnlistedExpenditures(toDelete) {
