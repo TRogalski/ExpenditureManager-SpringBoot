@@ -1,15 +1,57 @@
 document.addEventListener('DOMContentLoaded', function () {
+
+
+    var active_dates = ["2019-5-12", "2019-5-5"];
+
+
     $('#date_picker').datepicker({
-        format:  "yyyy-mm-dd",
+        format: "yyyy-mm-dd",
+        beforeShowDay: function (date) {
+            var d = date;
+            var curr_date = d.getDate();
+            var curr_month = d.getMonth() + 1; //Months are zero based
+            var curr_year = d.getFullYear();
+            var formattedDate = curr_year + "-" + curr_month + "-" + curr_date
+
+            console.log(Object.keys)
+
+            if ($.inArray(formattedDate, active_dates) != -1) {
+                return {
+                    classes: 'highlight',
+                    tooltip: 1000
+                };
+            }
+            return;
+        }
     }).datepicker("setDate", 'now');
 
-    console.log($('#date_picker').datepicker('getFormattedDate'))
+
     getTopTagsAssignedToMonth($('#date_picker').datepicker('getFormattedDate'))
 
     $('#date_picker').on('changeDate', function () {
         getTopTagsAssignedToMonth($('#date_picker').datepicker('getFormattedDate'));
     });
 })
+
+
+function getTodaysDate() {
+    var today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth() + 1;
+    var yyyy = today.getFullYear();
+
+    if (dd < 10) {
+        dd = '0' + dd
+    }
+
+    if (mm < 10) {
+        mm = '0' + mm
+    }
+
+    return yyyy + '-' + mm + '-' + dd;
+
+}
+
 
 //display top tags
 
@@ -18,14 +60,13 @@ function getTopTagsAssignedToMonth(date) {
         return response.json();
     }).then(function (dateExpendituresJson) {
 
-        console.log(dateExpendituresJson)
         var toDelete = document.getElementById("top_tags_records");
 
         if (toDelete != null) {
             removeEnlistedTags(toDelete)
         }
-
         appendReceivedTags(dateExpendituresJson)
+        fillInStatistics(dateExpendituresJson)
     });
 
 }
@@ -40,11 +81,11 @@ function removeEnlistedTags(toDelete) {
 function appendReceivedTags(dateExpendituresJson) {
 
 
-    var topTags=dateExpendituresJson.topTags;
+    var topTags = dateExpendituresJson.topTags;
 
 
     topTags.sort(function (a, b) {
-        return b.monthTotal-a.monthTotal;
+        return b.monthTotal - a.monthTotal;
     });
 
     for (var i = 0; i < topTags.length; i++) {
@@ -60,4 +101,41 @@ function appendReceivedTags(dateExpendituresJson) {
                             </tr>`);
         $("#top_tags_records").append(listElement)
     }
+}
+
+// fill in the statistics
+//
+
+function getThisVsPreviousPercentage(dateExpendituresJson) {
+    var thisMonth = dateExpendituresJson.monthTotal;
+    var previousMonth = dateExpendituresJson.previousMonthTotal;
+
+    if (previousMonth == 0) {
+        return "N/A"
+    }
+    return ((thisMonth - previousMonth) / previousMonth * 100).toFixed(2);
+}
+
+function getThisYearMonthlyAverage(dateExpendituresJson) {
+
+    var avg = 0;
+    var count = 0;
+
+    for (var i = 0; i < dateExpendituresJson.timeSeries.length; i++) {
+        if (dateExpendituresJson.timeSeries[i] > 0) {
+            avg += dateExpendituresJson.timeSeries[i];
+            count++;
+        }
+    }
+
+    return (avg / count).toFixed(2);
+}
+
+function fillInStatistics(dateExpendituresJson) {
+    $('#this_month_total').html(dateExpendituresJson.monthTotal)
+    $('#previous_month_total').html(dateExpendituresJson.previousMonthTotal)
+    $('#this_vs_previous_total').html(dateExpendituresJson.monthTotal - dateExpendituresJson.previousMonthTotal)
+    $('#this_vs_previous_percentage').html(getThisVsPreviousPercentage(dateExpendituresJson) + "%")
+    $('#this_year_total').html(dateExpendituresJson.yearTotal)
+    $('#this_year_monthly_average').html(getThisYearMonthlyAverage(dateExpendituresJson))
 }

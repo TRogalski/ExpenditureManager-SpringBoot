@@ -1,20 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <head>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<head th:insert="includes/header::header">
+    <title>Home</title>
 
-        <!-- Bootstrap datepicker JS and CSS -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"></script>
-        <link rel="stylesheet"
-              href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css">
-        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-        <link th:href="@{/css/home.css}" rel="stylesheet"/>
-    </head>
+</head>
 <body>
 <div class="container-fluid">
     <div th:insert="includes/navigationBar::navigation_bar"></div>
@@ -44,45 +34,35 @@
                 <tbody>
                 <tr>
                     <td>This month total</td>
-                    <td id="this_month_total" colspan="2" class="text-center">Value</td>
+                    <td colspan="2" class="text-center" id="this_month_total"></td>
                 </tr>
                 <tr>
                     <td>Previous month total</td>
-                    <td id="previous_month_total" colspan="2" class="text-center">Value</td>
+                    <td colspan="2" class="text-center" id="previous_month_total"></td>
                 </tr>
                 <tr>
                     <td>This vs previous month total</td>
-                    <td class="text-center">-1000</td>
-                    <td class="text-center">-50%</td>
+                    <td class="text-center" id="this_vs_previous_total"></td>
+                    <td class="text-center" id="this_vs_previous_percentage"></td>
+                </tr>
+                <tr>
+                    <td>Year total</td>
+                    <td colspan="2" class="text-center" id="this_year_total"></td>
                 </tr>
                 <tr>
                     <td>Average monthly spendings</td>
-                    <td colspan="2" class="text-center">Value</td>
+                    <td colspan="2" class="text-center" id="this_year_monthly_average"></td>
                 </tr>
                 </tbody>
             </table>
 
         </div>
         <div class="col-lg-6">
-            <canvas id="myChart2"></canvas>
+
         </div>
     </div>
 </div>
 <script type="text/javascript" th:src="@{/js/main/home/datePicker.js}"></script>
 <script type="text/javascript" th:src="@{/js/main/home/homeCharts.js}"></script>
-<script>
-    var ctx = document.getElementById('myChart2').getContext('2d');
-
-    var myRadarChart = new Chart(ctx, {
-        type: 'radar',
-        data: {
-            labels: ['Running', 'Swimming', 'Eating', 'Cycling'],
-            datasets: [{
-                data: {[20, 10, 4, 2],[5, 1, 3, 1]}
-            }]
-        },
-
-    });
-</script>
 </body>
 </html>

@@ -11,10 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Service
 public class ExpenditureStatsService {
@@ -31,9 +28,11 @@ public class ExpenditureStatsService {
                 .put("currentYear", getCurrentYear(user, date))
                 .put("monthTotal", getCurrentMonthTotal(user, date))
                 .put("yearTotal", getCurrentYearTotal(user, date))
+                .put("previousYearTotal", getPreviousYearTotal(user, date))
+                .put("previousMonthTotal", getPreviousMonthTotal(user, date))
                 .put("timeSeries", getCurrentYearMonthTotals(user, date))
-                .put("topTags", getCurrentMonthTopTags(user, date));
-
+                .put("topTags", getCurrentMonthTopTags(user, date))
+                .put("totalTimeSeries", getTotalTimeSeries(user));
 
         return jsonObject;
     }
@@ -48,12 +47,25 @@ public class ExpenditureStatsService {
         return currentMonthTotal;
     }
 
+    private Double getPreviousMonthTotal(User user, String date) {
+        Double previousMonthTotal = expenditureRepository.getPreviousMonthTotal(user, date);
+
+        previousMonthTotal = previousMonthTotal == null ? 0.0 : previousMonthTotal;
+
+        return previousMonthTotal;
+    }
+
     private Double getCurrentYearTotal(User user, String date) {
         Double currentYearTotal = expenditureRepository.getCurrentMonthTotal(user, date);
         return currentYearTotal;
     }
 
-    public List<Double> getCurrentYearMonthTotals(User user, String date) {
+    private Double getPreviousYearTotal(User user, String date) {
+        Double previousYearTotal = expenditureRepository.getPreviousMonthTotal(user, date);
+        return previousYearTotal;
+    }
+
+    private List<Double> getCurrentYearMonthTotals(User user, String date) {
         List<Expenditure> expenditures = expenditureRepository.getCurrentYearMonthlyExpenditures(user, date);
 
         Map<String, Double> timeSeries = new LinkedHashMap<>();
@@ -74,9 +86,9 @@ public class ExpenditureStatsService {
         return new ArrayList<>(timeSeries.values());
     }
 
-    public JSONArray getCurrentMonthTopTags(User user, String date) {
+    private JSONArray getCurrentMonthTopTags(User user, String date) {
         Map<Tag, Double> topCurrentMonthTagsTotals = new LinkedHashMap<>();
-        Map<Tag,Integer> topCurrentMonthTagsCounts = new LinkedHashMap<>();
+        Map<Tag, Integer> topCurrentMonthTagsCounts = new LinkedHashMap<>();
 
         List<Expenditure> expenditures = expenditureRepository.findAllByUserAndMonth(user, date);
 
@@ -115,18 +127,26 @@ public class ExpenditureStatsService {
             jsonObject.put("id", -1);
             jsonObject.put("name", "Unassigned");
             jsonObject.put("monthTotal", unassignedTotal);
-            jsonObject.put("monthCount",unassignedCount);
+            jsonObject.put("monthCount", unassignedCount);
             jsonArray.put(jsonObject);
         }
         return jsonArray;
     }
 
-//    public Map<String,Double> getCurrentMonthTopTags(){}
-//
-//    private Double getCurrentMonthTagsTotal(User user, String date, List<Tag> tags) {
-//    }
-//
-//    private Double getCurrentYearTagsTotal(User user, String date, List<Tag> tags) {
-//    }
+    private Map<String, Double> getTotalTimeSeries(User user) {
+        List<Expenditure> expenditures = expenditureRepository.findAllByUser(user);
+        Map<String, Double> totalTimeSeries = new HashMap<>();
+
+        for (Expenditure expenditure : expenditures) {
+            if (totalTimeSeries.containsKey(expenditure.getDate())) {
+                totalTimeSeries.put(expenditure.getDate(), totalTimeSeries.get(expenditure.getDate()) + expenditure.getAmount());
+            } else {
+                totalTimeSeries.put(expenditure.getDate(), expenditure.getAmount());
+            }
+        }
+
+        return totalTimeSeries;
+    }
+
 
 }

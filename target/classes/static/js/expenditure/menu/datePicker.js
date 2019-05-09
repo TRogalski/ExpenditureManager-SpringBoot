@@ -1,18 +1,23 @@
 document.addEventListener('DOMContentLoaded', function () {
 
-    var eventDates = {};
-    eventDates[ new Date( '2019/05/04' )] = new Date( '2019/05/04' );
-    
+    var active_dates = ["2019-5-12", "2019-5-5"];
 
     $('#date_picker').datepicker({
         format: 'yyyy-mm-dd',
-        beforeShowDay: function(date) {
-            var highlight = eventDates[date];
-            if (highlight) {
-                return [true, "event", highlight];
-            } else {
-                return [true, '', ''];
+        beforeShowDay: function (date) {
+            var d = date;
+            var curr_date = d.getDate();
+            var curr_month = d.getMonth() + 1; //Months are zero based
+            var curr_year = d.getFullYear();
+            var formattedDate = curr_year + "-" + curr_month + "-" + curr_date
+
+            if ($.inArray(formattedDate, active_dates) != -1) {
+                return {
+                    classes: 'highlight',
+                    tooltip: 'yes'
+                };
             }
+            return;
         }
     }).datepicker("setDate", 'now');
 
