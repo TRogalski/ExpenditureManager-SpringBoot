@@ -1,7 +1,20 @@
 document.addEventListener('DOMContentLoaded', function () {
+
+    var eventDates = {};
+    eventDates[ new Date( '2019/05/04' )] = new Date( '2019/05/04' );
+    
+
     $('#date_picker').datepicker({
         format: 'yyyy-mm-dd',
-    }).datepicker("setDate", $('#date').val());
+        beforeShowDay: function(date) {
+            var highlight = eventDates[date];
+            if (highlight) {
+                return [true, "event", highlight];
+            } else {
+                return [true, '', ''];
+            }
+        }
+    }).datepicker("setDate", 'now');
 
     $('#date_picker').on('changeDate', function () {
         getExpendituresAssignedToDate($('#date_picker').datepicker('getFormattedDate'));

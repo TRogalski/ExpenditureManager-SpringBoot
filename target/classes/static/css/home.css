@@ -1,0 +1,16 @@
+.border {
+    display: inline-block;
+    width: 100%;
+    padding-top:75%;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: solid;
+}
+
+.danger{
+    border-color:red;
+}
+
+.success{
+    border-color:green;
+}

@@ -40,4 +40,10 @@ public interface ExpenditureRepository extends JpaRepository<Expenditure, Long> 
             "AND e.user=:user")
     List<Expenditure> findAllByTagAndDateAndUser(@Param("tag") Tag tag, @Param("date") String date, @Param("user") User user);
 
+    @Query("SELECT e FROM Expenditure e " +
+            "WHERE e.tags is empty " +
+            "AND MONTH(e.date)=MONTH(:date) " +
+            "and YEAR(e.date)=YEAR(:date) " +
+            "and e.user=:user")
+    List<Expenditure> findAllUnassignedByDateAndUser(@Param("date") String date, @Param("user") User user);
 }

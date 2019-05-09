@@ -1,35 +1,37 @@
 <!DOCTYPE html>
-<html  xmlns="http://www.w3.org/1999/xhtml"
-       xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <head th:insert="includes/header::header">
     <title>Register</title>
 </head>
 <body>
-<div th:insert="includes/navigationBar::navigation_bar"></div>
-<form method="post" th:object="${user}">
-    <p>
-        <label for="firstName">First name</label>
-        <input type="text" th:field="*{firstName}" id="firstName"/>
-    </p>
-    <p>
-        <label for="lastName">Last name</label>
-        <input type="text" th:field="*{lastName}" id="lastName"/>
-    </p>
-    <p>
-        <label for="password">Password</label>
-        <input type="password" th:field="*{password}" id="password"/>
-    </p>
-    <p>
-        <label for="matchingPassword">Repeat password</label>
-        <input type="password" th:filed="*{matchingPassword}" id="matchingPassword"/>
-    </p>
-    <p>
-        <lablel for="email">Email</lablel>
-        <input type="text" th:field="*{email}" id="email"/>
-    </p>
-    <p>
-        <button type="submit">Register</button>
-    </p>
-</form>
+<div class="container-fluid">
+    <div th:insert="includes/navigationBar::navigation_bar"></div>
+    <form method="post" th:object="${user}">
+        <p>
+            <label for="firstName">First name</label>
+            <input type="text" th:field="*{firstName}" id="firstName"/>
+        </p>
+        <p>
+            <label for="lastName">Last name</label>
+            <input type="text" th:field="*{lastName}" id="lastName"/>
+        </p>
+        <p>
+            <label for="password">Password</label>
+            <input type="password" th:field="*{password}" id="password"/>
+        </p>
+        <p>
+            <label for="matchingPassword">Repeat password</label>
+            <input type="password" th:filed="*{matchingPassword}" id="matchingPassword"/>
+        </p>
+        <p>
+            <lablel for="email">Email</lablel>
+            <input type="text" th:field="*{email}" id="email"/>
+        </p>
+        <p>
+            <button type="submit">Register</button>
+        </p>
+    </form>
+</div>
 </body>
 </html>

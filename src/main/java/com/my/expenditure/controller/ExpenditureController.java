@@ -75,8 +75,16 @@ public class ExpenditureController {
     @RequestMapping(value = "/list/{date}/{id}", method = RequestMethod.GET)
     private String getListView(@PathVariable String date, @PathVariable Long id, Model model, Principal principal) {
         User user = userRepository.findFirstByEmail(principal.getName());
-        Tag tag = tagRepository.getOne(id);
-        model.addAttribute("expenditures", expenditureRepository.findAllByTagAndDateAndUser(tag,date,user));
+
+        List<Expenditure> expenditures;
+
+        if(id==-1){
+            expenditures=expenditureRepository.findAllUnassignedByDateAndUser(date,user);
+        }else{
+            Tag tag = tagRepository.getOne(id);
+            expenditures = expenditureRepository.findAllByTagAndDateAndUser(tag,date,user);
+        }
+        model.addAttribute("expenditures", expenditures);
         return "expenditure/list";
     }
 
@@ -90,12 +98,9 @@ public class ExpenditureController {
 
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
     private String deleteExpenditure(@RequestParam("id") Long id,
-                                     @RequestParam("date") String date,
-                                     @RequestParam("redirectPage") String redirectPage,
-                                     Model model) {
+                                     @RequestParam("redirectPage") String redirectPage) {
         Expenditure expenditure = expenditureRepository.getOne(id);
         expenditureRepository.delete(expenditure);
-        model.addAttribute("date", date);
         return "redirect:"+redirectPage;
     }
 
@@ -107,9 +112,9 @@ public class ExpenditureController {
     }
 
     @RequestMapping(value = "/menu", method=RequestMethod.GET)
-    private String getExpenditureHomeView(@ModelAttribute("date") String date,
-                                          Model model, Principal principal) {
+    private String getExpenditureHomeView(Model model, Principal principal) {
         User user = userRepository.findFirstByEmail(principal.getName());
+        String date = String.valueOf(LocalDate.now());
         model.addAttribute("expenditures", expenditureRepository.findAllByUserAndDate(user, date));
         model.addAttribute("date", date);
         return "expenditure/menu";

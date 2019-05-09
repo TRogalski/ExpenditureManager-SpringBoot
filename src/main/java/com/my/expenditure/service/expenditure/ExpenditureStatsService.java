@@ -112,7 +112,7 @@ public class ExpenditureStatsService {
 
         if (unassignedTotal > 0.0) {
             JSONObject jsonObject = new JSONObject();
-            jsonObject.put("id", "None");
+            jsonObject.put("id", -1);
             jsonObject.put("name", "Unassigned");
             jsonObject.put("monthTotal", unassignedTotal);
             jsonObject.put("monthCount",unassignedCount);
