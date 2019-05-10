@@ -62,7 +62,7 @@ public class ExpenditureController {
         expenditure.setUser(user);
         expenditure.setModified(String.valueOf(LocalDate.now()));
         expenditureRepository.save(expenditure);
-        return "redirect:/";
+        return "redirect:menu";
     }
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)
