@@ -1,41 +1,39 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
-    <head th:insert="includes/header::header">
-        <title>Add Expenditure</title>
-    </head>
+<head th:insert="includes/header::header">
+    <title>Add Expenditure</title>
+
+</head>
 <body>
 <div class="container-fluid">
     <div th:insert="includes/navigationBar::navigation_bar"></div>
 
+    <div class="row">
+        <div class="col-lg-4 col-md-offset-4">
+            <form method="post" th:object="${expenditure}" action="/expenditure/add">
+                <label for="name">name</label>
+                <input class="form-control" type="text" th:field="*{name}" id="name"/>
 
-    <form method="post" th:object="${expenditure}" action="/expenditure/add">
-        <p>
-            <label for="name">name</label>
-            <input type="text" th:field="*{name}" id="name"/>
-        </p>
-        <p>
-            <label for="description">description</label>
-            <input type="text" th:field="*{description}" id="description"/>
-        </p>
-        <p>
-            <label for="amount">amount</label>
-            <input type="number" step="0.01" th:field="*{amount}" id="amount">
-        </p>
-        <p>
-            <label for="tag">tags</label>
-            <select multiple th:field="*{tags}" id="tag">
-                <option th:each="tag:${tags}"
-                        th:value="${tag.id}"
-                        th:utext="${tag.name}"/>
-            </select>
-        </p>
-        <p>
-            <input type="hidden" th:field="*{date}" id="date">
-        </p>
-        <button type="submit">Save</button>
-    </form>
+                <label for="description">description</label>
+                <textarea class="form-control" type="text" rows="10" th:field="*{description}" id="description"/>
 
+                <label for="amount">amount</label>
+                <input class="form-control" type="number" step="0.01" th:field="*{amount}" id="amount">
+
+                <label for="tag">tags</label>
+                <select class="form-control selectpicker" multiple th:field="*{tags}" id="tag">
+                    <option th:each="tag:${tags}"
+                            th:value="${tag.id}"
+                            th:utext="${tag.name}"/>
+                </select>
+
+                <input type="hidden" th:field="*{date}" id="date">
+
+                <button class="btn btn-sm btn-primary" type="submit">Save</button>
+            </form>
+        </div>
+    </div>
 </div>
 </body>
 </html>

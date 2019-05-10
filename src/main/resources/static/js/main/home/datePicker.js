@@ -49,6 +49,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     $('#date_picker').on('changeDate', function () {
         getTopTagsAssignedToMonth($('#date_picker').datepicker('getFormattedDate'));
+        console.log($('#date_picker').datepicker('getFormattedDate'))
     });
 })
 
@@ -84,6 +85,7 @@ function getTopTagsAssignedToMonth(date) {
         if (toDelete != null) {
             removeEnlistedTags(toDelete)
         }
+        console.log(dateExpendituresJson)
         appendReceivedTags(dateExpendituresJson)
         fillInStatistics(dateExpendituresJson)
     });
@@ -154,7 +156,7 @@ function fillInStatistics(dateExpendituresJson) {
     $('#this_month_total').html(dateExpendituresJson.monthTotal)
     $('#previous_month_total').html(dateExpendituresJson.previousMonthTotal)
     $('#this_vs_previous_total').html(dateExpendituresJson.monthTotal - dateExpendituresJson.previousMonthTotal)
-    $('#this_vs_previous_percentage').html(getThisVsPreviousPercentage(dateExpendituresJson) + "%")
+    $('#this_vs_previous_percentage').html(getThisVsPreviousPercentage(dateExpendituresJson))
     $('#this_year_total').html(dateExpendituresJson.yearTotal)
     $('#this_year_monthly_average').html(getThisYearMonthlyAverage(dateExpendituresJson))
 }

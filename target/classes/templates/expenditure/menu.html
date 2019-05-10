@@ -4,7 +4,6 @@
       xmlns:th="http://www.thymeleaf.org">
 <head th:insert="includes/header::header">
     <title>Expenditures</title>
-
 </head>
 <body>
 <div class="container-fluid">
@@ -16,7 +15,7 @@
             <input type="hidden" name="date" id="date" th:value="${date}">
         </div>
         <div class="col-md-10">
-            <button id="add_expenditure">Add</button>
+            <button class="btn btn-sm btn-primary" id="add_expenditure">Add</button>
             <table class="table">
                 <thead>
                 <tr>

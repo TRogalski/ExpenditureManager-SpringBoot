@@ -7,31 +7,31 @@
 <body>
 <div class="container-fluid">
     <div th:insert="includes/navigationBar::navigation_bar"></div>
-    <form method="post" th:object="${user}">
-        <p>
-            <label for="firstName">First name</label>
-            <input type="text" th:field="*{firstName}" id="firstName"/>
-        </p>
-        <p>
-            <label for="lastName">Last name</label>
-            <input type="text" th:field="*{lastName}" id="lastName"/>
-        </p>
-        <p>
-            <label for="password">Password</label>
-            <input type="password" th:field="*{password}" id="password"/>
-        </p>
-        <p>
-            <label for="matchingPassword">Repeat password</label>
-            <input type="password" th:filed="*{matchingPassword}" id="matchingPassword"/>
-        </p>
-        <p>
-            <lablel for="email">Email</lablel>
-            <input type="text" th:field="*{email}" id="email"/>
-        </p>
-        <p>
-            <button type="submit">Register</button>
-        </p>
-    </form>
+    <div class="row">
+        <div class="col-lg-4 col-md-offset-4">
+            <h2>Register</h2>
+            <form method="post" th:object="${user}">
+
+                <label for="firstName">First name</label>
+                <input class="form-control" placeholder="Enter firstname" type="text" th:field="*{firstName}" id="firstName"/>
+
+                <label for="lastName">Last name</label>
+                <input class="form-control" placeholder="Enter lastname" type="text" th:field="*{lastName}" id="lastName"/>
+
+                <label for="password">Password</label>
+                <input class="form-control" placeholder="Enter password" type="password" th:field="*{password}" id="password"/>
+
+                <label for="matchingPassword">Repeat password</label>
+                <input class="form-control" placeholder="Repeat password" type="password" th:filed="*{matchingPassword}" id="matchingPassword"/>
+
+                <lablel for="email">Email</lablel>
+                <input class="form-control" placeholder="Enter email" type="text" th:field="*{email}" id="email"/>
+
+                <button class="btn btn-md btn-primary btn-block" type="submit">Register</button>
+
+            </form>
+        </div>
+    </div>
 </div>
 </body>
 </html>

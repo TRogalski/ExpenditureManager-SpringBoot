@@ -9,7 +9,7 @@
     <div th:insert="includes/navigationBar::navigation_bar"></div>
     <div class="row">
         <div class="col-lg-6">
-            <button id="add_tag">Add</button>
+            <button class="btn btn-sm btn-primary" id="add_tag">Add</button>
             <table class="table">
                 <thead>
                 <tr>
@@ -46,8 +46,8 @@
                     <form action="/tag/delete" method="post">
                         <input type="hidden" name="id" id="id"/>
                         <input type="hidden" name="redirectPage" id="redirectPage"/>
-                        <button type="submit" class="btn btn-default" value="Yes">Yes</button>
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-sm btn-primary" value="Yes">Yes</button>
+                        <button type="button" class="btn btn-sm btn-primary" data-dismiss="modal">Close</button>
                     </form>
                 </div>
             </div>
@@ -67,16 +67,56 @@
         window.location.href = "/tag/add";
     })
 
+    var json = (function () {
+        var json = null;
+        $.ajax({
+            'async': false,
+            'global': false,
+            'url': "http://localhost:8084/expenditure/stats/" + getTodaysDate(),
+            'dataType': "json",
+            'success': function (data) {
+                json = data;
+            }
+        });
+        return json;
+    })();
+
+    function getTodaysDate() {
+        var today = new Date();
+        var dd = today.getDate();
+        var mm = today.getMonth() + 1;
+        var yyyy = today.getFullYear();
+
+        if (dd < 10) {
+            dd = '0' + dd
+        }
+
+        if (mm < 10) {
+            mm = '0' + mm
+        }
+
+        return yyyy + '-' + mm + '-' + dd;
+
+    }
+
     var ctx = document.getElementById('myChart').getContext('2d');
 
     var myRadarChart = new Chart(ctx, {
         type: 'radar',
+
         data: {
-            labels: ['Running', 'Swimming', 'Eating', 'Cycling'],
+            labels: Object.keys(json.tagTotals),
             datasets: [{
-                data: [5, 1, 3, 1]
+                label: 'Current month',
+                data: Object.values(json.tagTotals),
+                backgroundColor: 'rgba(54, 162, 235,.4)'
+            }, {
+                label: 'Previous month',
+                data: Object.values(json.previousTagTotals),
+                backgroundColor: 'rgba(255, 99, 132,.4)'
+
             }]
-        },
+        }
 
     });
 

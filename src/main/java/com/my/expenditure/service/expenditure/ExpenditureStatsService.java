@@ -32,7 +32,9 @@ public class ExpenditureStatsService {
                 .put("previousMonthTotal", getPreviousMonthTotal(user, date))
                 .put("timeSeries", getCurrentYearMonthTotals(user, date))
                 .put("topTags", getCurrentMonthTopTags(user, date))
-                .put("totalTimeSeries", getTotalTimeSeries(user));
+                .put("totalTimeSeries", getTotalTimeSeries(user))
+                .put("tagTotals", getTagTotalsThisMonth(user, date))
+                .put("previousTagTotals", getTagTotalsLastMonth(user, date));
 
         return jsonObject;
     }
@@ -56,7 +58,7 @@ public class ExpenditureStatsService {
     }
 
     private Double getCurrentYearTotal(User user, String date) {
-        Double currentYearTotal = expenditureRepository.getCurrentMonthTotal(user, date);
+        Double currentYearTotal = expenditureRepository.getCurrentYearTotal(user, date);
         return currentYearTotal;
     }
 
@@ -147,5 +149,57 @@ public class ExpenditureStatsService {
         return totalTimeSeries;
     }
 
+    private Map<String, Double> getTagTotalsThisMonth(User user, String date) {
+
+        Map<String, Double> tagTotals = new HashMap<>();
+        List<Tag> tags = tagRepository.findAllByUser(user);
+
+        for (Tag tag : tags) {
+
+            if (!tagTotals.containsKey(tag.getName())) {
+                tagTotals.put(tag.getName(), 0.0);
+            }
+
+            List<Expenditure> expenditures = expenditureRepository.findAllByTagAndDateAndUser(tag, date, user);
+            for (Expenditure expenditure : expenditures) {
+                tagTotals.put(tag.getName(), tagTotals.get(tag.getName()) + expenditure.getAmount());
+            }
+
+            Double currentMonthTotal=expenditureRepository.getCurrentMonthTotal(user,date);
+
+            if(currentMonthTotal!=null){
+                tagTotals.put(tag.getName(), Math.round(tagTotals.get(tag.getName()) / currentMonthTotal * 100.0) / 100.0);
+            }
+
+        }
+
+        return tagTotals;
+    }
+
+
+    private Map<String, Double> getTagTotalsLastMonth(User user, String date) {
+        Map<String, Double> tagTotals = new HashMap<>();
+        List<Tag> tags = tagRepository.findAllByUser(user);
+
+        for (Tag tag : tags) {
+
+            if (!tagTotals.containsKey(tag.getName())) {
+                tagTotals.put(tag.getName(), 0.0);
+            }
+
+            List<Expenditure> expenditures = expenditureRepository.findAllByTagAndDatePreviousAndUser(tag, date, user);
+            for (Expenditure expenditure : expenditures) {
+                tagTotals.put(tag.getName(), tagTotals.get(tag.getName()) + expenditure.getAmount());
+            }
+
+            Double previousMonthTotal=expenditureRepository.getPreviousMonthTotal(user,date);
+
+            if(previousMonthTotal!=null){
+                tagTotals.put(tag.getName(), Math.round(tagTotals.get(tag.getName()) / previousMonthTotal * 100.0) / 100.0);
+            }
+        }
+
+        return tagTotals;
+    }
 
 }

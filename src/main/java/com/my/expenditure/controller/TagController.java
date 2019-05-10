@@ -49,7 +49,8 @@ public class TagController {
     }
 
     @RequestMapping(value = "/edit", method = RequestMethod.POST)
-    public String editTag(@ModelAttribute Tag tag, Principal principal) {
+    public String editTag(@RequestParam("redirectPage") String redirectPage,
+                          @ModelAttribute Tag tag, Principal principal) {
         User user = userRepository.findFirstByEmail(principal.getName());
         tag.setUser(user);
         tagRepository.save(tag);

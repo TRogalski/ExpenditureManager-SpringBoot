@@ -55,4 +55,11 @@ public interface ExpenditureRepository extends JpaRepository<Expenditure, Long> 
             "MONTH(e.date)=(MONTH(:date)-1) and " +
             "e.user=:user")
     Double getPreviousMonthTotal(@Param("user") User user, @Param("date") String date);
+
+    @Query("SELECT e FROM Expenditure e " +
+            "WHERE :tag MEMBER OF e.tags " +
+            "AND MONTH(e.date)=(MONTH(:date)-1) " +
+            "AND YEAR(e.date)=YEAR(:date) " +
+            "AND e.user=:user")
+    List<Expenditure> findAllByTagAndDatePreviousAndUser(@Param("tag") Tag tag, @Param("date") String date, @Param("user") User user);
 }
