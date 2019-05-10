@@ -1,9 +1,9 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-    updateCharts($('#date_picker').datepicker('getFormattedDate'))
+    updateCharts($('#date_picker').datepicker('getFormattedDate')+"-01")
 
     $('#date_picker').on('changeDate', function () {
-        updateCharts($('#date_picker').datepicker('getFormattedDate'));
+        updateCharts($('#date_picker').datepicker('getFormattedDate')+"-01");
     });
 
 })
