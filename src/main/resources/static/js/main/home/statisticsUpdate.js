@@ -3,4 +3,5 @@ function getExpenditureStatistics(date) {
         return response.json();
     }).then(function (expenditureStatisticsJson) {
         console.log(expenditureStatisticsJson.timeSeries);
-    });}
+    });
+}

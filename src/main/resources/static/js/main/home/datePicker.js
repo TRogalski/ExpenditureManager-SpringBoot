@@ -1,8 +1,19 @@
 document.addEventListener('DOMContentLoaded', function () {
 
 
-    var active_dates = ["2019-5-12", "2019-5-5"];
-
+    var totalTimeSeries = (function () {
+        var json = null;
+        $.ajax({
+            'async': false,
+            'global': false,
+            'url': "http://localhost:8084/expenditure/stats/" + getTodaysDate(),
+            'dataType': "json",
+            'success': function (data) {
+                json = data;
+            }
+        });
+        return json.totalTimeSeries;
+    })();
 
     $('#date_picker').datepicker({
         format: "yyyy-mm-dd",
@@ -11,14 +22,22 @@ document.addEventListener('DOMContentLoaded', function () {
             var curr_date = d.getDate();
             var curr_month = d.getMonth() + 1; //Months are zero based
             var curr_year = d.getFullYear();
+
+            if (curr_date < 10) {
+                curr_date = '0' + curr_date
+            }
+
+            if (curr_month < 10) {
+                curr_month = '0' + curr_month
+            }
+
             var formattedDate = curr_year + "-" + curr_month + "-" + curr_date
 
-            console.log(Object.keys)
 
-            if ($.inArray(formattedDate, active_dates) != -1) {
+            if ($.inArray(formattedDate, Object.keys(totalTimeSeries)) != -1) {
                 return {
                     classes: 'highlight',
-                    tooltip: 1000
+                    tooltip: totalTimeSeries[formattedDate]
                 };
             }
             return;

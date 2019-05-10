@@ -144,7 +144,6 @@ public class ExpenditureStatsService {
                 totalTimeSeries.put(expenditure.getDate(), expenditure.getAmount());
             }
         }
-
         return totalTimeSeries;
     }
 
