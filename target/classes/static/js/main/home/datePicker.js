@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function () {
     $('#date_picker').datepicker({
         viewMode: "months",
         minViewMode: "months",
-        format:"yyyy-mm"
+        format: "yyyy-mm"
 
         // beforeShowDay: function (date) {
         //     var d = date;
@@ -48,10 +48,10 @@ document.addEventListener('DOMContentLoaded', function () {
     }).datepicker("setDate", 'now');
 
 
-    getTopTagsAssignedToMonth($('#date_picker').datepicker('getFormattedDate')+"-01")
+    getTopTagsAssignedToMonth($('#date_picker').datepicker('getFormattedDate') + "-01")
 
     $('#date_picker').on('changeDate', function () {
-        getTopTagsAssignedToMonth($('#date_picker').datepicker('getFormattedDate')+"-01");
+        getTopTagsAssignedToMonth($('#date_picker').datepicker('getFormattedDate') + "-01");
         console.log($('#date_picker').datepicker('getFormattedDate'))
     });
 })
@@ -134,7 +134,10 @@ function getThisVsPreviousPercentage(dateExpendituresJson) {
     var thisMonth = dateExpendituresJson.monthTotal;
     var previousMonth = dateExpendituresJson.previousMonthTotal;
 
-    if (previousMonth == 0) {
+    if (thisMonth == null ||
+        thisMonth == 0 ||
+        previousMonth == null ||
+        previousMonth == 0) {
         return "N/A"
     }
     return ((thisMonth - previousMonth) / previousMonth * 100).toFixed(2);
@@ -155,11 +158,24 @@ function getThisYearMonthlyAverage(dateExpendituresJson) {
     return (avg / count).toFixed(2);
 }
 
+function getCurrentVsPreviousTotal(dateExpendituresJson) {
+
+    if (dateExpendituresJson.monthTotal == null ||
+        dateExpendituresJson.monthTotal == 0 ||
+        dateExpendituresJson.previousMonthTotal == null ||
+        dateExpendituresJson.previousMonthTotal == 0) {
+        return "N/A";
+    }
+
+    return dateExpendituresJson.monthTotal - dateExpendituresJson.previousMonthTotal;
+}
+
 function fillInStatistics(dateExpendituresJson) {
-    $('#this_month_total').html(dateExpendituresJson.monthTotal)
-    $('#previous_month_total').html(dateExpendituresJson.previousMonthTotal)
-    $('#this_vs_previous_total').html(dateExpendituresJson.monthTotal - dateExpendituresJson.previousMonthTotal)
+    $('#this_month_total').html(dateExpendituresJson.monthTotal==null?0:dateExpendituresJson.monthTotal)
+    $('#previous_month_total').html(dateExpendituresJson.previousMonthTotal==null?0:dateExpendituresJson.previousMonthTotal)
+    $('#this_vs_previous_total').html(getCurrentVsPreviousTotal(dateExpendituresJson))
     $('#this_vs_previous_percentage').html(getThisVsPreviousPercentage(dateExpendituresJson))
     $('#this_year_total').html(dateExpendituresJson.yearTotal)
     $('#this_year_monthly_average').html(getThisYearMonthlyAverage(dateExpendituresJson))
 }
+
