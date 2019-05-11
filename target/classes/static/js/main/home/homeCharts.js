@@ -51,12 +51,12 @@ function updateCharts(date) {
                 datasets: [{
                     data: Object.values(expenditureStatisticsJson.currentMonthTotalsTimeSeries),
                     fill: false,
-                    borderColor: 'navy',
+                    borderColor: "rgb(71, 102, 153)",
                 }],
             },
 
             options: {
-                events: ['click'],
+                // events: ['hover'],
                 legend: {
                     display: false
                 },
