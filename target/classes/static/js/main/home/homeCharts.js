@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
 function updateCharts(date) {
 
     var ctx = document.getElementById('myChart').getContext('2d');
+    var ctx2 = document.getElementById('myChart2').getContext('2d');
 
     fetch("http://localhost:8084/expenditure/stats/" + date).then(function (response) {
         return response.json();
@@ -28,8 +29,8 @@ function updateCharts(date) {
                 }]
             },
             options: {
-                maintainAspectRatio: true,
-                responsive: true,
+                // maintainAspectRatio: true,
+                // responsive: true,
                 events: ['click'],
                 legend: {
                     display: false
@@ -42,8 +43,32 @@ function updateCharts(date) {
             }
         });
 
-    });
+        var chart2 = new Chart(ctx2, {
+            // The type of chart we want to create
+            type: 'line',
+            data: {
+                labels: Object.keys(expenditureStatisticsJson.currentMonthTotalsTimeSeries),
+                datasets: [{
+                    data: Object.values(expenditureStatisticsJson.currentMonthTotalsTimeSeries),
+                    fill: false,
+                    borderColor: 'navy',
+                }],
+            },
 
+            options: {
+                events: ['click'],
+                legend: {
+                    display: false
+                },
+                title: {
+                    display: true,
+                    text: "Daily expenditures as of " + expenditureStatisticsJson.date,
+                }
+            }
+        });
+
+
+    });
 
 }
 

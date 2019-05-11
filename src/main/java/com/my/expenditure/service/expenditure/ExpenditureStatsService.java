@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.time.YearMonth;
 import java.util.*;
 
 @Service
@@ -34,7 +35,8 @@ public class ExpenditureStatsService {
                 .put("topTags", getCurrentMonthTopTags(user, date))
                 .put("totalTimeSeries", getTotalTimeSeries(user))
                 .put("tagTotals", getTagTotalsThisMonth(user, date))
-                .put("previousTagTotals", getTagTotalsLastMonth(user, date));
+                .put("previousTagTotals", getTagTotalsLastMonth(user, date))
+                .put("currentMonthTotalsTimeSeries",getCurrentMonthTotalsTimeSeries(user,date));
 
         return jsonObject;
     }
@@ -165,9 +167,9 @@ public class ExpenditureStatsService {
                 tagTotals.put(tag.getName(), tagTotals.get(tag.getName()) + expenditure.getAmount());
             }
 
-            Double currentMonthTotal=expenditureRepository.getCurrentMonthTotal(user,date);
+            Double currentMonthTotal = expenditureRepository.getCurrentMonthTotal(user, date);
 
-            if(currentMonthTotal!=null){
+            if (currentMonthTotal != null) {
                 tagTotals.put(tag.getName(), Math.round(tagTotals.get(tag.getName()) / currentMonthTotal * 100.0) / 100.0);
             }
 
@@ -192,14 +194,39 @@ public class ExpenditureStatsService {
                 tagTotals.put(tag.getName(), tagTotals.get(tag.getName()) + expenditure.getAmount());
             }
 
-            Double previousMonthTotal=expenditureRepository.getPreviousMonthTotal(user,date);
+            Double previousMonthTotal = expenditureRepository.getPreviousMonthTotal(user, date);
 
-            if(previousMonthTotal!=null){
+            if (previousMonthTotal != null) {
                 tagTotals.put(tag.getName(), Math.round(tagTotals.get(tag.getName()) / previousMonthTotal * 100.0) / 100.0);
             }
         }
 
         return tagTotals;
+    }
+
+    private Map<Integer, Double> getCurrentMonthTotalsTimeSeries(User user, String date) {
+
+        Map<Integer, Double> currentMonthTotalsTimeSeries = new HashMap<>();
+
+        String[] dateParts = date.split("-");
+        String month = dateParts[1];
+        String year = dateParts[0];
+
+        YearMonth yearMonthObject = YearMonth.of(Integer.parseInt(year), Integer.parseInt(month));
+        Integer daysInMonth = yearMonthObject.lengthOfMonth();
+
+        for(Integer i=1;i<=daysInMonth;i++){
+            currentMonthTotalsTimeSeries.put(i,0.0);
+        }
+
+        List<Expenditure> expenditures = expenditureRepository.findAllByUserAndMonth(user, date);
+
+        for(Expenditure expenditure:expenditures){
+            month=expenditure.getDate().split("-")[1];
+            currentMonthTotalsTimeSeries.put(Integer.valueOf(month), currentMonthTotalsTimeSeries.get(Integer.valueOf(month))+expenditure.getAmount());
+        }
+
+        return  currentMonthTotalsTimeSeries;
     }
 
 }
