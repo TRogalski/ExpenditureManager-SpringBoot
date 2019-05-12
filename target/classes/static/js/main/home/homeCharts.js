@@ -16,8 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
 })
 
 function createMonthlyExpendituresChart(jsonData) {
-
-    var ctx = document.getElementById('myChart').getContext('2d');
+    var ctx = document.getElementById('monthlyChart').getContext('2d');
 
     return new Chart(ctx, {
         type: 'bar',
@@ -38,6 +37,13 @@ function createMonthlyExpendituresChart(jsonData) {
                 display: true,
                 text: "Expenditures as of " + jsonData.currentYear,
             },
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            },
             fontsize: 8
         }
     });
@@ -45,7 +51,7 @@ function createMonthlyExpendituresChart(jsonData) {
 
 
 function createDailyExpendituresChart(jsonData) {
-    var ctx2 = document.getElementById('myChart2').getContext('2d');
+    var ctx2 = document.getElementById('dailyChart').getContext('2d');
 
     return new Chart(ctx2, {
         type: 'line',
@@ -64,6 +70,13 @@ function createDailyExpendituresChart(jsonData) {
             title: {
                 display: true,
                 text: "Daily expenditures as of " + jsonData.date,
+            },
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
             }
         }
     });
@@ -83,7 +96,6 @@ function updateMonthlyExpendituresChart(chart, date) {
 }
 
 function updateDailyExpendituresChart(chart, date) {
-
     $.ajax({
         'url': "http://localhost:8084/expenditure/stats/" + date + "-01",
         'dataType': "json",

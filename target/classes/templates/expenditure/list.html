@@ -41,25 +41,22 @@
         </tr>
         </tbody>
     </table>
-
-    <!--modal delete-->
-    <div class="modal" id="modal_delete">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-body">
-                    <p>Are you sure you want to remove this record?</p>
-                    <form action="/expenditure/delete" method="post">
-                        <input type="hidden" name="id" id="id"/>
-                        <input type="hidden" name="redirectPage" id="redirectPage"/>
-                        <button type="submit" class="btn btn-sm btn-primary" value="Yes">Yes</button>
-                        <button type="button" class="btn btn-sm btn-primary" data-dismiss="modal">Close</button>
-                    </form>
-                </div>
+</div>
+<div class="modal" id="modal_delete">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <p>Are you sure you want to remove this record?</p>
+                <form action="/expenditure/delete" method="post">
+                    <input type="hidden" name="id" id="id"/>
+                    <input type="hidden" name="redirectPage" id="redirectPage"/>
+                    <button type="submit" class="btn btn-sm btn-primary" value="Yes">Yes</button>
+                    <button type="button" class="btn btn-sm btn-primary" data-dismiss="modal">Close</button>
+                </form>
             </div>
         </div>
     </div>
 </div>
-
 <script type="text/javascript" th:src="@{/js/expenditure/menu/expenditureRemove.js}"></script>
 </body>
 </html>

@@ -30,20 +30,6 @@ public class Expenditure {
             inverseJoinColumns = @JoinColumn(name = "tag_id"))
     private List<Tag> tags = new ArrayList<>();
 
-    @Override
-    public String toString() {
-        return "Expenditure{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                ", amount=" + amount +
-                ", date='" + date + '\'' +
-                ", created='" + created + '\'' +
-                ", modified='" + modified + '\'' +
-                ", user=" + user +
-                '}';
-    }
-
     public Long getId() {
         return id;
     }
@@ -115,5 +101,4 @@ public class Expenditure {
     public void setUser(User user) {
         this.user = user;
     }
-
 }

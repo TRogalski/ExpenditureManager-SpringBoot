@@ -1,9 +1,6 @@
 package com.my.expenditure.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import org.h2.result.MergedResult;
-import org.hibernate.Hibernate;
-import org.springframework.data.repository.cdi.Eager;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -26,7 +23,6 @@ public class Tag {
     @JsonIgnore
     @ManyToMany(mappedBy = "tags")
     List<Expenditure> expenditures = new ArrayList<>();
-
 
     public Long getId() {
         return id;
@@ -59,14 +55,5 @@ public class Tag {
     public void setExpenditures(List<Expenditure> expenditures) {
         this.expenditures = expenditures;
     }
-
-    @Override
-    public String toString() {
-        return "Tag{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                '}';
-    }
-
 }
 

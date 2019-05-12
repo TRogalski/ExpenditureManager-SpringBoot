@@ -10,10 +10,15 @@
     <div class="row">
         <div class="col-lg-6">
             <button class="btn btn-sm btn-primary" id="add_tag">Add</button>
+            <input id="date_picker">
             <table class="table">
                 <thead>
                 <tr>
                     <th>Name</th>
+                    <th>This month</th>
+                    <th>Previous month</th>
+                    <th>Change</th>
+                    <th>Year total</th>
                     <td>#</td>
                 </tr>
                 </thead>
@@ -21,6 +26,10 @@
                 <tbody>
                 <tr th:each="tag:${tags}">
                     <td th:text="${tag.name}"/>
+                    <td>Placeholder</td>
+                    <td>Placeholder</td>
+                    <td>Placeholder</td>
+                    <td>Placeholder</td>
                     <td>
                         <a href="#modal_delete" data-toggle="modal" th:data-tag-id="${tag.id}">
                             <span class="glyphicon glyphicon-remove"></span>
@@ -34,10 +43,9 @@
             </table>
         </div>
         <div class="col-lg-6">
-            <canvas id="myChart"></canvas>
+            <canvas id="tagChart"></canvas>
         </div>
     </div>
-
     <div class="modal" id="modal_delete">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -54,9 +62,9 @@
         </div>
     </div>
 </div>
-
 <script type="text/javascript" th:src="@{/js/tag/list/tagRemove.js}"></script>
 <script type="text/javascript" th:src="@{/js/tag/list/tagAdd.js}"></script>
 <script type="text/javascript" th:src="@{/js/tag/list/tagCharts.js}"></script>
+<script type="text/javascript" th:src="@{/js/tag/list/datePicker.js}"></script>
 </body>
 </html>

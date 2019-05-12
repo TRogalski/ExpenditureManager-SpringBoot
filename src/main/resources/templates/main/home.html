@@ -3,7 +3,6 @@
       xmlns:th="http://www.thymeleaf.org">
 <head th:insert="includes/header::header">
     <title>Home</title>
-
 </head>
 <body>
 <div class="container-fluid">
@@ -11,7 +10,7 @@
     <input type="text" id="date_picker">
     <div class="row">
         <div class="col-lg-4">
-            <canvas id="myChart"></canvas>
+            <canvas id="monthlyChart"></canvas>
         </div>
         <div class="col-sm-8">
             <table id="top_tags_table" class="table table-hover table-bordered">
@@ -31,7 +30,6 @@
     </div>
     <div class="row">
         <div class="col-lg-4">
-
             <table class="table table-bordered">
                 <caption>Expenditures</caption>
                 <tbody>
@@ -58,10 +56,9 @@
                 </tr>
                 </tbody>
             </table>
-
         </div>
         <div class="col-lg-8">
-            <canvas style="position:absolute; width:400px; height:100px;"  id="myChart2"></canvas>
+            <canvas style="position:absolute; width:400px; height:100px;"  id="dailyChart"></canvas>
         </div>
     </div>
 </div>

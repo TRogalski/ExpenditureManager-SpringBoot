@@ -21,18 +21,6 @@ public class User {
     @OneToMany(mappedBy = "user")
     private List<Tag> tags = new ArrayList<>();
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
-                ", expenditures=" + expenditures +
-                '}';
-    }
-
     public List<Expenditure> getExpenditures() {
         return expenditures;
     }
@@ -92,5 +80,4 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
-
 }

@@ -49,6 +49,7 @@ public class ExpenditureController {
         return "redirect:menu";
     }
 
+
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
     public String getEditxpenditureView(@PathVariable Long id, Model model) {
         Expenditure expenditure = expenditureRepository.getOne(id);
@@ -88,7 +89,6 @@ public class ExpenditureController {
         return "expenditure/list";
     }
 
-
     @RequestMapping(value = "/date/{date}", method = RequestMethod.GET)
     @ResponseBody
     private List<Expenditure> getJson(@PathVariable String date, Principal principal) {
@@ -116,7 +116,6 @@ public class ExpenditureController {
         User user = userRepository.findFirstByEmail(principal.getName());
         String date = String.valueOf(LocalDate.now());
         model.addAttribute("expenditures", expenditureRepository.findAllByUserAndDate(user, date));
-        model.addAttribute("date", date);
         return "expenditure/menu";
     }
 

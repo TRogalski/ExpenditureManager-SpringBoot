@@ -221,9 +221,10 @@ public class ExpenditureStatsService {
 
         List<Expenditure> expenditures = expenditureRepository.findAllByUserAndMonth(user, date);
 
+        String day;
         for(Expenditure expenditure:expenditures){
-            month=expenditure.getDate().split("-")[1];
-            currentMonthTotalsTimeSeries.put(Integer.valueOf(month), currentMonthTotalsTimeSeries.get(Integer.valueOf(month))+expenditure.getAmount());
+            day=expenditure.getDate().split("-")[2];
+            currentMonthTotalsTimeSeries.put(Integer.valueOf(day), currentMonthTotalsTimeSeries.get(Integer.valueOf(day))+expenditure.getAmount());
         }
 
         return  currentMonthTotalsTimeSeries;

@@ -3,3 +3,4 @@ document.addEventListener("DOMContentLoaded", function () {
         window.location.href = "/expenditure/add/" + $('#date_picker').datepicker('getFormattedDate');
     });
 })
+

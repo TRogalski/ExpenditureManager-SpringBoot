@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', function () {
-
     $('#date_picker').datepicker({
         viewMode: "months",
         minViewMode: "months",
@@ -104,10 +103,15 @@ function getCurrentVsPreviousTotal(jsonData) {
 
 
 function fillInStatistics(jsonData) {
-    $('#this_month_total').html(jsonData.monthTotal == null ? 0 : jsonData.monthTotal)
-    $('#previous_month_total').html(jsonData.previousMonthTotal == null ? 0 : jsonData.previousMonthTotal)
+    $('#this_month_total').html(jsonData.monthTotal == null ? 0 : formatNumber(jsonData.monthTotal))
+    $('#previous_month_total').html(jsonData.previousMonthTotal == null ? 0 : formatNumber(jsonData.previousMonthTotal))
     $('#this_vs_previous_total').html(getCurrentVsPreviousTotal(jsonData))
     $('#this_vs_previous_percentage').html(getThisVsPreviousPercentage(jsonData))
-    $('#this_year_total').html(jsonData.yearTotal)
-    $('#this_year_monthly_average').html(getThisYearMonthlyAverage(jsonData))
+    $('#this_year_total').html(formatNumber(jsonData.yearTotal))
+    $('#this_year_monthly_average').html(formatNumber(getThisYearMonthlyAverage(jsonData)))
+}
+
+
+function formatNumber(num) {
+    return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
 }

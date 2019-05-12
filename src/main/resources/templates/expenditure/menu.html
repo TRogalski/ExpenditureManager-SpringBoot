@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 <head th:insert="includes/header::header">
@@ -10,9 +9,7 @@
     <div th:insert="includes/navigationBar::navigation_bar"></div>
     <div class="row">
         <div class="col-md-2">
-            <!--datepicker-->
             <div id="date_picker"></div>
-            <input type="hidden" name="date" id="date" th:value="${date}">
         </div>
         <div class="col-md-10">
             <button class="btn btn-sm btn-primary" id="add_expenditure">Add</button>
@@ -51,8 +48,6 @@
         </div>
     </div>
 </div>
-
-<!--modal delete-->
 <div class="modal" id="modal_delete">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -68,8 +63,6 @@
         </div>
     </div>
 </div>
-
-<!--javascript-->
 <script type="text/javascript" th:src="@{/js/expenditure/menu/datePicker.js}"></script>
 <script type="text/javascript" th:src="@{/js/expenditure/menu/expenditureRemove.js}"></script>
 <script type="text/javascript" th:src="@{/js/expenditure/menu/expenditureAdd.js}"></script>

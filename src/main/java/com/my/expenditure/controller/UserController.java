@@ -44,6 +44,7 @@ public class UserController {
         if (registered == null) {
             result.rejectValue("email", "email.duplicated", "Email already exists in the database");
         }
+
         if (result.hasErrors()) {
             return new ModelAndView("user/register", "user", accountDto);
         } else {

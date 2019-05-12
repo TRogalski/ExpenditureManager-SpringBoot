@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
 
-
     $.ajax({
         'url': "http://localhost:8084/expenditure/stats/" + getTodaysDate(),
         'dataType': "json",
@@ -27,20 +26,18 @@ document.addEventListener('DOMContentLoaded', function () {
                     if ($.inArray(formattedDate, Object.keys(jsonData.totalTimeSeries)) != -1) {
                         return {
                             classes: 'highlight',
-                            tooltip: jsonData.totalTimeSeries[formattedDate]
+                            tooltip: formatNumber(jsonData.totalTimeSeries[formattedDate])
                         };
                     }
                     return;
                 }
             }).datepicker("setDate", 'now');
-            
+
             $('#date_picker').on('changeDate', function () {
                 getExpendituresAssignedToDate($('#date_picker').datepicker('getFormattedDate'));
             });
         }
     });
-
-
 })
 
 function getTodaysDate() {
@@ -90,7 +87,7 @@ function appendReceivedElements(jsonData) {
         var tableRow = $(`<tr>
                             <td>${convertTagListToString(jsonData[i].tags)}</td>
                             <td>${jsonData[i].name}</td>
-                            <td>${jsonData[i].amount.toFixed(2)}</td>
+                            <td>${formatNumber(jsonData[i].amount.toFixed(2))}</td>
                             <td>${jsonData[i].description}</td>
                             <td>${jsonData[i].created}</td>
                             <td>
@@ -123,3 +120,7 @@ function convertTagListToString(tagList) {
     return formattedString;
 }
 
+
+function formatNumber(num) {
+    return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
+}

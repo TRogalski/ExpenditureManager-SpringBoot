@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', function () {
-
     $.ajax({
         'async': true,
         'url': "http://localhost:8084/expenditure/stats/" + getTodaysDate(),
@@ -12,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 function createTagChart(jsonData) {
-    var ctx = document.getElementById('myChart').getContext('2d');
+    var ctx = document.getElementById('tagChart').getContext('2d');
 
     var myRadarChart = new Chart(ctx, {
         type: 'radar',
@@ -26,7 +25,6 @@ function createTagChart(jsonData) {
                 label: 'Previous month',
                 data: Object.values(jsonData.previousTagTotals),
                 backgroundColor: 'rgba(255, 99, 132,.4)'
-
             }]
         },
         options: {
@@ -40,9 +38,9 @@ function createTagChart(jsonData) {
                 }
             }
         }
-
     });
 }
+
 
 function getTodaysDate() {
     var today = new Date();
@@ -59,6 +57,5 @@ function getTodaysDate() {
     }
 
     return yyyy + '-' + mm + '-' + dd;
-
 }
 
