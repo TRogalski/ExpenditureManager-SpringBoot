@@ -1,52 +1,10 @@
 document.addEventListener('DOMContentLoaded', function () {
 
-
-    // var totalTimeSeries = (function () {
-    //     var json = null;
-    //     $.ajax({
-    //         'async': false,
-    //         'global': false,
-    //         'url': "http://localhost:8084/expenditure/stats/" + getTodaysDate(),
-    //         'dataType': "json",
-    //         'success': function (data) {
-    //             json = data;
-    //         }
-    //     });
-    //     return json.totalTimeSeries;
-    // })();
-
     $('#date_picker').datepicker({
         viewMode: "months",
         minViewMode: "months",
         format: "yyyy-mm"
-
-        // beforeShowDay: function (date) {
-        //     var d = date;
-        //     var curr_date = d.getDate();
-        //     var curr_month = d.getMonth() + 1; //Months are zero based
-        //     var curr_year = d.getFullYear();
-        //
-        //     if (curr_date < 10) {
-        //         curr_date = '0' + curr_date
-        //     }
-        //
-        //     if (curr_month < 10) {
-        //         curr_month = '0' + curr_month
-        //     }
-        //
-        //     var formattedDate = curr_year + "-" + curr_month + "-" + curr_date
-        //
-        //
-        //     if ($.inArray(formattedDate, Object.keys(totalTimeSeries)) != -1) {
-        //         return {
-        //             classes: 'highlight',
-        //             tooltip: totalTimeSeries[formattedDate]
-        //         };
-        //     }
-        //     return;
-        // }
     }).datepicker("setDate", 'now');
-
 
     getTopTagsAssignedToMonth($('#date_picker').datepicker('getFormattedDate') + "-01")
 
@@ -55,26 +13,6 @@ document.addEventListener('DOMContentLoaded', function () {
         console.log($('#date_picker').datepicker('getFormattedDate'))
     });
 })
-
-//
-// function getTodaysDate() {
-//     var today = new Date();
-//     var dd = today.getDate();
-//     var mm = today.getMonth() + 1;
-//     var yyyy = today.getFullYear();
-//
-//     if (dd < 10) {
-//         dd = '0' + dd
-//     }
-//
-//     if (mm < 10) {
-//         mm = '0' + mm
-//     }
-//
-//     return yyyy + '-' + mm + '-' + dd;
-//
-// }
-
 
 //display top tags
 
@@ -128,7 +66,6 @@ function appendReceivedTags(dateExpendituresJson) {
 }
 
 // fill in the statistics
-//
 
 function getThisVsPreviousPercentage(dateExpendituresJson) {
     var thisMonth = dateExpendituresJson.monthTotal;
