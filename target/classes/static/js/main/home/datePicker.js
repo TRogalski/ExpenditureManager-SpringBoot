@@ -10,41 +10,36 @@ document.addEventListener('DOMContentLoaded', function () {
 
     $('#date_picker').on('changeDate', function () {
         getTopTagsAssignedToMonth($('#date_picker').datepicker('getFormattedDate') + "-01");
-        console.log($('#date_picker').datepicker('getFormattedDate'))
     });
 })
 
 //display top tags
 
 function getTopTagsAssignedToMonth(date) {
-    fetch("http://localhost:8084/expenditure/stats/" + date).then(function (response) {
-        return response.json();
-    }).then(function (dateExpendituresJson) {
+    $.ajax({
+        'url': "http://localhost:8084/expenditure/stats/" + date + "-01",
+        'dataType': "json",
+        'success': function (jsonData) {
 
-        var toDelete = document.getElementById("top_tags_records");
+            var toDelete = document.getElementById("top_tags_records");
 
-        if (toDelete != null) {
-            removeEnlistedTags(toDelete)
+            if (toDelete != null) {
+                removeEnlistedTags(toDelete)
+            }
+            appendReceivedTags(jsonData)
+            fillInStatistics(jsonData)
         }
-        console.log(dateExpendituresJson)
-        appendReceivedTags(dateExpendituresJson)
-        fillInStatistics(dateExpendituresJson)
-    });
-
-}
+    })
+};
 
 function removeEnlistedTags(toDelete) {
-
     while (toDelete.hasChildNodes()) {
         toDelete.removeChild(toDelete.lastChild);
     }
 }
 
-function appendReceivedTags(dateExpendituresJson) {
-
-
-    var topTags = dateExpendituresJson.topTags;
-
+function appendReceivedTags(jsonData) {
+    var topTags = jsonData.topTags;
 
     topTags.sort(function (a, b) {
         return b.monthTotal - a.monthTotal;
@@ -54,9 +49,9 @@ function appendReceivedTags(dateExpendituresJson) {
         var listElement = $(`<tr>
                                 <td>${topTags[i].name}</td>
                                 <td>${topTags[i].monthTotal}</td>
-                                <td>${(topTags[i].monthTotal / dateExpendituresJson.monthTotal * 100).toFixed(2)}</td>
+                                <td>${(topTags[i].monthTotal / jsonData.monthTotal * 100).toFixed(2)}</td>
                                 <td>
-                                    <a href="http://localhost:8084/expenditure/list/${dateExpendituresJson.date}/${topTags[i].id}">
+                                    <a href="http://localhost:8084/expenditure/list/${jsonData.date}/${topTags[i].id}">
                                         ${topTags[i].monthCount}
                                     </a>
                                 </td>
@@ -67,9 +62,9 @@ function appendReceivedTags(dateExpendituresJson) {
 
 // fill in the statistics
 
-function getThisVsPreviousPercentage(dateExpendituresJson) {
-    var thisMonth = dateExpendituresJson.monthTotal;
-    var previousMonth = dateExpendituresJson.previousMonthTotal;
+function getThisVsPreviousPercentage(jsonData) {
+    var thisMonth = jsonData.monthTotal;
+    var previousMonth = jsonData.previousMonthTotal;
 
     if (thisMonth == null ||
         thisMonth == 0 ||
@@ -80,39 +75,37 @@ function getThisVsPreviousPercentage(dateExpendituresJson) {
     return ((thisMonth - previousMonth) / previousMonth * 100).toFixed(2);
 }
 
-function getThisYearMonthlyAverage(dateExpendituresJson) {
-
+function getThisYearMonthlyAverage(jsonData) {
     var avg = 0;
     var count = 0;
 
-    for (var i = 0; i < dateExpendituresJson.timeSeries.length; i++) {
-        if (dateExpendituresJson.timeSeries[i] > 0) {
-            avg += dateExpendituresJson.timeSeries[i];
+    for (var i = 0; i < jsonData.timeSeries.length; i++) {
+        if (jsonData.timeSeries[i] > 0) {
+            avg += jsonData.timeSeries[i];
             count++;
         }
     }
-
     return (avg / count).toFixed(2);
 }
 
-function getCurrentVsPreviousTotal(dateExpendituresJson) {
+function getCurrentVsPreviousTotal(jsonData) {
 
-    if (dateExpendituresJson.monthTotal == null ||
-        dateExpendituresJson.monthTotal == 0 ||
-        dateExpendituresJson.previousMonthTotal == null ||
-        dateExpendituresJson.previousMonthTotal == 0) {
+    if (jsonData.monthTotal == null ||
+        jsonData.monthTotal == 0 ||
+        jsonData.previousMonthTotal == null ||
+        jsonData.previousMonthTotal == 0) {
         return "N/A";
     }
 
-    return dateExpendituresJson.monthTotal - dateExpendituresJson.previousMonthTotal;
+    return jsonData.monthTotal - jsonData.previousMonthTotal;
 }
 
-function fillInStatistics(dateExpendituresJson) {
-    $('#this_month_total').html(dateExpendituresJson.monthTotal==null?0:dateExpendituresJson.monthTotal)
-    $('#previous_month_total').html(dateExpendituresJson.previousMonthTotal==null?0:dateExpendituresJson.previousMonthTotal)
-    $('#this_vs_previous_total').html(getCurrentVsPreviousTotal(dateExpendituresJson))
-    $('#this_vs_previous_percentage').html(getThisVsPreviousPercentage(dateExpendituresJson))
-    $('#this_year_total').html(dateExpendituresJson.yearTotal)
-    $('#this_year_monthly_average').html(getThisYearMonthlyAverage(dateExpendituresJson))
+function fillInStatistics(jsonData) {
+    $('#this_month_total').html(jsonData.monthTotal == null ? 0 : jsonData.monthTotal)
+    $('#previous_month_total').html(jsonData.previousMonthTotal == null ? 0 : jsonData.previousMonthTotal)
+    $('#this_vs_previous_total').html(getCurrentVsPreviousTotal(jsonData))
+    $('#this_vs_previous_percentage').html(getThisVsPreviousPercentage(jsonData))
+    $('#this_year_total').html(jsonData.yearTotal)
+    $('#this_year_monthly_average').html(getThisYearMonthlyAverage(jsonData))
 }
 

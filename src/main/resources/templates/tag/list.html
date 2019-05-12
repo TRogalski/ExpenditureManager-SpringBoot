@@ -55,81 +55,8 @@
     </div>
 </div>
 
-<script>
-
-    $('#modal_delete').on('show.bs.modal', function (e) {
-        var tagId = $(e.relatedTarget).data('tag-id');
-        $(e.currentTarget).find('input[id="id"]').val(tagId);
-        $(e.currentTarget).find('input[id="redirectPage"]').val(window.location.pathname);
-    });
-
-    $('#add_tag').on('click', function () {
-        window.location.href = "/tag/add";
-    })
-
-    var json = (function () {
-        var json = null;
-        $.ajax({
-            'async': false,
-            'global': false,
-            'url': "http://localhost:8084/expenditure/stats/" + getTodaysDate(),
-            'dataType': "json",
-            'success': function (data) {
-                json = data;
-            }
-        });
-        return json;
-    })();
-
-    function getTodaysDate() {
-        var today = new Date();
-        var dd = today.getDate();
-        var mm = today.getMonth() + 1;
-        var yyyy = today.getFullYear();
-
-        if (dd < 10) {
-            dd = '0' + dd
-        }
-
-        if (mm < 10) {
-            mm = '0' + mm
-        }
-
-        return yyyy + '-' + mm + '-' + dd;
-
-    }
-
-    var ctx = document.getElementById('myChart').getContext('2d');
-
-    var myRadarChart = new Chart(ctx, {
-        type: 'radar',
-        data: {
-            labels: Object.keys(json.tagTotals),
-            datasets: [{
-                label: 'Current month',
-                data: Object.values(json.tagTotals),
-                backgroundColor: 'rgba(54, 162, 235,.4)'
-            }, {
-                label: 'Previous month',
-                data: Object.values(json.previousTagTotals),
-                backgroundColor: 'rgba(255, 99, 132,.4)'
-
-            }]
-        },
-        options: {
-            tooltips: {
-                callbacks: {
-                    label: function(tooltipItem, data) {
-                        var datasetLabel = data.datasets[tooltipItem.datasetIndex].label || 'Other';
-                        var label = tooltipItem.yLabel;
-                        return datasetLabel + ': ' + label;
-                    }
-                }
-            }
-        }
-
-    });
-
-</script>
+<script type="text/javascript" th:src="@{/js/tag/list/tagRemove.js}"></script>
+<script type="text/javascript" th:src="@{/js/tag/list/tagAdd.js}"></script>
+<script type="text/javascript" th:src="@{/js/tag/list/tagCharts.js}"></script>
 </body>
 </html>

@@ -1,16 +1,17 @@
 document.addEventListener("DOMContentLoaded", function () {
+    $.ajax({
+        'url': "http://localhost:8084/expenditure/stats/" + $('#date_picker').datepicker('getFormattedDate') + "-01",
+        'dataType': "json",
+        'success': function (jsonData) {
+            var expendituresMonthlyChart = createMonthlyExpendituresChart(jsonData);
+            var expendituresDailyChart = createDailyExpendituresChart(jsonData);
 
-    var todaysDate = $('#date_picker').datepicker('getFormattedDate');
-
-    var jsonData = getJsonExpenditureStatistics(todaysDate);
-
-    var expendituresMonthlyChart = createMonthlyExpendituresChart(jsonData);
-    var expendituresDailyChart = createDailyExpendituresChart(jsonData);
-
-    $('#date_picker').on('changeDate', function () {
-        var datePickerDate = $('#date_picker').datepicker('getFormattedDate');
-        updateDailyExpendituresChart(expendituresDailyChart, datePickerDate);
-        updateMonthlyExpendituresChart(expendituresMonthlyChart, datePickerDate);
+            $('#date_picker').on('changeDate', function () {
+                var datePickerDate = $('#date_picker').datepicker('getFormattedDate');
+                updateDailyExpendituresChart(expendituresDailyChart, datePickerDate);
+                updateMonthlyExpendituresChart(expendituresMonthlyChart, datePickerDate);
+            });
+        }
     });
 })
 
@@ -68,34 +69,29 @@ function createDailyExpendituresChart(jsonData) {
     });
 }
 
-function getJsonExpenditureStatistics(date) {
-    var json = null;
-    $.ajax({
-        'async': false,
-        'global': false,
-        'url': "http://localhost:8084/expenditure/stats/" + date + "-01",
-        'dataType': "json",
-        'success': function (data) {
-            json = data;
-        }
-    });
-    return json;
-}
 
 function updateMonthlyExpendituresChart(chart, date) {
-    var jsonData = getJsonExpenditureStatistics(date);
-
-    chart.data.datasets[0].data = jsonData.timeSeries;
-    chart.options.title.text = "Expenditures as of " + jsonData.currentYear;
-    chart.update();
-
+    $.ajax({
+        'url': "http://localhost:8084/expenditure/stats/" + date + "-01",
+        'dataType': "json",
+        'success': function (jsonData) {
+            chart.data.datasets[0].data = jsonData.timeSeries;
+            chart.options.title.text = "Expenditures as of " + jsonData.currentYear;
+            chart.update();
+        }
+    });
 }
 
 function updateDailyExpendituresChart(chart, date) {
-    var jsonData = getJsonExpenditureStatistics(date);
 
-    chart.data.labels=Object.keys(jsonData.currentMonthTotalsTimeSeries);
-    chart.data.datasets[0].data = Object.values(jsonData.currentMonthTotalsTimeSeries);
-    chart.options.title.text = "Daily expenditures as of " + jsonData.date,
-    chart.update();
+    $.ajax({
+        'url': "http://localhost:8084/expenditure/stats/" + date + "-01",
+        'dataType': "json",
+        'success': function (jsonData) {
+            chart.data.labels = Object.keys(jsonData.currentMonthTotalsTimeSeries);
+            chart.data.datasets[0].data = Object.values(jsonData.currentMonthTotalsTimeSeries);
+            chart.options.title.text = "Daily expenditures as of " + jsonData.date,
+                chart.update();
+        }
+    });
 }
