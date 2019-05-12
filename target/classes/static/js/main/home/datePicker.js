@@ -6,14 +6,13 @@ document.addEventListener('DOMContentLoaded', function () {
         format: "yyyy-mm"
     }).datepicker("setDate", 'now');
 
-    getTopTagsAssignedToMonth($('#date_picker').datepicker('getFormattedDate') + "-01")
+    getTopTagsAssignedToMonth($('#date_picker').datepicker('getFormattedDate'))
 
     $('#date_picker').on('changeDate', function () {
-        getTopTagsAssignedToMonth($('#date_picker').datepicker('getFormattedDate') + "-01");
+        getTopTagsAssignedToMonth($('#date_picker').datepicker('getFormattedDate'));
     });
 })
 
-//display top tags
 
 function getTopTagsAssignedToMonth(date) {
     $.ajax({
@@ -32,11 +31,13 @@ function getTopTagsAssignedToMonth(date) {
     })
 };
 
+
 function removeEnlistedTags(toDelete) {
     while (toDelete.hasChildNodes()) {
         toDelete.removeChild(toDelete.lastChild);
     }
 }
+
 
 function appendReceivedTags(jsonData) {
     var topTags = jsonData.topTags;
@@ -60,7 +61,6 @@ function appendReceivedTags(jsonData) {
     }
 }
 
-// fill in the statistics
 
 function getThisVsPreviousPercentage(jsonData) {
     var thisMonth = jsonData.monthTotal;
@@ -75,6 +75,7 @@ function getThisVsPreviousPercentage(jsonData) {
     return ((thisMonth - previousMonth) / previousMonth * 100).toFixed(2);
 }
 
+
 function getThisYearMonthlyAverage(jsonData) {
     var avg = 0;
     var count = 0;
@@ -88,6 +89,7 @@ function getThisYearMonthlyAverage(jsonData) {
     return (avg / count).toFixed(2);
 }
 
+
 function getCurrentVsPreviousTotal(jsonData) {
 
     if (jsonData.monthTotal == null ||
@@ -100,6 +102,7 @@ function getCurrentVsPreviousTotal(jsonData) {
     return jsonData.monthTotal - jsonData.previousMonthTotal;
 }
 
+
 function fillInStatistics(jsonData) {
     $('#this_month_total').html(jsonData.monthTotal == null ? 0 : jsonData.monthTotal)
     $('#previous_month_total').html(jsonData.previousMonthTotal == null ? 0 : jsonData.previousMonthTotal)
@@ -108,4 +111,3 @@ function fillInStatistics(jsonData) {
     $('#this_year_total').html(jsonData.yearTotal)
     $('#this_year_monthly_average').html(getThisYearMonthlyAverage(jsonData))
 }
-

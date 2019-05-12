@@ -1,55 +1,46 @@
 document.addEventListener('DOMContentLoaded', function () {
 
-    var totalTimeSeries = (function () {
-        var json = null;
-        $.ajax({
-            'async': false,
-            'global': false,
-            'url': "http://localhost:8084/expenditure/stats/" + getTodaysDate(),
-            'dataType': "json",
-            'success': function (data) {
-                json = data;
-            }
-        });
-        return json.totalTimeSeries;
-    })();
 
-    $('#date_picker').datepicker({
-        format: "yyyy-mm-dd",
-        beforeShowDay: function (date) {
-            var d = date;
-            var curr_date = d.getDate();
-            var curr_month = d.getMonth() + 1; //Months are zero based
-            var curr_year = d.getFullYear();
+    $.ajax({
+        'url': "http://localhost:8084/expenditure/stats/" + getTodaysDate(),
+        'dataType': "json",
+        'success': function (jsonData) {
+            $('#date_picker').datepicker({
+                format: "yyyy-mm-dd",
+                beforeShowDay: function (date) {
+                    var d = date;
+                    var curr_date = d.getDate();
+                    var curr_month = d.getMonth() + 1; //Months are zero based
+                    var curr_year = d.getFullYear();
 
-            if (curr_date < 10) {
-                curr_date = '0' + curr_date
-            }
+                    if (curr_date < 10) {
+                        curr_date = '0' + curr_date
+                    }
 
-            if (curr_month < 10) {
-                curr_month = '0' + curr_month
-            }
+                    if (curr_month < 10) {
+                        curr_month = '0' + curr_month
+                    }
 
-            var formattedDate = curr_year + "-" + curr_month + "-" + curr_date
+                    var formattedDate = curr_year + "-" + curr_month + "-" + curr_date
 
 
-            if ($.inArray(formattedDate, Object.keys(totalTimeSeries)) != -1) {
-                return {
-                    classes: 'highlight',
-                    tooltip: totalTimeSeries[formattedDate]
-                };
-            }
-            return;
+                    if ($.inArray(formattedDate, Object.keys(jsonData.totalTimeSeries)) != -1) {
+                        return {
+                            classes: 'highlight',
+                            tooltip: jsonData.totalTimeSeries[formattedDate]
+                        };
+                    }
+                    return;
+                }
+            }).datepicker("setDate", 'now');
+            
+            $('#date_picker').on('changeDate', function () {
+                getExpendituresAssignedToDate($('#date_picker').datepicker('getFormattedDate'));
+            });
         }
-    }).datepicker("setDate", 'now');
-
-    $('#date_picker').on('changeDate', function () {
-        getExpendituresAssignedToDate($('#date_picker').datepicker('getFormattedDate'));
     });
 
-    $('#add_expenditure').on('click', function () {
-        window.location.href = "/expenditure/add/" + $('#date_picker').datepicker('getFormattedDate');
-    });
+
 })
 
 function getTodaysDate() {
@@ -67,51 +58,47 @@ function getTodaysDate() {
     }
 
     return yyyy + '-' + mm + '-' + dd;
-
 }
 
-
-//Show elements based on element clicked
 
 function getExpendituresAssignedToDate(date) {
-    fetch("http://localhost:8084/expenditure/date/" + date).then(function (response) {
-        return response.json();
-    }).then(function (dateExpendituresJson) {
-        // console.log(JSON.stringify(dateExpendituresJson));
+    $.ajax({
+        'url': "http://localhost:8084/expenditure/date/" + date,
+        'dataType': "json",
+        'success': function (jsonData) {
+            var toDelete = document.getElementById("expenditure_records");
+            console.log(jsonData)
+            if (toDelete != null) {
+                removeEnlistedExpenditures(toDelete)
+            }
 
-        var toDelete = document.getElementById("expenditure_records");
-
-        if (toDelete != null) {
-            removeEnlistedExpenditures(toDelete)
+            appendReceivedElements(jsonData)
         }
-
-        appendReceivedElements(dateExpendituresJson)
-    });
+    })
 }
 
-function removeEnlistedExpenditures(toDelete) {
 
+function removeEnlistedExpenditures(toDelete) {
     while (toDelete.hasChildNodes()) {
         toDelete.removeChild(toDelete.lastChild);
     }
 }
 
-//Display expenditures assigned to date
-function appendReceivedElements(dateExpendituresJson) {
 
-    for (var i = 0; i < dateExpendituresJson.length; i++) {
+function appendReceivedElements(jsonData) {
+    for (var i = 0; i < jsonData.length; i++) {
         var tableRow = $(`<tr>
-                            <td>${convertTagListToString(dateExpendituresJson[i].tags)}</td>
-                            <td>${dateExpendituresJson[i].name}</td>
-                            <td>${dateExpendituresJson[i].amount.toFixed(2)}</td>
-                            <td>${dateExpendituresJson[i].description}</td>
-                            <td>${dateExpendituresJson[i].created}</td>
+                            <td>${convertTagListToString(jsonData[i].tags)}</td>
+                            <td>${jsonData[i].name}</td>
+                            <td>${jsonData[i].amount.toFixed(2)}</td>
+                            <td>${jsonData[i].description}</td>
+                            <td>${jsonData[i].created}</td>
                             <td>
                                 <a href="#modal_delete" data-toggle="modal" 
-                                data-expenditure-id="${dateExpendituresJson[i].id}">
+                                data-expenditure-id="${jsonData[i].id}">
                                     <span class="glyphicon glyphicon-remove"></span>
                                 </a>
-                                <a href="/expenditure/edit/${dateExpendituresJson[i].id}">
+                                <a href="/expenditure/edit/${jsonData[i].id}">
                                     <span class="glyphicon glyphicon-pencil"></span>
                                 </a>
                             </td>
@@ -120,8 +107,8 @@ function appendReceivedElements(dateExpendituresJson) {
     }
 }
 
-function convertTagListToString(tagList) {
 
+function convertTagListToString(tagList) {
     var formattedString = "";
 
     for (var i = 0; i < tagList.length; i++) {
