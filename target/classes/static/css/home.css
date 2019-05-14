@@ -1,21 +1,24 @@
-.border {
-    display: inline-block;
-    width: 100%;
-    padding-top:75%;
-    margin-left: auto;
-    margin-right: auto;
-    border-style: solid;
-}
-
-.danger{
-    border-color:red;
-}
-
-.success{
-    border-color:green;
-}
-
 .highlight{
     background-color: rgba(175,188,201,.78);
+}
 
+.tableFixHead {
+    overflow-y: auto;
+    height: 200px;
+}
+
+.tableFixHead table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.tableFixHead th,
+.tableFixHead td {
+    padding: 8px 16px;
+}
+
+.tableFixHead th {
+    position: sticky;
+    top: 0;
+    background: #eee;
 }

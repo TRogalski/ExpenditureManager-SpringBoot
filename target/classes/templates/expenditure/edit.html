@@ -11,6 +11,9 @@
         <div class="col-lg-4 col-md-offset-4">
             <form method="post" th:object="${expenditure}" action="/expenditure/edit">
 
+                <label for="date">Date</label>
+                <input class="form-control" type="date" th:field="*{date}" id="date">
+
                 <label for="name">name</label>
                 <input class="form-control" type="text" th:field="*{name}" id="name"/>
 
@@ -28,7 +31,7 @@
                 </select>
 
                 <input type="hidden" th:field="*{created}" id="created">
-                <input type="hidden" th:field="*{date}" id="date">
+
                 <input type="hidden" th:field="*{id}" id="id">
                 <input type="hidden" name="redirectPage" id="redirectPage"/>
 

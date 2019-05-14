@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
     $.ajax({
-        'url': "http://localhost:8084/expenditure/stats/" + $('#date_picker').datepicker('getFormattedDate') + "-01",
+        'url': window.location.origin + "/expenditure/stats/" + $('#date_picker').datepicker('getFormattedDate') + "-01",
         'dataType': "json",
         'success': function (jsonData) {
             var expendituresMonthlyChart = createMonthlyExpendituresChart(jsonData);
@@ -85,7 +85,7 @@ function createDailyExpendituresChart(jsonData) {
 
 function updateMonthlyExpendituresChart(chart, date) {
     $.ajax({
-        'url': "http://localhost:8084/expenditure/stats/" + date + "-01",
+        'url': window.location.origin + "/expenditure/stats/" + date + "-01",
         'dataType': "json",
         'success': function (jsonData) {
             chart.data.datasets[0].data = jsonData.timeSeries;
@@ -97,7 +97,7 @@ function updateMonthlyExpendituresChart(chart, date) {
 
 function updateDailyExpendituresChart(chart, date) {
     $.ajax({
-        'url': "http://localhost:8084/expenditure/stats/" + date + "-01",
+        'url': window.location.origin + "/expenditure/stats/" + date + "-01",
         'dataType': "json",
         'success': function (jsonData) {
             chart.data.labels = Object.keys(jsonData.currentMonthTotalsTimeSeries);

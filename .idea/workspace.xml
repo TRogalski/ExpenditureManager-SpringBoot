@@ -2,42 +2,31 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="550acbc9-80d3-46e7-b143-e580d06cf125" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/tag/list/datePicker.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/my/expenditure/validator/PasswordCheck.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/my/expenditure/validator/PasswordCheckValidator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/my/expenditure/controller/ExpenditureController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/my/expenditure/controller/ExpenditureController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/my/expenditure/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/my/expenditure/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/my/expenditure/entity/Expenditure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/my/expenditure/entity/Expenditure.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/my/expenditure/entity/Tag.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/my/expenditure/entity/Tag.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/my/expenditure/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/my/expenditure/entity/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/my/expenditure/service/expenditure/ExpenditureStatsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/my/expenditure/service/expenditure/ExpenditureStatsService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/my/expenditure/model/UserDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/my/expenditure/model/UserDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/home.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/home.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/expenditure/menu/datePicker.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/expenditure/menu/datePicker.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/expenditure/menu/expenditureAdd.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/expenditure/menu/expenditureAdd.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/expenditure/menu/expenditureRemove.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/expenditure/menu/expenditureRemove.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/main/home/datePicker.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/main/home/datePicker.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/main/home/homeCharts.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/main/home/homeCharts.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/tag/list/tagCharts.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/tag/list/tagCharts.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/expenditure/add.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/expenditure/add.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/expenditure/edit.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/expenditure/edit.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/expenditure/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/expenditure/list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/expenditure/menu.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/expenditure/menu.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/includes/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/includes/header.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/main/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/main/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/tag/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/tag/list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/tag/add.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/tag/add.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/register.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/css/home.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/css/home.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/static/js/expenditure/menu/datePicker.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/expenditure/menu/datePicker.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/js/expenditure/menu/expenditureAdd.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/expenditure/menu/expenditureAdd.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/js/expenditure/menu/expenditureRemove.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/expenditure/menu/expenditureRemove.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/static/js/main/home/datePicker.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/main/home/datePicker.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/static/js/main/home/homeCharts.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/main/home/homeCharts.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/static/js/tag/list/tagCharts.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/tag/list/tagCharts.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/templates/expenditure/add.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/expenditure/add.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/templates/expenditure/edit.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/expenditure/edit.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/expenditure/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/expenditure/list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/expenditure/menu.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/expenditure/menu.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/includes/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/includes/header.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/templates/main/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/main/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/tag/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/tag/list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/user/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/tag/add.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/tag/add.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/user/register.html" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -49,76 +38,76 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/expenditure/menu/datePicker.js">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/static/css/home.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="403">
-              <caret line="122" lean-forward="true" selection-start-line="122" selection-end-line="125" selection-end-column="1" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/expenditure/menu/expenditureAdd.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="3" column="7" selection-start-line="3" selection-start-column="7" selection-end-line="3" selection-end-column="7" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/expenditure/menu/expenditureRemove.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="6" column="7" selection-start-line="6" selection-start-column="7" selection-end-line="6" selection-end-column="7" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/main/home/datePicker.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret selection-end-line="12" selection-end-column="2" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/expenditure/menu.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="11" column="12" lean-forward="true" selection-start-line="11" selection-start-column="12" selection-end-line="11" selection-end-column="40" />
+            <state relative-caret-position="15">
+              <caret line="1" column="44" selection-start-line="1" selection-start-column="44" selection-end-line="1" selection-end-column="44" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/tag/list.html">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/user/register.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
+            <state relative-caret-position="285">
+              <caret line="46" column="61" lean-forward="true" selection-start-line="46" selection-start-column="61" selection-end-line="46" selection-end-column="61" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/tag/list/datePicker.js">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/my/expenditure/controller/ExpenditureController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" column="21" lean-forward="true" selection-start-line="4" selection-start-column="21" selection-end-line="4" selection-end-column="21" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/my/expenditure/entity/Tag.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="223">
-              <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
+            <state relative-caret-position="1185">
+              <caret line="90" lean-forward="true" selection-start-line="90" selection-end-line="90" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/my/expenditure/controller/UserController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="300">
+              <caret line="34" column="69" lean-forward="true" selection-start-line="34" selection-start-column="69" selection-end-line="34" selection-end-column="69" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/my/expenditure/model/UserDto.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="285">
+              <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/my/expenditure/validator/PasswordCheck.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="37" lean-forward="true" selection-start-column="37" selection-end-column="37" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/user/login.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="330">
+              <caret line="22" selection-start-line="22" selection-end-line="22" />
             </state>
           </provider>
         </entry>
@@ -128,11 +117,11 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
-        <option value="Class" />
         <option value="HTML File" />
         <option value="CSS File" />
         <option value="JavaScript File" />
+        <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -142,9 +131,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/resources/static/js/statisticsUpdate.js" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/includes/modalDelete.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/includes/expenditureList.html" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/tag/Edit.html" />
         <option value="$PROJECT_DIR$/src/main/resources/static/js/expenditure/home/datePicker.js" />
         <option value="$PROJECT_DIR$/src/main/resources/static/css/expenditure/home/home.css" />
@@ -156,14 +142,11 @@
         <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
         <option value="$PROJECT_DIR$/src/main/resources/static/js/main/home/expenditureRemove.js" />
         <option value="$PROJECT_DIR$/src/main/java/com/my/expenditure/repository/TagRepository.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/static/css/home.css" />
         <option value="$PROJECT_DIR$/src/main/resources/static/js/main/home/statisticsUpdate.js" />
         <option value="$PROJECT_DIR$/src/main/java/com/my/expenditure/controller/TagController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/my/expenditure/repository/ExpenditureRepository.java" />
         <option value="$PROJECT_DIR$/src/main/resources/static/css/login.css" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/user/registered.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/user/register.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/tag/add.html" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/tag/edit.html" />
         <option value="$PROJECT_DIR$/src/main/resources/static/js/tag.list/expenditureRemove.js" />
         <option value="$PROJECT_DIR$/src/main/java/com/my/expenditure/configuration/SecurityConfig.java" />
@@ -173,14 +156,8 @@
         <option value="$PROJECT_DIR$/src/main/resources/static/js/expenditure/menu/expenditureAdd.js" />
         <option value="$PROJECT_DIR$/src/main/java/com/my/expenditure/service/expenditure/ExpenditureStatsService.java" />
         <option value="$PROJECT_DIR$/src/main/resources/static/js/expenditure/menu/expenditureRemove.js" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/expenditure/add.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/expenditure/edit.html" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/expenditure/list.html" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/includes/header.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/user/login.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/main/home.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/static/js/tag/list/tagCharts.js" />
-        <option value="$PROJECT_DIR$/src/main/resources/static/js/main/home/homeCharts.js" />
         <option value="$PROJECT_DIR$/src/main/java/com/my/expenditure/controller/ExpenditureController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/my/expenditure/controller/UserController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/my/expenditure/entity/Expenditure.java" />
@@ -188,11 +165,23 @@
         <option value="$PROJECT_DIR$/src/main/java/com/my/expenditure/entity/Tag.java" />
         <option value="$PROJECT_DIR$/src/main/resources/static/js/Misc.js" />
         <option value="$PROJECT_DIR$/src/main/resources/static/js/expenditure/menu/Misc.js" />
-        <option value="$PROJECT_DIR$/src/main/resources/static/js/expenditure/menu/datePicker.js" />
-        <option value="$PROJECT_DIR$/src/main/resources/static/js/main/home/datePicker.js" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/expenditure/menu.html" />
         <option value="$PROJECT_DIR$/src/main/resources/static/js/tag/list/datePicker.js" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/tag/list.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/js/tag/list/tagCharts.js" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/js/main/home/homeCharts.js" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/js/main/home/datePicker.js" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/js/expenditure/menu/datePicker.js" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/tag/add.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/expenditure/edit.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/expenditure/add.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/main/home.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/css/home.css" />
+        <option value="$PROJECT_DIR$/src/main/java/com/my/expenditure/validator/PasswordCheckValidator.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/user/login.html" />
+        <option value="$PROJECT_DIR$/src/main/java/com/my/expenditure/validator/PasswordCheck.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/my/expenditure/model/UserDto.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/user/register.html" />
       </list>
     </option>
   </component>
@@ -215,8 +204,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -323,6 +310,15 @@
               <item name="expenditure" type="462c0819:PsiDirectoryNode" />
               <item name="service" type="462c0819:PsiDirectoryNode" />
               <item name="user" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="expenditure" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ExpenditureManager-Bootstrap" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="expenditure" type="462c0819:PsiDirectoryNode" />
+              <item name="validator" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="expenditure" type="b2602c69:ProjectViewProjectNode" />
@@ -465,6 +461,8 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -475,7 +473,7 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1557696548628" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1557868255314" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/src/main/java/com/my/expenditure/service" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/pom.xml" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
@@ -484,21 +482,24 @@
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
-      <recent name="com.my.expenditure.service.expenditure" />
-      <recent name="com.my.expenditure.service" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/main/resources/static/js/tag.list" />
-      <recent name="$PROJECT_DIR$/src/main/resources/static/js/main/home" />
-      <recent name="$PROJECT_DIR$/src/main/resources/static/js/expenditure/home" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/resources/static/js/expenditure/menu" />
       <recent name="$PROJECT_DIR$/src/main/resources/static/js/tag/list" />
       <recent name="$PROJECT_DIR$/src/main/resources/static/js/tag" />
       <recent name="$PROJECT_DIR$/src/main/resources/static/js/tag/" />
       <recent name="$PROJECT_DIR$/src/main/resources/static/js/main/home" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.my.expenditure.service.expenditure" />
+      <recent name="com.my.expenditure.service" />
+    </key>
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.my.expenditure.validator" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources/static/js/tag.list" />
+      <recent name="$PROJECT_DIR$/src/main/resources/static/js/main/home" />
+      <recent name="$PROJECT_DIR$/src/main/resources/static/js/expenditure/home" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -561,18 +562,19 @@
       <workItem from="1557421724212" duration="19206000" />
       <workItem from="1557510358623" duration="21131000" />
       <workItem from="1557672800068" duration="14563000" />
-      <workItem from="1557693674485" duration="2871000" />
+      <workItem from="1557693674485" duration="6391000" />
+      <workItem from="1557862866606" duration="5216000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="237704000" />
+    <option name="totallyTimeSpent" value="246440000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1853" height="1055" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.27061427" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2739347" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -612,30 +614,8 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/my/expenditure/ExpenditureApplication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/my/expenditure/ExpenditureApplicationTests.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/includes/modalDelete.html" />
     <entry file="file://$PROJECT_DIR$/src/main/resources/static.css" />
     <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/homeCharts.js" />
-    <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="45" selection-start-line="12" selection-start-column="45" selection-end-line="12" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/includes/expenditureList.html" />
     <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/main/home/expenditureRemove.js" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/my/expenditure/service/user/MyUserDetailsService.java">
@@ -645,13 +625,6 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/css/home.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="22" selection-start-line="18" selection-start-column="22" selection-end-line="18" selection-end-column="38" />
         </state>
       </provider>
     </entry>
@@ -718,100 +691,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/tag/list/tagAdd.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="6" selection-start-line="3" selection-start-column="6" selection-end-line="3" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/expenditure/add.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="373">
-          <caret line="33" column="10" selection-start-line="33" selection-start-column="10" selection-end-line="33" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/expenditure/edit.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-62">
-          <caret line="8" column="66" selection-start-line="8" selection-start-column="66" selection-end-line="8" selection-end-column="66" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/expenditure/list.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="403">
-          <caret line="58" column="6" selection-start-line="58" selection-start-column="6" selection-end-line="58" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/includes/header.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="112" selection-start-line="12" selection-start-column="112" selection-end-line="12" selection-end-column="112" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/includes/navigationBar.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="14" selection-start-line="6" selection-start-column="14" selection-end-line="6" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/tag/add.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" selection-start-line="9" selection-end-line="10" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/tag/edit.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="70" selection-start-line="11" selection-start-column="70" selection-end-line="11" selection-end-column="70" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/user/login.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/user/register.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/user/registered.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="16" selection-start-line="9" selection-start-column="16" selection-end-line="9" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/tag/list/tagCharts.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-272">
-          <caret line="13" column="47" selection-start-line="13" selection-start-column="47" selection-end-line="13" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/main/home.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="60" column="89" selection-start-line="60" selection-start-column="89" selection-end-line="60" selection-end-column="89" />
-          <folding>
-            <element signature="n#style#0;n#canvas#0;n#div#1;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/my/expenditure/controller/HomeController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
@@ -826,26 +705,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="840">
           <caret line="56" column="15" lean-forward="true" selection-start-line="56" selection-start-column="15" selection-end-line="56" selection-end-column="15" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/my/expenditure/controller/UserController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="178">
-          <caret line="46" column="8" selection-start-line="46" selection-start-column="8" selection-end-line="46" selection-end-column="8" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/my/expenditure/controller/ExpenditureController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-107">
-          <caret line="90" column="4" selection-start-line="90" selection-start-column="4" selection-end-line="90" selection-end-column="4" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -880,13 +739,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/my/expenditure/model/UserDto.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="49" column="1" selection-start-line="49" selection-start-column="1" selection-end-line="49" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/my/expenditure/repository/ExpenditureRepository.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="868">
@@ -897,22 +749,58 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/main/home/homeCharts.js">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/expenditure/menu/Misc.js" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/my/expenditure/entity/Tag.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="840">
-          <caret line="56" column="15" lean-forward="true" selection-start-line="56" selection-start-column="15" selection-end-line="56" selection-end-column="19" />
+        <state relative-caret-position="223">
+          <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/tag/list/tagCharts.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="15" selection-start-line="3" selection-start-column="15" selection-end-line="3" selection-end-column="41" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/tag/list/tagRemove.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="7" selection-start-line="5" selection-start-column="7" selection-end-line="5" selection-end-column="7" />
+        <state relative-caret-position="60">
+          <caret line="4" column="64" lean-forward="true" selection-start-line="4" selection-start-column="64" selection-end-line="4" selection-end-column="88" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/expenditure/menu/Misc.js">
-      <provider selected="true" editor-type-id="text-editor" />
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/tag/list/datePicker.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="21" lean-forward="true" selection-start-line="4" selection-start-column="21" selection-end-line="4" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/tag/list/tagAdd.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="6" selection-start-line="3" selection-start-column="6" selection-end-line="3" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/main/home/homeCharts.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="41" selection-start-line="2" selection-start-column="41" selection-end-line="2" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/main/home/datePicker.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1037">
+          <caret line="17" column="41" selection-start-line="17" selection-start-column="41" selection-end-line="17" selection-end-column="41" />
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/expenditure/menu/expenditureRemove.js">
       <provider selected="true" editor-type-id="text-editor">
@@ -930,18 +818,36 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/expenditure/menu/datePicker.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="403">
-          <caret line="122" lean-forward="true" selection-start-line="122" selection-end-line="125" selection-end-column="1" />
+        <state relative-caret-position="45">
+          <caret line="3" column="41" selection-start-line="3" selection-start-column="41" selection-end-line="3" selection-end-column="41" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/my/expenditure/entity/Tag.java">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/user/registered.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="223">
-          <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="135">
+          <caret line="9" column="16" selection-start-line="9" selection-start-column="16" selection-end-line="9" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/tag/list.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-227">
+          <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/includes/navigationBar.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="14" selection-start-line="6" selection-start-column="14" selection-end-line="6" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/includes/header.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="112" selection-start-line="12" selection-start-column="112" selection-end-line="12" selection-end-column="112" />
         </state>
       </provider>
     </entry>
@@ -952,24 +858,131 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/main/home/datePicker.js">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/expenditure/list.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="12" selection-end-column="2" />
+        <state relative-caret-position="870">
+          <caret line="58" column="6" selection-start-line="58" selection-start-column="6" selection-end-line="58" selection-end-column="6" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/tag/list/datePicker.js">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/tag/edit.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="21" lean-forward="true" selection-start-line="4" selection-start-column="21" selection-end-line="4" selection-end-column="21" />
+        <state relative-caret-position="165">
+          <caret line="11" column="70" selection-start-line="11" selection-start-column="70" selection-end-line="11" selection-end-column="70" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/tag/list.html">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/expenditure/add.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="338">
+          <caret line="29" column="25" selection-start-line="29" selection-start-column="25" selection-end-line="29" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/expenditure/edit.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="13" column="16" lean-forward="true" selection-start-line="13" selection-start-column="16" selection-end-line="14" selection-end-column="85" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/main/home.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="14" selection-start-line="13" selection-start-column="14" selection-end-line="13" selection-end-column="14" />
+          <folding>
+            <element signature="n#style#0;n#canvas#0;n#div#1;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/my/expenditure/validator/PasswordCheckValidator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="1" lean-forward="true" selection-start-line="17" selection-start-column="1" selection-end-line="17" selection-end-column="1" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/tag/add.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="69" selection-start-line="11" selection-start-column="69" selection-end-line="11" selection-end-column="69" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-437" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
-          <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
+          <caret line="12" column="45" selection-start-line="12" selection-start-column="45" selection-end-line="12" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/css/home.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="44" selection-start-line="1" selection-start-column="44" selection-end-line="1" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/my/expenditure/model/UserDto.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/my/expenditure/controller/ExpenditureController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1185">
+          <caret line="90" lean-forward="true" selection-start-line="90" selection-end-line="90" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/my/expenditure/controller/UserController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="34" column="69" lean-forward="true" selection-start-line="34" selection-start-column="69" selection-end-line="34" selection-end-column="69" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/my/expenditure/validator/PasswordCheck.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="37" lean-forward="true" selection-start-column="37" selection-end-column="37" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/user/login.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="22" selection-start-line="22" selection-end-line="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/user/register.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="46" column="61" lean-forward="true" selection-start-line="46" selection-start-column="61" selection-end-line="46" selection-end-column="61" />
         </state>
       </provider>
     </entry>

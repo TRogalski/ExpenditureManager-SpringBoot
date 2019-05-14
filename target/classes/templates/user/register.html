@@ -12,20 +12,47 @@
             <h2>Register</h2>
             <form method="post" th:object="${user}">
 
-                <label for="firstName">First name</label>
-                <input class="form-control" placeholder="Enter firstname" type="text" th:field="*{firstName}" id="firstName"/>
+                <div class="form-group">
+                    <label for="firstName">First name</label>
+                    <input class="form-control" placeholder="Enter firstname" type="text" th:field="*{firstName}"
+                           id="firstName"/>
+                    <!--<small th:if="${#fields.hasErrors('firstName')}" class="label label-danger"-->
+                           <!--th:errors="*{firstName}"></small>-->
+                </div>
 
-                <label for="lastName">Last name</label>
-                <input class="form-control" placeholder="Enter lastname" type="text" th:field="*{lastName}" id="lastName"/>
+                <div class="form-group">
+                    <label for="lastName">Last name</label>
+                    <input class="form-control" placeholder="Enter lastname" type="text" th:field="*{lastName}"
+                           id="lastName"/>
+                    <!--<small th:if="${#fields.hasErrors('lastName')}" class="label label-danger"-->
+                           <!--th:errors="*{lastName}"></small>-->
+                </div>
 
-                <label for="password">Password</label>
-                <input class="form-control" placeholder="Enter password" type="password" th:field="*{password}" id="password"/>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input class="form-control" placeholder="Enter password" type="password" th:field="*{password}"
+                           id="password"/>
+                    <!--<small th:if="${#fields.hasErrors('password')}" class="label label-danger"-->
+                           <!--th:errors="*{password}"></small>-->
+                </div>
+                <div class="form-group">
+                    <label for="matchingPassword">Repeat password</label>
+                    <input class="form-control" placeholder="Repeat password" type="password"
+                           th:field="*{matchingPassword}" id="matchingPassword"/>
+                    <!--<small th:if="${#fields.hasErrors('matchingPassword')}" class="label label-danger"-->
+                           <!--th:errors="*{matchingPassword}"></small>-->
+                </div>
 
-                <label for="matchingPassword">Repeat password</label>
-                <input class="form-control" placeholder="Repeat password" type="password" th:filed="*{matchingPassword}" id="matchingPassword"/>
+                <div class="form-group">
+                    <lablel for="Email"><b>Email</b></lablel>
+                    <input class="form-control" placeholder="Enter email" type="text" th:field="*{email}" id="Email"/>
+                    <!--<small th:if="${#fields.hasErrors('email')}" class="label label-danger"-->
+                           <!--th:errors="*{email}"></small>-->
+                </div>
 
-                <lablel for="email">Email</lablel>
-                <input class="form-control" placeholder="Enter email" type="text" th:field="*{email}" id="email"/>
+                <div class="alert alert-danger" th:if="${#fields.hasErrors('*')}">
+                    <p th:each="err : ${#lists.sort(#fields.errors('*'))}" th:text="${err}"></p>
+                </div>
 
                 <button class="btn btn-md btn-primary btn-block" type="submit">Register</button>
 

@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
     $.ajax({
         'async': true,
-        'url': "http://localhost:8084/expenditure/stats/" + getTodaysDate(),
+        'url': window.location.origin + "/expenditure/stats/" + getTodaysDate(),
         'dataType': "json",
         'success': function (jsonData) {
             createTagChart(jsonData);

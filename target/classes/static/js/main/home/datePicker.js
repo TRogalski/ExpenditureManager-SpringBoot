@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 function getTopTagsAssignedToMonth(date) {
     $.ajax({
-        'url': "http://localhost:8084/expenditure/stats/" + date + "-01",
+        'url': window.location.origin + "/expenditure/stats/" + date + "-01",
         'dataType': "json",
         'success': function (jsonData) {
 

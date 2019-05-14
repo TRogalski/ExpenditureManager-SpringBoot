@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
 
     $.ajax({
-        'url': "http://localhost:8084/expenditure/stats/" + getTodaysDate(),
+        'url': window.location.origin + "/expenditure/stats/" + getTodaysDate(),
         'dataType': "json",
         'success': function (jsonData) {
             $('#date_picker').datepicker({
@@ -60,7 +60,7 @@ function getTodaysDate() {
 
 function getExpendituresAssignedToDate(date) {
     $.ajax({
-        'url': "http://localhost:8084/expenditure/date/" + date,
+        'url': window.location.origin + "/expenditure/date/" + date,
         'dataType': "json",
         'success': function (jsonData) {
             var toDelete = document.getElementById("expenditure_records");
