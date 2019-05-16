@@ -21,7 +21,12 @@
                     <input class="form-control" placeholder="Password" type='password' name='password' id="password"/>
                 </div>
 
-
+                <div th:if="${param.error} and ${session}"
+                     th:with="errorMsg=${session['SPRING_SECURITY_LAST_EXCEPTION']}">
+                    <div class="alert alert-dismissible alert-danger error">
+                        <p>Invalid credentials</p>
+                    </div>
+                </div>
                 <button class="btn btn-md btn-primary btn-block" type="submit">Sign in</button>
             </form>
         </div>

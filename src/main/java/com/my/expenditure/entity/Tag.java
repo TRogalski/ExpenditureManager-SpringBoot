@@ -3,6 +3,8 @@ package com.my.expenditure.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,6 +15,8 @@ public class Tag {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @NotBlank(message = "Name has to be selected")
     private String name;
 
     @JsonIgnore

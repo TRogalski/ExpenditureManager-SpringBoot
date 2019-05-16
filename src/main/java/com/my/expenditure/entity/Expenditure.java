@@ -1,8 +1,10 @@
 package com.my.expenditure.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.springframework.format.annotation.NumberFormat;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,9 +14,15 @@ public class Expenditure {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @NotBlank(message = "Name must not be empty")
     private String name;
     private String description;
+
+    @NotBlank(message = "Amount must not be empty")
     private Double amount;
+
+    @NotBlank(message = "Date has to be selected")
     private String date;
     private String created;
     private String modified;

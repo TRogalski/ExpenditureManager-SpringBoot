@@ -9,8 +9,11 @@ import com.my.expenditure.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
+import javax.validation.Valid;
 import java.security.Principal;
 import java.util.List;
 
@@ -34,7 +37,10 @@ public class TagController {
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public String addTag(@ModelAttribute Tag tag, Principal principal) {
+    public String addTag(@ModelAttribute("tag") @Valid Tag tag, BindingResult result, Principal principal) {
+        if (result.hasErrors()) {
+            return "tag/add";
+        }
         User user = userRepository.findFirstByEmail(principal.getName());
         tag.setUser(user);
         tagRepository.save(tag);
@@ -61,9 +67,9 @@ public class TagController {
     public String deleteTag(@RequestParam("id") Long id, Principal principal) {
         Tag tag = tagRepository.getOne(id);
         User user = userRepository.findFirstByEmail(principal.getName());
-        List<Expenditure> expenditures =expenditureRepository.findAllByUser(user);
+        List<Expenditure> expenditures = expenditureRepository.findAllByUser(user);
 
-        for(Expenditure expenditure:expenditures){
+        for (Expenditure expenditure : expenditures) {
             expenditure.getTags().remove(tag);
         }
 
