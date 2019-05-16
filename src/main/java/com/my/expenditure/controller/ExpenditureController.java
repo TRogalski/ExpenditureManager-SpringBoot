@@ -10,8 +10,10 @@ import com.my.expenditure.service.expenditure.ExpenditureStatsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.security.Principal;
 import java.time.LocalDate;
 import java.util.List;
@@ -41,14 +43,17 @@ public class ExpenditureController {
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public String addExpenditure(@ModelAttribute Expenditure expenditure, Principal principal) {
+    public String addExpenditure(@ModelAttribute @Valid Expenditure expenditure,
+                                 BindingResult result, Principal principal) {
+        if (result.hasErrors()) {
+            return "expenditure/add";
+        }
         User user = userRepository.findFirstByEmail(principal.getName());
         expenditure.setUser(user);
         expenditure.setCreated(String.valueOf(LocalDate.now()));
         expenditureRepository.save(expenditure);
         return "redirect:menu";
     }
-
 
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
     public String getEditxpenditureView(@PathVariable Long id, Model model) {
@@ -58,7 +63,11 @@ public class ExpenditureController {
     }
 
     @RequestMapping(value = "/edit", method = RequestMethod.POST)
-    public String editExpenditure(@ModelAttribute Expenditure expenditure, Principal principal) {
+    public String editExpenditure(@ModelAttribute @Valid Expenditure expenditure,
+                                  BindingResult result, Principal principal) {
+        if (result.hasErrors()) {
+            return "expenditure/edit";
+        }
         User user = userRepository.findFirstByEmail(principal.getName());
         expenditure.setUser(user);
         expenditure.setModified(String.valueOf(LocalDate.now()));
@@ -79,11 +88,11 @@ public class ExpenditureController {
 
         List<Expenditure> expenditures;
 
-        if(id==-1){
-            expenditures=expenditureRepository.findAllUnassignedByDateAndUser(date,user);
-        }else{
+        if (id == -1) {
+            expenditures = expenditureRepository.findAllUnassignedByDateAndUser(date, user);
+        } else {
             Tag tag = tagRepository.getOne(id);
-            expenditures = expenditureRepository.findAllByTagAndDateAndUser(tag,date,user);
+            expenditures = expenditureRepository.findAllByTagAndDateAndUser(tag, date, user);
         }
         model.addAttribute("expenditures", expenditures);
         return "expenditure/list";
@@ -101,17 +110,17 @@ public class ExpenditureController {
                                      @RequestParam("redirectPage") String redirectPage) {
         Expenditure expenditure = expenditureRepository.getOne(id);
         expenditureRepository.delete(expenditure);
-        return "redirect:"+redirectPage;
+        return "redirect:" + redirectPage;
     }
 
-    @RequestMapping(value = "/stats/{date}", method=RequestMethod.GET)
+    @RequestMapping(value = "/stats/{date}", method = RequestMethod.GET)
     @ResponseBody
     private String getMonthTotal(@PathVariable String date, Principal principal) {
         User user = userRepository.findFirstByEmail(principal.getName());
         return expenditureStatsService.getStats(user, date).toString();
     }
 
-    @RequestMapping(value = "/menu", method=RequestMethod.GET)
+    @RequestMapping(value = "/menu", method = RequestMethod.GET)
     private String getExpenditureHomeView(Model model, Principal principal) {
         User user = userRepository.findFirstByEmail(principal.getName());
         String date = String.valueOf(LocalDate.now());

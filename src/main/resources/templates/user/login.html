@@ -20,7 +20,6 @@
                     <label class="sr-only" for="password">Password</label>
                     <input class="form-control" placeholder="Password" type='password' name='password' id="password"/>
                 </div>
-
                 <div th:if="${param.error} and ${session}"
                      th:with="errorMsg=${session['SPRING_SECURITY_LAST_EXCEPTION']}">
                     <div class="alert alert-dismissible alert-danger error">

@@ -9,7 +9,6 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.time.LocalDate;
 import java.time.YearMonth;
 import java.util.*;
@@ -177,7 +176,6 @@ public class ExpenditureStatsService {
 
         return tagTotals;
     }
-
 
     private Map<String, Double> getTagTotalsLastMonth(User user, String date) {
         Map<String, Double> tagTotals = new HashMap<>();

@@ -6,12 +6,12 @@ import com.my.expenditure.entity.User;
 import com.my.expenditure.repository.ExpenditureRepository;
 import com.my.expenditure.repository.TagRepository;
 import com.my.expenditure.repository.UserRepository;
+import com.sun.xml.internal.bind.v2.TODO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
 import java.security.Principal;
@@ -37,7 +37,7 @@ public class TagController {
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public String addTag(@ModelAttribute("tag") @Valid Tag tag, BindingResult result, Principal principal) {
+    public String addTag(@ModelAttribute @Valid Tag tag, BindingResult result, Principal principal) {
         if (result.hasErrors()) {
             return "tag/add";
         }
@@ -55,8 +55,10 @@ public class TagController {
     }
 
     @RequestMapping(value = "/edit", method = RequestMethod.POST)
-    public String editTag(@RequestParam("redirectPage") String redirectPage,
-                          @ModelAttribute Tag tag, Principal principal) {
+    public String editTag(@ModelAttribute @Valid Tag tag, BindingResult result, Principal principal) {
+        if (result.hasErrors()) {
+            return "tag/edit";
+        }
         User user = userRepository.findFirstByEmail(principal.getName());
         tag.setUser(user);
         tagRepository.save(tag);
