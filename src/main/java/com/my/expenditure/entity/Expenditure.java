@@ -5,7 +5,9 @@ import javax.persistence.*;
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.sql.Date;
 import java.util.ArrayList;
+
 import java.util.List;
 
 @Entity
@@ -24,10 +26,10 @@ public class Expenditure {
     @DecimalMin(value = "0.0", message = "Amount must be greater than 0")
     private Double amount;
 
-    @NotBlank(message = "Date has to be selected")
-    private String date;
-    private String created;
-    private String modified;
+    @NotNull(message = "Date has to be selected")
+    private Date date;
+    private Date created;
+    private Date modified;
 
     @JsonIgnore
     @ManyToOne
@@ -72,27 +74,27 @@ public class Expenditure {
         this.amount = amount;
     }
 
-    public String getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 
-    public String getCreated() {
+    public Date getCreated() {
         return created;
     }
 
-    public void setCreated(String created) {
+    public void setCreated(Date created) {
         this.created = created;
     }
 
-    public String getModified() {
+    public Date getModified() {
         return modified;
     }
 
-    public void setModified(String modified) {
+    public void setModified(Date modified) {
         this.modified = modified;
     }
 

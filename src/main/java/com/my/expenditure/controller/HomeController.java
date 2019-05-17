@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import java.security.Principal;
+import java.sql.Date;
 import java.time.LocalDate;
 
 @Controller
@@ -22,7 +23,7 @@ public class HomeController {
     @RequestMapping("/")
     public String getHomeView(Model model, Principal principal) {
         User user = userRepository.findFirstByEmail(principal.getName());
-        String date = String.valueOf(LocalDate.now());
+        Date date = Date.valueOf(LocalDate.now());
         model.addAttribute("expenditures", expenditureRepository.findAllByUserAndDate(user,date));
         return "main/home";
     }

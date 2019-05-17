@@ -9,9 +9,12 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.sql.Date;
 import java.time.LocalDate;
 import java.time.YearMonth;
 import java.util.*;
+
 
 @Service
 public class ExpenditureStatsService {
@@ -22,7 +25,7 @@ public class ExpenditureStatsService {
     @Autowired
     private TagRepository tagRepository;
 
-    public JSONObject getStats(User user, String date) {
+    public JSONObject getStats(User user, Date date) {
         JSONObject jsonObject = new JSONObject()
                 .put("date", date)
                 .put("currentYear", getCurrentYear(user, date))
@@ -40,17 +43,17 @@ public class ExpenditureStatsService {
         return jsonObject;
     }
 
-    private Integer getCurrentYear(User user, String date) {
-        return LocalDate.parse(date).getYear();
+    private Integer getCurrentYear(User user, Date date) {
+        return date.toLocalDate().getYear();
     }
 
 
-    private Double getCurrentMonthTotal(User user, String date) {
+    private Double getCurrentMonthTotal(User user, Date date) {
         Double currentMonthTotal = expenditureRepository.getCurrentMonthTotal(user, date);
         return currentMonthTotal;
     }
 
-    private Double getPreviousMonthTotal(User user, String date) {
+    private Double getPreviousMonthTotal(User user, Date date) {
         Double previousMonthTotal = expenditureRepository.getPreviousMonthTotal(user, date);
 
         previousMonthTotal = previousMonthTotal == null ? 0.0 : previousMonthTotal;
@@ -58,17 +61,17 @@ public class ExpenditureStatsService {
         return previousMonthTotal;
     }
 
-    private Double getCurrentYearTotal(User user, String date) {
+    private Double getCurrentYearTotal(User user, Date date) {
         Double currentYearTotal = expenditureRepository.getCurrentYearTotal(user, date);
         return currentYearTotal;
     }
 
-    private Double getPreviousYearTotal(User user, String date) {
+    private Double getPreviousYearTotal(User user, Date date) {
         Double previousYearTotal = expenditureRepository.getPreviousMonthTotal(user, date);
         return previousYearTotal;
     }
 
-    private List<Double> getCurrentYearMonthTotals(User user, String date) {
+    private List<Double> getCurrentYearMonthTotals(User user, Date date) {
         List<Expenditure> expenditures = expenditureRepository.getCurrentYearMonthlyExpenditures(user, date);
 
         Map<String, Double> timeSeries = new LinkedHashMap<>();
@@ -81,7 +84,7 @@ public class ExpenditureStatsService {
         String month;
 
         for (Expenditure expenditure : expenditures) {
-            month = String.valueOf(LocalDate.parse(expenditure.getDate()).getMonthValue());
+            month = String.valueOf(expenditure.getDate().toLocalDate().getMonthValue());
             monthExpenditure = timeSeries.get(month);
             timeSeries.put(month, monthExpenditure + expenditure.getAmount());
         }
@@ -89,7 +92,7 @@ public class ExpenditureStatsService {
         return new ArrayList<>(timeSeries.values());
     }
 
-    private JSONArray getCurrentMonthTopTags(User user, String date) {
+    private JSONArray getCurrentMonthTopTags(User user, Date date) {
         Map<Tag, Double> topCurrentMonthTagsTotals = new LinkedHashMap<>();
         Map<Tag, Integer> topCurrentMonthTagsCounts = new LinkedHashMap<>();
 
@@ -142,15 +145,15 @@ public class ExpenditureStatsService {
 
         for (Expenditure expenditure : expenditures) {
             if (totalTimeSeries.containsKey(expenditure.getDate())) {
-                totalTimeSeries.put(expenditure.getDate(), totalTimeSeries.get(expenditure.getDate()) + expenditure.getAmount());
+                totalTimeSeries.put(String.valueOf(expenditure.getDate()), totalTimeSeries.get(expenditure.getDate()) + expenditure.getAmount());
             } else {
-                totalTimeSeries.put(expenditure.getDate(), expenditure.getAmount());
+                totalTimeSeries.put(String.valueOf(expenditure.getDate()), expenditure.getAmount());
             }
         }
         return totalTimeSeries;
     }
 
-    private Map<String, Double> getTagTotalsThisMonth(User user, String date) {
+    private Map<String, Double> getTagTotalsThisMonth(User user, Date date) {
 
         Map<String, Double> tagTotals = new HashMap<>();
         List<Tag> tags = tagRepository.findAllByUser(user);
@@ -177,7 +180,7 @@ public class ExpenditureStatsService {
         return tagTotals;
     }
 
-    private Map<String, Double> getTagTotalsLastMonth(User user, String date) {
+    private Map<String, Double> getTagTotalsLastMonth(User user, Date date) {
         Map<String, Double> tagTotals = new HashMap<>();
         List<Tag> tags = tagRepository.findAllByUser(user);
 
@@ -202,13 +205,12 @@ public class ExpenditureStatsService {
         return tagTotals;
     }
 
-    private Map<Integer, Double> getCurrentMonthTotalsTimeSeries(User user, String date) {
+    private Map<Integer, Double> getCurrentMonthTotalsTimeSeries(User user, Date date) {
 
         Map<Integer, Double> currentMonthTotalsTimeSeries = new HashMap<>();
 
-        String[] dateParts = date.split("-");
-        String month = dateParts[1];
-        String year = dateParts[0];
+        String month = String.valueOf(date.toLocalDate().getMonth().getValue());
+        String year = String.valueOf(date.toLocalDate().getYear());
 
         YearMonth yearMonthObject = YearMonth.of(Integer.parseInt(year), Integer.parseInt(month));
         Integer daysInMonth = yearMonthObject.lengthOfMonth();
@@ -221,7 +223,7 @@ public class ExpenditureStatsService {
 
         String day;
         for(Expenditure expenditure:expenditures){
-            day=expenditure.getDate().split("-")[2];
+            day= String.valueOf(expenditure.getDate().toLocalDate().getDayOfMonth());
             currentMonthTotalsTimeSeries.put(Integer.valueOf(day), currentMonthTotalsTimeSeries.get(Integer.valueOf(day))+expenditure.getAmount());
         }
 

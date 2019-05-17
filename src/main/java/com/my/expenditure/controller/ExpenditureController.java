@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.security.Principal;
+import java.sql.Date;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -37,7 +38,7 @@ public class ExpenditureController {
     @RequestMapping(value = "/add/{date}", method = RequestMethod.GET)
     public String getAddExpenditureView(@PathVariable String date, Model model) {
         Expenditure expenditure = new Expenditure();
-        expenditure.setDate(date);
+        expenditure.setDate(Date.valueOf(date));
         model.addAttribute("expenditure", expenditure);
         return "expenditure/add";
     }
@@ -50,7 +51,7 @@ public class ExpenditureController {
         }
         User user = userRepository.findFirstByEmail(principal.getName());
         expenditure.setUser(user);
-        expenditure.setCreated(String.valueOf(LocalDate.now()));
+        expenditure.setCreated(Date.valueOf(LocalDate.now()));
         expenditureRepository.save(expenditure);
         return "redirect:menu";
     }
@@ -70,7 +71,7 @@ public class ExpenditureController {
         }
         User user = userRepository.findFirstByEmail(principal.getName());
         expenditure.setUser(user);
-        expenditure.setModified(String.valueOf(LocalDate.now()));
+        expenditure.setModified(Date.valueOf(LocalDate.now()));
         expenditureRepository.save(expenditure);
         return "redirect:menu";
     }
@@ -83,7 +84,7 @@ public class ExpenditureController {
     }
 
     @RequestMapping(value = "/list/{date}/{id}", method = RequestMethod.GET)
-    private String getListView(@PathVariable String date, @PathVariable Long id, Model model, Principal principal) {
+    private String getListView(@PathVariable Date date, @PathVariable Long id, Model model, Principal principal) {
         User user = userRepository.findFirstByEmail(principal.getName());
 
         List<Expenditure> expenditures;
@@ -100,7 +101,7 @@ public class ExpenditureController {
 
     @RequestMapping(value = "/date/{date}", method = RequestMethod.GET)
     @ResponseBody
-    private List<Expenditure> getJson(@PathVariable String date, Principal principal) {
+    private List<Expenditure> getJson(@PathVariable Date date, Principal principal) {
         User user = userRepository.findFirstByEmail(principal.getName());
         return expenditureRepository.findAllByUserAndDate(user, date);
     }
@@ -115,7 +116,7 @@ public class ExpenditureController {
 
     @RequestMapping(value = "/stats/{date}", method = RequestMethod.GET)
     @ResponseBody
-    private String getMonthTotal(@PathVariable String date, Principal principal) {
+    private String getMonthTotal(@PathVariable Date date, Principal principal) {
         User user = userRepository.findFirstByEmail(principal.getName());
         return expenditureStatsService.getStats(user, date).toString();
     }
@@ -123,7 +124,7 @@ public class ExpenditureController {
     @RequestMapping(value = "/menu", method = RequestMethod.GET)
     private String getExpenditureHomeView(Model model, Principal principal) {
         User user = userRepository.findFirstByEmail(principal.getName());
-        String date = String.valueOf(LocalDate.now());
+        Date date = Date.valueOf(LocalDate.now());
         model.addAttribute("expenditures", expenditureRepository.findAllByUserAndDate(user, date));
         return "expenditure/menu";
     }
