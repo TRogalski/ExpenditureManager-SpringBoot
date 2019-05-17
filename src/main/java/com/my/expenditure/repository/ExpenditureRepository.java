@@ -30,7 +30,7 @@ public interface ExpenditureRepository extends JpaRepository<Expenditure, Long> 
     @Query("SELECT SUM(e.amount) FROM Expenditure  e where YEAR(e.date)=YEAR(:date) and e.user=:user")
     Double getCurrentYearTotal(@Param("user") User user, @Param("date") String date);
 
-    @Query("SELECT SUM(e.amount) FROM Expenditure  e where YEAR(e.date)=(YEAR(:date)-1) and e.user=:user")
+    @Query("SELECT SUM(e.amount) FROM Expenditure  e where YEAR(e.date)=(YEAR(:date)) and e.user=:user") //-1
     Double getPreviousYearTotal(@Param("user") User user, @Param("date") String date);
 
     @Query("SELECT e FROM Expenditure e WHERE YEAR(e.date)=YEAR(:date) and e.user=:user")
@@ -52,13 +52,13 @@ public interface ExpenditureRepository extends JpaRepository<Expenditure, Long> 
 
     @Query("SELECT SUM(e.amount) FROM Expenditure e where " +
             "YEAR(e.date)=YEAR(:date) and " +
-            "MONTH(e.date)=(MONTH(:date)-1) and " +
+            "MONTH(e.date)=(MONTH(:date)) and " + //-1
             "e.user=:user")
     Double getPreviousMonthTotal(@Param("user") User user, @Param("date") String date);
 
     @Query("SELECT e FROM Expenditure e " +
             "WHERE :tag MEMBER OF e.tags " +
-            "AND MONTH(e.date)=(MONTH(:date)-1) " +
+            "AND MONTH(e.date)=(MONTH(:date)) " + //-1
             "AND YEAR(e.date)=YEAR(:date) " +
             "AND e.user=:user")
     List<Expenditure> findAllByTagAndDatePreviousAndUser(@Param("tag") Tag tag, @Param("date") String date, @Param("user") User user);
