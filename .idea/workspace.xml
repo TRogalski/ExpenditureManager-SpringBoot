@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="550acbc9-80d3-46e7-b143-e580d06cf125" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_postgresql_postgresql_42_2_5.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/expenditure.iml" beforeDir="false" afterPath="$PROJECT_DIR$/expenditure.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -63,8 +60,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="12" column="45" selection-start-line="12" selection-start-column="45" selection-end-line="12" selection-end-column="45" />
+            <state relative-caret-position="15">
+              <caret line="1" column="55" lean-forward="true" selection-start-line="1" selection-start-column="55" selection-end-line="1" selection-end-column="55" />
             </state>
           </provider>
         </entry>
@@ -156,7 +153,6 @@
       <list>
         <option value="$PROJECT_DIR$/src/main/resources/static/js/datePicker.js" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/includes/navigationBar.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
         <option value="$PROJECT_DIR$/src/main/resources/static/js/main/home/expenditureRemove.js" />
         <option value="$PROJECT_DIR$/src/main/java/com/my/expenditure/repository/TagRepository.java" />
         <option value="$PROJECT_DIR$/src/main/resources/static/js/main/home/statisticsUpdate.js" />
@@ -205,6 +201,7 @@
         <option value="$PROJECT_DIR$/src/main/java/com/my/expenditure/controller/TagController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/my/expenditure/configuration/SecurityConfig.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
       </list>
     </option>
   </component>
@@ -590,12 +587,12 @@
       <workItem from="1557693674485" duration="6391000" />
       <workItem from="1557862866606" duration="8321000" />
       <workItem from="1558037005210" duration="6357000" />
-      <workItem from="1558085724444" duration="704000" />
+      <workItem from="1558085724444" duration="974000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="256606000" />
+    <option name="totallyTimeSpent" value="256876000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="25" width="1366" height="678" extended-state="6" />
@@ -1005,8 +1002,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="45" selection-start-line="12" selection-start-column="45" selection-end-line="12" selection-end-column="45" />
+        <state relative-caret-position="15">
+          <caret line="1" column="55" lean-forward="true" selection-start-line="1" selection-start-column="55" selection-end-line="1" selection-end-column="55" />
         </state>
       </provider>
     </entry>
