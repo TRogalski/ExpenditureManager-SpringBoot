@@ -2,16 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="550acbc9-80d3-46e7-b143-e580d06cf125" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/my/expenditure/configuration/DatabaseConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/my/expenditure/configuration/DatabaseConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/my/expenditure/controller/ExpenditureController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/my/expenditure/controller/ExpenditureController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/my/expenditure/controller/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/my/expenditure/controller/HomeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/my/expenditure/entity/Expenditure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/my/expenditure/entity/Expenditure.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/my/expenditure/repository/ExpenditureRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/my/expenditure/repository/ExpenditureRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/my/expenditure/service/expenditure/ExpenditureStatsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/my/expenditure/service/expenditure/ExpenditureStatsService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/expenditure.kotlin_module" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -87,7 +78,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="30">
@@ -96,11 +87,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/my/expenditure/configuration/DatabaseConfig.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="9" selection-start-line="9" selection-start-column="2" selection-end-line="18" selection-end-column="7" />
+            <state relative-caret-position="105">
+              <caret line="7" column="14" lean-forward="true" selection-start-line="7" selection-start-column="14" selection-end-line="7" selection-end-column="14" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -219,13 +210,13 @@
         <option value="$PROJECT_DIR$/src/main/java/com/my/expenditure/configuration/SecurityConfig.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/my/expenditure/repository/UserRepository.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/my/expenditure/configuration/DatabaseConfig.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/my/expenditure/repository/ExpenditureRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/my/expenditure/controller/ExpenditureController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/my/expenditure/controller/HomeController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/my/expenditure/service/expenditure/ExpenditureStatsService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/my/expenditure/entity/Expenditure.java" />
         <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
+        <option value="$PROJECT_DIR$/src/main/java/com/my/expenditure/configuration/DatabaseConfig.java" />
       </list>
     </option>
   </component>
@@ -489,12 +480,12 @@
       <workItem from="1557862866606" duration="8321000" />
       <workItem from="1558037005210" duration="6357000" />
       <workItem from="1558085724444" duration="8377000" />
-      <workItem from="1558115968563" duration="2556000" />
+      <workItem from="1558115968563" duration="3174000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="266835000" />
+    <option name="totallyTimeSpent" value="267453000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1853" height="1055" extended-state="6" />
@@ -841,16 +832,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/my/expenditure/configuration/DatabaseConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" selection-start-line="9" selection-start-column="2" selection-end-line="18" selection-end-column="7" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/my/expenditure/repository/ExpenditureRepository.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1680">
@@ -914,6 +895,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
           <caret line="2" column="33" selection-start-line="2" selection-start-column="33" selection-end-line="2" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/my/expenditure/configuration/DatabaseConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="14" lean-forward="true" selection-start-line="7" selection-start-column="14" selection-end-line="7" selection-end-column="14" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
