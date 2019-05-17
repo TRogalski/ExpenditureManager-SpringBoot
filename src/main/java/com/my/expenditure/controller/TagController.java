@@ -6,7 +6,6 @@ import com.my.expenditure.entity.User;
 import com.my.expenditure.repository.ExpenditureRepository;
 import com.my.expenditure.repository.TagRepository;
 import com.my.expenditure.repository.UserRepository;
-import com.sun.xml.internal.bind.v2.TODO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
