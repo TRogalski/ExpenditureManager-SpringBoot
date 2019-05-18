@@ -101,9 +101,16 @@ public class ExpenditureController {
 
     @RequestMapping(value = "/date/{date}", method = RequestMethod.GET)
     @ResponseBody
-    private List<Expenditure> getJson(@PathVariable Date date, Principal principal) {
+    private List<Expenditure> getDailyExpenditures(@PathVariable Date date, Principal principal) {
         User user = userRepository.findFirstByEmail(principal.getName());
         return expenditureRepository.findAllByUserAndDate(user, date);
+    }
+
+    @RequestMapping(value = "/datepicker/{date}", method = RequestMethod.GET)
+    @ResponseBody
+    private String getDatepickerMonthlyTotals(@PathVariable Date date, Principal principal) {
+        User user = userRepository.findFirstByEmail(principal.getName());
+        return expenditureStatsService.getDatepickerMonthlyTotals(user, date).toString();
     }
 
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
@@ -112,13 +119,6 @@ public class ExpenditureController {
         Expenditure expenditure = expenditureRepository.getOne(id);
         expenditureRepository.delete(expenditure);
         return "redirect:" + redirectPage;
-    }
-
-    @RequestMapping(value = "/stats/{date}", method = RequestMethod.GET)
-    @ResponseBody
-    private String getMonthTotal(@PathVariable Date date, Principal principal) {
-        User user = userRepository.findFirstByEmail(principal.getName());
-        return expenditureStatsService.getStats(user, date).toString();
     }
 
     @RequestMapping(value = "/dashboard/{date}", method = RequestMethod.GET)

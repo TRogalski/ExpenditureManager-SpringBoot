@@ -52,15 +52,15 @@ public interface ExpenditureRepository extends JpaRepository<Expenditure, Long> 
 //    @Query("SELECT SUM(e.amount) FROM Expenditure  e where SUBSTRING(e.date,1,4)=SUBSTRING(:date,1,4) and e.user=:user")
 //    Double getCurrentYearTotal(@Param("user") User user, @Param("date") String date);
 
-    @Query("SELECT SUM(e.amount) FROM Expenditure  e where YEAR(e.date)=YEAR(:date) and e.user=:user")
-    Double getCurrentYearTotal(@Param("user") User user, @Param("date") Date date);
+//    @Query("SELECT SUM(e.amount) FROM Expenditure  e where YEAR(e.date)=YEAR(:date) and e.user=:user")
+//    Double getCurrentYearTotal(@Param("user") User user, @Param("date") Date date);
 
 //    @Query("SELECT SUM(e.amount) FROM Expenditure  e where SUBSTRING(e.date,1,4)=(SUBSTRING(:date,1,4)) and e.user=:user")
 //        //-1
 //    Double getPreviousYearTotal(@Param("user") User user, @Param("date") String date);
 
-    @Query("SELECT SUM(e.amount) FROM Expenditure  e where YEAR(e.date)=(YEAR(:date)-1) and e.user=:user")
-    Double getPreviousYearTotal(@Param("user") User user, @Param("date") Date date);
+//    @Query("SELECT SUM(e.amount) FROM Expenditure  e where YEAR(e.date)=(YEAR(:date)-1) and e.user=:user")
+//    Double getPreviousYearTotal(@Param("user") User user, @Param("date") Date date);
 
 //    @Query("SELECT e FROM Expenditure e WHERE SUBSTRING(e.date,1,4)=SUBSTRING(:date,1,4) and e.user=:user")
 //    List<Expenditure> getCurrentYearMonthlyExpenditures(@Param("user") User user, @Param("date") String date);
@@ -104,11 +104,11 @@ public interface ExpenditureRepository extends JpaRepository<Expenditure, Long> 
 //            "e.user=:user")
 //    Double getPreviousMonthTotal(@Param("user") User user, @Param("date") String date);
 
-    @Query("SELECT SUM(e.amount) FROM Expenditure e where " +
-            "YEAR(e.date)=YEAR(:date) and " +
-            "MONTH(e.date)=(MONTH(:date)-1) and " +    //-1
-            "e.user=:user")
-    Double getPreviousMonthTotal(@Param("user") User user, @Param("date") Date date);
+//    @Query("SELECT SUM(e.amount) FROM Expenditure e where " +
+//            "YEAR(e.date)=YEAR(:date) and " +
+//            "MONTH(e.date)=(MONTH(:date)-1) and " +    //-1
+//            "e.user=:user")
+//    Double getPreviousMonthTotal(@Param("user") User user, @Param("date") Date date);
 
 //    @Query("SELECT e FROM Expenditure e " +
 //            "WHERE :tag MEMBER OF e.tags " +
@@ -117,12 +117,12 @@ public interface ExpenditureRepository extends JpaRepository<Expenditure, Long> 
 //            "AND e.user=:user")
 //    List<Expenditure> findAllByTagAndDatePreviousAndUser(@Param("tag") Tag tag, @Param("date") String date, @Param("user") User user);
 
-    @Query("SELECT e FROM Expenditure e " +
-            "WHERE :tag MEMBER OF e.tags " +
-            "AND MONTH(e.date)=(MONTH(:date)-1) " +  //-1
-            "AND YEAR(e.date)=YEAR(:date) " +
-            "AND e.user=:user")
-    List<Expenditure> findAllByTagAndDatePreviousAndUser(@Param("tag") Tag tag, @Param("date") Date date, @Param("user") User user);
+//    @Query("SELECT e FROM Expenditure e " +
+//            "WHERE :tag MEMBER OF e.tags " +
+//            "AND MONTH(e.date)=(MONTH(:date)-1) " +  //-1
+//            "AND YEAR(e.date)=YEAR(:date) " +
+//            "AND e.user=:user")
+//    List<Expenditure> findAllByTagAndDatePreviousAndUser(@Param("tag") Tag tag, @Param("date") Date date, @Param("user") User user);
 
 
 }

@@ -34,15 +34,22 @@ public class ExpenditureStatsService {
                 .put("previousMonthName", getMonthName(Date.valueOf(date.toLocalDate().minusMonths(1))))
                 .put("currentYearName", getYearName(date))
                 .put("previousYearName", getYearName(Date.valueOf(date.toLocalDate().minusYears(1))))
-                .put("currentMonthTotal",getMonthTotal(user, date))
-                .put("previousMonthTotal",getMonthTotal(user, Date.valueOf(date.toLocalDate().minusMonths(1))))
-                .put("currentYearTotal",getYearTotal(user,date))
-                .put("previousYearTotal",getYearTotal(user, Date.valueOf(date.toLocalDate().minusMonths(1))))
+                .put("currentMonthTotal", getMonthTotal(user, date))
+                .put("previousMonthTotal", getMonthTotal(user, Date.valueOf(date.toLocalDate().minusMonths(1))))
+                .put("currentYearTotal", getYearTotal(user, date))
+                .put("previousYearTotal", getYearTotal(user, Date.valueOf(date.toLocalDate().minusMonths(1))))
                 .put("currentYearMonthlyTimeSeries", getMonthlyTimeSeriesForYear(user, date))
                 .put("currentMonthDailyTimeSeries", getDailyTimeSeriesForMonth(user, date))
                 .put("previousMonthDailyTimeSeries", getDailyTimeSeriesForMonth(user, Date.valueOf(date.toLocalDate().minusMonths(1))))
                 .put("currentMonthTagTotals", getMonthTotalsForTags(user, date))
                 .put("previousMonthTagTotals", getMonthTotalsForTags(user, Date.valueOf(date.toLocalDate().minusMonths(1))));
+        return jsonObject;
+    }
+
+    public JSONObject getDatepickerMonthlyTotals(User user, Date date) {
+        JSONObject jsonObject = new JSONObject()
+                .put("date", date)
+                .put("monthlyTotalTimeSeries", getMonthlyTotalTimeSeries(user));
         return jsonObject;
     }
 
@@ -56,13 +63,16 @@ public class ExpenditureStatsService {
         return new SimpleDateFormat("YYYY").format(date);
     }
 
-    private Double getMonthTotal(User user, Date date){
+
+    private Double getMonthTotal(User user, Date date) {
         return expenditureRepository.getMonthTotalForUser(user, date);
     }
 
-    private Double getYearTotal(User user,Date date){
-        return expenditureRepository.getYearTotalForUser(user,date);
+
+    private Double getYearTotal(User user, Date date) {
+        return expenditureRepository.getYearTotalForUser(user, date);
     }
+
 
     private List<Double> getMonthlyTimeSeriesForYear(User user, Date date) {
         List<Expenditure> expenditures = expenditureRepository.findAllYearExpendituresForUser(user, date);
@@ -158,11 +168,26 @@ public class ExpenditureStatsService {
         return jsonArray;
     }
 
+
+    private Map<String, Double> getMonthlyTotalTimeSeries(User user) {
+        List<Expenditure> expenditures = expenditureRepository.findAllByUser(user);
+        Map<String, Double> monthlyTotalTimeSeries = new HashMap<>();
+
+        for (Expenditure expenditure : expenditures) {
+            if (monthlyTotalTimeSeries.containsKey(expenditure.getDate())) {
+                monthlyTotalTimeSeries.put(String.valueOf(expenditure.getDate()), monthlyTotalTimeSeries.get(expenditure.getDate()) + expenditure.getAmount());
+            } else {
+                monthlyTotalTimeSeries.put(String.valueOf(expenditure.getDate()), expenditure.getAmount());
+            }
+        }
+        return monthlyTotalTimeSeries;
+    }
+
 //    OLD
 
-    public JSONObject getStats(User user, Date date) {
-        JSONObject jsonObject = new JSONObject()
-                .put("date", date)
+//    public JSONObject getStats(User user, Date date) {
+//        JSONObject jsonObject = new JSONObject()
+//                .put("date", date)
 //                .put("currentYear", getCurrentYear(user, date))
 //                .put("monthTotal", getCurrentMonthTotal(user, date))
 //                .put("yearTotal", getCurrentYearTotal(user, date))
@@ -170,13 +195,13 @@ public class ExpenditureStatsService {
 //                .put("previousMonthTotal", getPreviousMonthTotal(user, date))
 //                .put("timeSeries", getCurrentYearMonthTotals(user, date))
 //                .put("topTags", getCurrentMonthTopTags(user, date))
-                .put("totalTimeSeries", getTotalTimeSeries(user))
+//                .put("totalTimeSeries", getTotalTimeSeries(user))
 //                .put("tagTotals", getTagTotalsThisMonth(user, date))
-                .put("previousTagTotals", getTagTotalsLastMonth(user, date));
+//                .put("previousTagTotals", getTagTotalsLastMonth(user, date));
 //                .put("currentMonthTotalsTimeSeries", getCurrentMonthTotalsTimeSeries(user, date));
 
-        return jsonObject;
-    }
+//        return jsonObject;
+//    }
 
 //    private Integer getCurrentYear(User user, Date date) {
 //        return date.toLocalDate().getYear();
@@ -274,19 +299,19 @@ public class ExpenditureStatsService {
 //        return jsonArray;
 //    }
 
-    private Map<String, Double> getTotalTimeSeries(User user) {
-        List<Expenditure> expenditures = expenditureRepository.findAllByUser(user);
-        Map<String, Double> totalTimeSeries = new HashMap<>();
-
-        for (Expenditure expenditure : expenditures) {
-            if (totalTimeSeries.containsKey(expenditure.getDate())) {
-                totalTimeSeries.put(String.valueOf(expenditure.getDate()), totalTimeSeries.get(expenditure.getDate()) + expenditure.getAmount());
-            } else {
-                totalTimeSeries.put(String.valueOf(expenditure.getDate()), expenditure.getAmount());
-            }
-        }
-        return totalTimeSeries;
-    }
+//    private Map<String, Double> getTotalTimeSeries(User user) {
+//        List<Expenditure> expenditures = expenditureRepository.findAllByUser(user);
+//        Map<String, Double> totalTimeSeries = new HashMap<>();
+//
+//        for (Expenditure expenditure : expenditures) {
+//            if (totalTimeSeries.containsKey(expenditure.getDate())) {
+//                totalTimeSeries.put(String.valueOf(expenditure.getDate()), totalTimeSeries.get(expenditure.getDate()) + expenditure.getAmount());
+//            } else {
+//                totalTimeSeries.put(String.valueOf(expenditure.getDate()), expenditure.getAmount());
+//            }
+//        }
+//        return totalTimeSeries;
+//    }
 
 //    private Map<String, Double> getTagTotalsThisMonth(User user, Date date) {
 //
@@ -315,30 +340,30 @@ public class ExpenditureStatsService {
 //        return tagTotals;
 //    }
 
-    private Map<String, Double> getTagTotalsLastMonth(User user, Date date) {
-        Map<String, Double> tagTotals = new HashMap<>();
-        List<Tag> tags = tagRepository.findAllByUser(user);
-
-        for (Tag tag : tags) {
-
-            if (!tagTotals.containsKey(tag.getName())) {
-                tagTotals.put(tag.getName(), 0.0);
-            }
-
-            List<Expenditure> expenditures = expenditureRepository.findAllByTagAndDatePreviousAndUser(tag, date, user);
-            for (Expenditure expenditure : expenditures) {
-                tagTotals.put(tag.getName(), tagTotals.get(tag.getName()) + expenditure.getAmount());
-            }
-
-            Double previousMonthTotal = expenditureRepository.getPreviousMonthTotal(user, date);
-
-            if (previousMonthTotal != null) {
-                tagTotals.put(tag.getName(), Math.round(tagTotals.get(tag.getName()) / previousMonthTotal * 100.0) / 100.0);
-            }
-        }
-
-        return tagTotals;
-    }
+//    private Map<String, Double> getTagTotalsLastMonth(User user, Date date) {
+//        Map<String, Double> tagTotals = new HashMap<>();
+//        List<Tag> tags = tagRepository.findAllByUser(user);
+//
+//        for (Tag tag : tags) {
+//
+//            if (!tagTotals.containsKey(tag.getName())) {
+//                tagTotals.put(tag.getName(), 0.0);
+//            }
+//
+//            List<Expenditure> expenditures = expenditureRepository.findAllByTagAndDatePreviousAndUser(tag, date, user);
+//            for (Expenditure expenditure : expenditures) {
+//                tagTotals.put(tag.getName(), tagTotals.get(tag.getName()) + expenditure.getAmount());
+//            }
+//
+//            Double previousMonthTotal = expenditureRepository.getPreviousMonthTotal(user, date);
+//
+//            if (previousMonthTotal != null) {
+//                tagTotals.put(tag.getName(), Math.round(tagTotals.get(tag.getName()) / previousMonthTotal * 100.0) / 100.0);
+//            }
+//        }
+//
+//        return tagTotals;
+//    }
 
 //    private Map<Integer, Double> getCurrentMonthTotalsTimeSeries(User user, Date date) {
 //

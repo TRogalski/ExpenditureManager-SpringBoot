@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
 
     $.ajax({
-        'url': window.location.origin + "/expenditure/stats/" + getTodaysDate(),
+        'url': window.location.origin + "/expenditure/datepicker/" + getTodaysDate(),
         'dataType': "json",
         'success': function (jsonData) {
             $('#date_picker').datepicker({
@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 beforeShowDay: function (date) {
                     var d = date;
                     var curr_date = d.getDate();
-                    var curr_month = d.getMonth() + 1; //Months are zero based
+                    var curr_month = d.getMonth() + 1;
                     var curr_year = d.getFullYear();
 
                     if (curr_date < 10) {
@@ -22,10 +22,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
                     var formattedDate = curr_year + "-" + curr_month + "-" + curr_date
 
-                    if ($.inArray(formattedDate, Object.keys(jsonData.totalTimeSeries)) != -1) {
+                    if ($.inArray(formattedDate, Object.keys(jsonData.monthlyTotalTimeSeries)) != -1) {
                         return {
                             classes: 'highlight',
-                            tooltip: formatNumber(jsonData.totalTimeSeries[formattedDate])
+                            tooltip: formatNumber(jsonData.monthlyTotalTimeSeries[formattedDate])
                         };
                     }
                     return;
@@ -38,6 +38,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 })
+
 
 function getTodaysDate() {
     var today = new Date();
