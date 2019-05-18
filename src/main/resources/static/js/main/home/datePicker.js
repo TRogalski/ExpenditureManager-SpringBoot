@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 function getTopTagsAssignedToMonth(date) {
     $.ajax({
-        'url': window.location.origin + "/expenditure/stats/" + date + "-01",
+        'url': window.location.origin + "/expenditure/dashboard/" + date + "-01",
         'dataType': "json",
         'success': function (jsonData) {
 
@@ -39,20 +39,20 @@ function removeEnlistedTags(toDelete) {
 
 
 function appendReceivedTags(jsonData) {
-    var topTags = jsonData.topTags;
+    var tagTotals = jsonData.currentMonthTagTotals;
 
-    topTags.sort(function (a, b) {
-        return b.monthTotal - a.monthTotal;
+    tagTotals.sort(function (a, b) {
+        return b.total - a.total;
     });
 
-    for (var i = 0; i < topTags.length; i++) {
+    for (var i = 0; i < tagTotals.length; i++) {
         var listElement = $(`<tr>
-                                <td>${topTags[i].name}</td>
-                                <td>${topTags[i].monthTotal}</td>
-                                <td>${(topTags[i].monthTotal / jsonData.monthTotal * 100).toFixed(2)}</td>
+                                <td>${tagTotals[i].name}</td>
+                                <td>${tagTotals[i].total}</td>
+                                <td>${(tagTotals[i].total / jsonData.currentMonthTotal * 100).toFixed(2)}</td>
                                 <td>
-                                    <a href="http://localhost:8084/expenditure/list/${jsonData.date}/${topTags[i].id}">
-                                        ${topTags[i].monthCount}
+                                    <a href= "${window.location.origin}/expenditure/list/${jsonData.date}/${tagTotals[i].id}">
+                                        ${tagTotals[i].count}
                                     </a>
                                 </td>
                             </tr>`);
@@ -60,9 +60,8 @@ function appendReceivedTags(jsonData) {
     }
 }
 
-
 function getThisVsPreviousPercentage(jsonData) {
-    var thisMonth = jsonData.monthTotal;
+    var thisMonth = jsonData.currentMonthTotal;
     var previousMonth = jsonData.previousMonthTotal;
 
     if (thisMonth == null ||
@@ -76,38 +75,39 @@ function getThisVsPreviousPercentage(jsonData) {
 
 
 function getThisYearMonthlyAverage(jsonData) {
-    var avg = 0;
+    var average = 0;
     var count = 0;
+    var monthlyTimeSeries = jsonData.currentYearMonthlyTimeSeries
 
-    for (var i = 0; i < jsonData.timeSeries.length; i++) {
-        if (jsonData.timeSeries[i] > 0) {
-            avg += jsonData.timeSeries[i];
+    for (var i = 0; i < monthlyTimeSeries.length; i++) {
+        if (monthlyTimeSeries[i] > 0) {
+            average += monthlyTimeSeries[i];
             count++;
         }
     }
-    return (avg / count).toFixed(2);
+    return (average / count).toFixed(2);
 }
 
 
 function getCurrentVsPreviousTotal(jsonData) {
 
-    if (jsonData.monthTotal == null ||
-        jsonData.monthTotal == 0 ||
+    if (jsonData.currentMonthTotal == null ||
+        jsonData.currentMonthTotal == 0 ||
         jsonData.previousMonthTotal == null ||
         jsonData.previousMonthTotal == 0) {
         return "N/A";
     }
 
-    return jsonData.monthTotal - jsonData.previousMonthTotal;
+    return jsonData.currentMonthTotal - jsonData.previousMonthTotal;
 }
 
 
 function fillInStatistics(jsonData) {
-    $('#this_month_total').html(jsonData.monthTotal == null ? 0 : formatNumber(jsonData.monthTotal))
+    $('#this_month_total').html(jsonData.currentMonthTotal == null ? 0 : formatNumber(jsonData.currentMonthTotal))
     $('#previous_month_total').html(jsonData.previousMonthTotal == null ? 0 : formatNumber(jsonData.previousMonthTotal))
     $('#this_vs_previous_total').html(getCurrentVsPreviousTotal(jsonData))
     $('#this_vs_previous_percentage').html(getThisVsPreviousPercentage(jsonData))
-    $('#this_year_total').html(formatNumber(jsonData.yearTotal))
+    $('#this_year_total').html(formatNumber(jsonData.currentYearTotal))
     $('#this_year_monthly_average').html(formatNumber(getThisYearMonthlyAverage(jsonData)))
 }
 

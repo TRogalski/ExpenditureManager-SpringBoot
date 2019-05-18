@@ -121,6 +121,13 @@ public class ExpenditureController {
         return expenditureStatsService.getStats(user, date).toString();
     }
 
+    @RequestMapping(value = "/dashboard/{date}", method = RequestMethod.GET)
+    @ResponseBody
+    private String getMainDashboardDataForDate(@PathVariable Date date, Principal principal) {
+        User user = userRepository.findFirstByEmail(principal.getName());
+        return expenditureStatsService.getMainDashboardData(user, date).toString();
+    }
+
     @RequestMapping(value = "/menu", method = RequestMethod.GET)
     private String getExpenditureHomeView(Model model, Principal principal) {
         User user = userRepository.findFirstByEmail(principal.getName());

@@ -22,7 +22,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
                     var formattedDate = curr_year + "-" + curr_month + "-" + curr_date
 
-
                     if ($.inArray(formattedDate, Object.keys(jsonData.totalTimeSeries)) != -1) {
                         return {
                             classes: 'highlight',

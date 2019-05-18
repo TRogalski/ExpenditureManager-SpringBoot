@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
     $.ajax({
-        'url': window.location.origin + "/expenditure/stats/" + $('#date_picker').datepicker('getFormattedDate') + "-01",
+        'url': window.location.origin + "/expenditure/dashboard/" + $('#date_picker').datepicker('getFormattedDate') + "-01",
         'dataType': "json",
         'success': function (jsonData) {
             var expendituresMonthlyChart = createMonthlyExpendituresChart(jsonData);
@@ -26,7 +26,7 @@ function createMonthlyExpendituresChart(jsonData) {
                 label: "Total",
                 backgroundColor: 'rgb(175,188,201)',
                 borderColor: 'rgb(255, 99, 132)',
-                data: jsonData.timeSeries
+                data: jsonData.currentYearMonthlyTimeSeries
             }]
         },
         options: {
@@ -35,7 +35,7 @@ function createMonthlyExpendituresChart(jsonData) {
             },
             title: {
                 display: true,
-                text: "Expenditures as of " + jsonData.currentYear,
+                text: "Expenditures as of " + jsonData.currentYearName,
             },
             scales: {
                 yAxes: [{
@@ -56,9 +56,9 @@ function createDailyExpendituresChart(jsonData) {
     return new Chart(ctx2, {
         type: 'line',
         data: {
-            labels: Object.keys(jsonData.currentMonthTotalsTimeSeries),
+            labels: Object.keys(jsonData.currentMonthDailyTimeSeries),
             datasets: [{
-                data: Object.values(jsonData.currentMonthTotalsTimeSeries),
+                data: Object.values(jsonData.currentMonthDailyTimeSeries),
                 fill: false,
                 borderColor: "rgb(71, 102, 153)",
             }],
@@ -69,7 +69,7 @@ function createDailyExpendituresChart(jsonData) {
             },
             title: {
                 display: true,
-                text: "Daily expenditures as of " + jsonData.date,
+                text: "Daily expenditures as of " + jsonData.currentMonthName + " " + jsonData.currentYearName,
             },
             scales: {
                 yAxes: [{
@@ -85,11 +85,11 @@ function createDailyExpendituresChart(jsonData) {
 
 function updateMonthlyExpendituresChart(chart, date) {
     $.ajax({
-        'url': window.location.origin + "/expenditure/stats/" + date + "-01",
+        'url': window.location.origin + "/expenditure/dashboard/" + date + "-01",
         'dataType': "json",
         'success': function (jsonData) {
-            chart.data.datasets[0].data = jsonData.timeSeries;
-            chart.options.title.text = "Expenditures as of " + jsonData.currentYear;
+            chart.data.datasets[0].data = jsonData.currentYearMonthlyTimeSeries;
+            chart.options.title.text = "Monthly expenditures as of " + jsonData.currentYearName;
             chart.update();
         }
     });
@@ -97,12 +97,12 @@ function updateMonthlyExpendituresChart(chart, date) {
 
 function updateDailyExpendituresChart(chart, date) {
     $.ajax({
-        'url': window.location.origin + "/expenditure/stats/" + date + "-01",
+        'url': window.location.origin + "/expenditure/dashboard/" + date + "-01",
         'dataType': "json",
         'success': function (jsonData) {
-            chart.data.labels = Object.keys(jsonData.currentMonthTotalsTimeSeries);
-            chart.data.datasets[0].data = Object.values(jsonData.currentMonthTotalsTimeSeries);
-            chart.options.title.text = "Daily expenditures as of " + jsonData.date,
+            chart.data.labels = Object.keys(jsonData.currentMonthDailyTimeSeries);
+            chart.data.datasets[0].data = Object.values(jsonData.currentMonthDailyTimeSeries);
+            chart.options.title.text = "Daily expenditures as of " + jsonData.currentMonthName + " " + jsonData.currentYearName,
                 chart.update();
         }
     });
