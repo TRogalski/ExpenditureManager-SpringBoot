@@ -85,7 +85,7 @@ function createTagChart(jsonData) {
                 callbacks: {
                     label: function (tooltipItem, data) {
                         var datasetLabel = data.datasets[tooltipItem.datasetIndex].label || 'Other';
-                        var label = tooltipItem.yLabel*100 + " [%]";
+                        var label = (tooltipItem.yLabel*100).toFixed(2) + " [%]";
                         return datasetLabel + ': ' + label;
                     }
                 }

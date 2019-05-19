@@ -23,6 +23,7 @@
                 </tr>
                 </thead>
                 <tbody>
+                <p th:text="${tagIdsOldestToNewsest}"></p>
                 <tr th:each="key:${currentMonthAllTagTotals.keys()}">
                     <td th:text="${currentMonthAllTagTotals.get(key).get('name')}"></td>
                     <td th:text="${currentMonthAllTagTotals.get(key).get('total')}"></td>

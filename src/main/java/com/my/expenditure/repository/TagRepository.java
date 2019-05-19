@@ -3,6 +3,8 @@ package com.my.expenditure.repository;
 import com.my.expenditure.entity.Tag;
 import com.my.expenditure.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -10,6 +12,7 @@ import java.util.List;
 @Repository
 public interface TagRepository extends JpaRepository<Tag, Long> {
 
-    List<Tag> findAllByUser(User user);
+    @Query("SELECT t FROM Tag t WHERE t.user=:user")
+    List<Tag> findAllByUser(@Param("user") User user);
 
 }

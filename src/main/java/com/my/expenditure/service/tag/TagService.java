@@ -7,6 +7,7 @@ import com.my.expenditure.repository.ExpenditureRepository;
 import com.my.expenditure.repository.TagRepository;
 import com.my.expenditure.repository.UserRepository;
 import com.my.expenditure.service.expenditure.ExpenditureStatsService;
+import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -34,10 +35,7 @@ public class TagService {
 
     public Model getTagViewDashboardData(Model model, Principal principal, Date date) {
         User user = userRepository.findFirstByEmail(principal.getName());
-        List<Tag> tags = tagRepository.findAllByUser(user);
-
         model
-                .addAttribute("tags", tags)
                 .addAttribute("currentMonthName", new SimpleDateFormat("MMM", Locale.US).format(date))
                 .addAttribute("previousMonthName", new SimpleDateFormat("MMM", Locale.US).format(Date.valueOf(date.toLocalDate().minusMonths(1))))
                 .addAttribute("currentYearName", new SimpleDateFormat("yyyy", Locale.US).format(date))
@@ -53,14 +51,14 @@ public class TagService {
 
         List<Expenditure> expenditures = expenditureRepository.findAllByUserAndYear(user, date);
 
-        Double unassignedTotal = 0.0;
-        Integer unassignedCount = 0;
+//        Double unassignedTotal = 0.0;
+//        Integer unassignedCount = 0;
 
         for (Expenditure expenditure : expenditures) {
-            if (expenditure.getTags().isEmpty()) {
-                unassignedTotal += expenditure.getAmount();
-                unassignedCount++;
-            }
+//            if (expenditure.getTags().isEmpty()) {
+//                unassignedTotal += expenditure.getAmount();
+//                unassignedCount++;
+//            }
             for (Tag tag : expenditure.getTags()) {
                 if (yearTotalsOnTags.containsKey(tag)) {
                     yearTotalsOnTags.put(tag, yearTotalsOnTags.get(tag) + expenditure.getAmount());
@@ -96,12 +94,12 @@ public class TagService {
             }
         }
 
-        JSONObject jsonObject = new JSONObject();
-        jsonObject.put("id", -1);
-        jsonObject.put("name", "Unassigned");
-        jsonObject.put("total", unassignedTotal);
-        jsonObject.put("count", unassignedCount);
-        tagData.put("-1", jsonObject);
+//        JSONObject jsonObject = new JSONObject();
+//        jsonObject.put("id", -1);
+//        jsonObject.put("name", "Unassigned");
+//        jsonObject.put("total", unassignedTotal);
+//        jsonObject.put("count", unassignedCount);
+//        tagData.put("-1", jsonObject);
 
         return tagData;
 
@@ -113,14 +111,14 @@ public class TagService {
 
         List<Expenditure> expenditures = expenditureRepository.findAllByUserAndMonth(user, date);
 
-        Double unassignedTotal = 0.0;
-        Integer unassignedCount = 0;
+//        Double unassignedTotal = 0.0;
+//        Integer unassignedCount = 0;
 
         for (Expenditure expenditure : expenditures) {
-            if (expenditure.getTags().isEmpty()) {
-                unassignedTotal += expenditure.getAmount();
-                unassignedCount++;
-            }
+//            if (expenditure.getTags().isEmpty()) {
+//                unassignedTotal += expenditure.getAmount();
+//                unassignedCount++;
+//            }
             for (Tag tag : expenditure.getTags()) {
                 if (monthTotalsOnTags.containsKey(tag)) {
                     monthTotalsOnTags.put(tag, monthTotalsOnTags.get(tag) + expenditure.getAmount());
@@ -156,12 +154,12 @@ public class TagService {
             }
         }
 
-        JSONObject jsonObject = new JSONObject();
-        jsonObject.put("id", -1);
-        jsonObject.put("name", "Unassigned");
-        jsonObject.put("total", unassignedTotal);
-        jsonObject.put("count", unassignedCount);
-        tagData.put("-1", jsonObject);
+//        JSONObject jsonObject = new JSONObject();
+//        jsonObject.put("id", -1);
+//        jsonObject.put("name", "Unassigned");
+//        jsonObject.put("total", unassignedTotal);
+//        jsonObject.put("count", unassignedCount);
+//        tagData.put("-1", jsonObject);
 
         return tagData;
     }
