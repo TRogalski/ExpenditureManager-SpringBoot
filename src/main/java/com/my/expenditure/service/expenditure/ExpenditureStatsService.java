@@ -242,4 +242,5 @@ public class ExpenditureStatsService {
         }
         return yearMonths;
     }
+
 }

@@ -23,18 +23,18 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each="tag:${currentMonthTagTotals}">
-                    <td th:text="${tag.get('name')}"></td>
-                    <td th:text="${tag.get('total')}"></td>
-                    <td>test</td>
-                    <!--<td th:each="prevTag:${previousMonthTagTotals}" th:text="${tag.get('id')==prevTag.get('id')}?${prevTag.get('total')}:''"></td>-->
-                    <td>Placeholder</td>
-                    <td>Placeholder</td>
+                <tr th:each="key:${currentMonthAllTagTotals.keys()}">
+                    <td th:text="${currentMonthAllTagTotals.get(key).get('name')}"></td>
+                    <td th:text="${currentMonthAllTagTotals.get(key).get('total')}"></td>
+                    <td th:text="${previousMonthAllTagTotals.get(key).get('total')}"></td>
+                    <td th:text="${currentMonthAllTagTotals.get(key).get('total')-previousMonthAllTagTotals.get(key).get('total')}"></td>
+                    <td th:text="${currentYearAllTagTotals.get(key).get('total')}"></td>
+                    <td th:text="${currentMonthAllTagTotals.get(key).get('count')}"></td>
                     <td>
-                        <a href="#modal_delete" data-toggle="modal" th:data-tag-id="${tag.get('id')}">
+                        <a href="#modal_delete" data-toggle="modal" th:data-tag-id="${currentMonthAllTagTotals.get(key).get('id')}">
                             <span class="glyphicon glyphicon-remove"></span>
                         </a>
-                        <a th:href="@{'/tag/edit/'+${tag.get('id')}}">
+                        <a th:href="@{'/tag/edit/'+${currentMonthAllTagTotals.get(key).get('id')}}">
                             <span class="glyphicon glyphicon-pencil"></span>
                         </a>
                     </td>

@@ -47,4 +47,7 @@ public interface ExpenditureRepository extends JpaRepository<Expenditure, Long> 
             "and YEAR(e.date)=YEAR(:date) " +
             "and e.user=:user")
     List<Expenditure> findAllUnassignedByDateAndUser(@Param("date") Date date, @Param("user") User user);
+
+    @Query("SELECT e FROM Expenditure e WHERE YEAR(e.date)=YEAR(:date) AND e.user=:user")
+    List<Expenditure> findAllByUserAndYear(@Param("user") User user, @Param("date") Date date);
 }
