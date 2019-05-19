@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
     $('#date_picker').datepicker({
-        viewMode: "years",
-        minViewMode: "years",
-        format: "yyyy"
+        viewMode: "months",
+        minViewMode: "months",
+        format: "yyyy-mm"
     }).datepicker("setDate", 'now');
 })

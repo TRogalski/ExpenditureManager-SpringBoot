@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
             var expendituresDailyChart = createDailyExpendituresChart(jsonData);
 
             $('#date_picker').on('changeDate', function () {
-                var datePickerDate = $('#date_picker').datepicker('getFormattedDate');
+                var datePickerDate = $('#date_picker').datepicker('getFormattedDate') + "-01";
                 updateDailyExpendituresChart(expendituresDailyChart, datePickerDate);
                 updateMonthlyExpendituresChart(expendituresMonthlyChart, datePickerDate);
             });
@@ -85,7 +85,7 @@ function createDailyExpendituresChart(jsonData) {
 
 function updateMonthlyExpendituresChart(chart, date) {
     $.ajax({
-        'url': window.location.origin + "/expenditure/dashboard/" + date + "-01",
+        'url': window.location.origin + "/expenditure/dashboard/" + date,
         'dataType': "json",
         'success': function (jsonData) {
             chart.data.datasets[0].data = jsonData.currentYearMonthlyTimeSeries;
@@ -97,13 +97,13 @@ function updateMonthlyExpendituresChart(chart, date) {
 
 function updateDailyExpendituresChart(chart, date) {
     $.ajax({
-        'url': window.location.origin + "/expenditure/dashboard/" + date + "-01",
+        'url': window.location.origin + "/expenditure/dashboard/" + date,
         'dataType': "json",
         'success': function (jsonData) {
             chart.data.labels = Object.keys(jsonData.currentMonthDailyTimeSeries);
             chart.data.datasets[0].data = Object.values(jsonData.currentMonthDailyTimeSeries);
-            chart.options.title.text = "Daily expenditures as of " + jsonData.currentMonthName + " " + jsonData.currentYearName,
-                chart.update();
+            chart.options.title.text = "Daily expenditures as of " + jsonData.currentMonthName + " " + jsonData.currentYearName;
+            chart.update();
         }
     });
 }

@@ -6,6 +6,7 @@ import com.my.expenditure.entity.User;
 import com.my.expenditure.repository.ExpenditureRepository;
 import com.my.expenditure.repository.TagRepository;
 import com.my.expenditure.repository.UserRepository;
+import com.my.expenditure.service.tag.TagService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,7 +15,11 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.security.Principal;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.List;
+import java.util.Locale;
 
 @Controller
 @RequestMapping("/tag")
@@ -28,6 +33,9 @@ public class TagController {
 
     @Autowired
     private ExpenditureRepository expenditureRepository;
+
+    @Autowired
+    private TagService tagService;
 
     @RequestMapping(value = "/add", method = RequestMethod.GET)
     public String getAddTagView(Model model) {
@@ -79,7 +87,13 @@ public class TagController {
     }
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)
-    public String listTags(Model model, Principal principal) {
+    public String listTagsCurrentMonth(Model model, Principal principal) {
+        tagService.getTagViewDashboardData(model, principal, Date.valueOf(LocalDate.now()));
+        return "tag/list";
+    }
+
+    @RequestMapping(value = "/list/{date}", method = RequestMethod.GET)
+    public String listTagsSelectedMonth(@RequestParam("date") Date date, Model model, Principal principal) {
         List<Tag> tags = tagRepository.findAllByUser(userRepository.findFirstByEmail(principal.getName()));
         model.addAttribute("tags", tags);
         return "tag/list";

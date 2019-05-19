@@ -15,26 +15,26 @@
                 <thead>
                 <tr>
                     <th>Name</th>
-                    <th>This month</th>
-                    <th>Previous month</th>
+                    <th th:text="${currentMonthName}"/>
+                    <th th:text="${previousMonthName}"/>
                     <th>Change</th>
-                    <th>Year total</th>
+                    <th th:text="${currentYearName}"/>
                     <td>#</td>
                 </tr>
                 </thead>
-
                 <tbody>
-                <tr th:each="tag:${tags}">
-                    <td th:text="${tag.name}"/>
-                    <td>Placeholder</td>
-                    <td>Placeholder</td>
+                <tr th:each="tag:${currentMonthTagTotals}">
+                    <td th:text="${tag.get('name')}"></td>
+                    <td th:text="${tag.get('total')}"></td>
+                    <td>test</td>
+                    <!--<td th:each="prevTag:${previousMonthTagTotals}" th:text="${tag.get('id')==prevTag.get('id')}?${prevTag.get('total')}:''"></td>-->
                     <td>Placeholder</td>
                     <td>Placeholder</td>
                     <td>
-                        <a href="#modal_delete" data-toggle="modal" th:data-tag-id="${tag.id}">
+                        <a href="#modal_delete" data-toggle="modal" th:data-tag-id="${tag.get('id')}">
                             <span class="glyphicon glyphicon-remove"></span>
                         </a>
-                        <a th:href="@{'/tag/edit/'+${tag.id}}">
+                        <a th:href="@{'/tag/edit/'+${tag.get('id')}}">
                             <span class="glyphicon glyphicon-pencil"></span>
                         </a>
                     </td>
@@ -62,9 +62,9 @@
         </div>
     </div>
 </div>
+<script type="text/javascript" th:src="@{/js/tag/list/datePicker.js}"></script>
 <script type="text/javascript" th:src="@{/js/tag/list/tagRemove.js}"></script>
 <script type="text/javascript" th:src="@{/js/tag/list/tagAdd.js}"></script>
 <script type="text/javascript" th:src="@{/js/tag/list/tagCharts.js}"></script>
-<script type="text/javascript" th:src="@{/js/tag/list/datePicker.js}"></script>
 </body>
 </html>
