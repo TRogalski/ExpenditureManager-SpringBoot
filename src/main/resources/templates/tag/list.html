@@ -30,7 +30,7 @@
                     <td th:text="${currentMonthAllTagTotals.get(key).get('total')-previousMonthAllTagTotals.get(key).get('total')}"></td>
                     <td th:text="${currentYearAllTagTotals.get(key).get('total')}"></td>
                     <td th:text="${currentMonthAllTagTotals.get(key).get('count')}"></td>
-                    <td>
+                    <td th:if="${key}!='-1'">
                         <a href="#modal_delete" data-toggle="modal" th:data-tag-id="${currentMonthAllTagTotals.get(key).get('id')}">
                             <span class="glyphicon glyphicon-remove"></span>
                         </a>
