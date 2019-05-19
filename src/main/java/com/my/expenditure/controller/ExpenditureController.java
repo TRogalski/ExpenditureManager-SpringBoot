@@ -99,6 +99,15 @@ public class ExpenditureController {
         return "expenditure/list";
     }
 
+
+    @RequestMapping(value = "/test/{date}",method = RequestMethod.GET)
+    @ResponseBody
+    private String getTest(@PathVariable Date date, Principal principal){
+        User user=userRepository.findFirstByEmail(principal.getName());
+        return expenditureStatsService.getTagRadarChartMonthlyDataForYear(user, date).toString();
+    }
+
+
     @RequestMapping(value = "/date/{date}", method = RequestMethod.GET)
     @ResponseBody
     private List<Expenditure> getDailyExpenditures(@PathVariable Date date, Principal principal) {

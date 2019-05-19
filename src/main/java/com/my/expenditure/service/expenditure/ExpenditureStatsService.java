@@ -25,8 +25,6 @@ public class ExpenditureStatsService {
     @Autowired
     private TagRepository tagRepository;
 
-//    TODO new json endpoints
-
     public JSONObject getMainDashboardData(User user, Date date) {
         JSONObject jsonObject = new JSONObject()
                 .put("date", date)
@@ -50,6 +48,17 @@ public class ExpenditureStatsService {
         JSONObject jsonObject = new JSONObject()
                 .put("date", date)
                 .put("monthlyTotalTimeSeries", getMonthlyTotalTimeSeries(user));
+        return jsonObject;
+    }
+
+    public JSONObject getTagRadarChartMonthlyDataForYear(User user, Date date) {
+        JSONObject jsonObject = new JSONObject();
+
+        List<Date> yearMonths=getMonthsForYear(date);
+
+        for(Date month:yearMonths){
+            jsonObject.put(getMonthName(month),getMonthTagTotals(user, month));
+        }
         return jsonObject;
     }
 
@@ -183,6 +192,51 @@ public class ExpenditureStatsService {
         return monthlyTotalTimeSeries;
     }
 
+    private Map<String, Double> getMonthTagTotals(User user, Date date) {
+
+        Map<String, Double> monthTagTotals = new HashMap<>();
+        List<Tag> tags = tagRepository.findAllByUser(user);
+
+        for (Tag tag : tags) {
+
+            if (!monthTagTotals.containsKey(tag.getName())) {
+                monthTagTotals.put(tag.getName(), 0.0);
+            }
+
+            List<Expenditure> expenditures = expenditureRepository.findAllByTagAndDateAndUser(tag, date, user);
+            for (Expenditure expenditure : expenditures) {
+                monthTagTotals.put(tag.getName(), monthTagTotals.get(tag.getName()) + expenditure.getAmount());
+            }
+
+            Double monthTotal = expenditureRepository.getMonthTotalForUser(user, date);
+
+            if (monthTotal != null) {
+                monthTagTotals.put(tag.getName(), Math.round(monthTagTotals.get(tag.getName()) / monthTotal * 100.0) / 100.0);
+            }
+        }
+        return monthTagTotals;
+    }
+
+
+    private List<Date> getMonthsForYear(Date date) {
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.clear();
+        calendar.set(Calendar.MONTH, 0);
+        calendar.set(Calendar.YEAR, date.toLocalDate().getYear());
+
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+
+        List<Date> yearMonths = new ArrayList<>();
+
+        for (int i = 0; i <= 11; i++) {
+            yearMonths.add(Date.valueOf(simpleDateFormat.format(calendar.getTime())));
+            calendar.add(Calendar.MONTH, 1);
+        }
+        return yearMonths;
+    }
+
+
 //    OLD
 
 //    public JSONObject getStats(User user, Date date) {
@@ -313,32 +367,6 @@ public class ExpenditureStatsService {
 //        return totalTimeSeries;
 //    }
 
-//    private Map<String, Double> getTagTotalsThisMonth(User user, Date date) {
-//
-//        Map<String, Double> tagTotals = new HashMap<>();
-//        List<Tag> tags = tagRepository.findAllByUser(user);
-//
-//        for (Tag tag : tags) {
-//
-//            if (!tagTotals.containsKey(tag.getName())) {
-//                tagTotals.put(tag.getName(), 0.0);
-//            }
-//
-//            List<Expenditure> expenditures = expenditureRepository.findAllByTagAndDateAndUser(tag, date, user);
-//            for (Expenditure expenditure : expenditures) {
-//                tagTotals.put(tag.getName(), tagTotals.get(tag.getName()) + expenditure.getAmount());
-//            }
-//
-//            Double currentMonthTotal = expenditureRepository.getCurrentMonthTotal(user, date);
-//
-//            if (currentMonthTotal != null) {
-//                tagTotals.put(tag.getName(), Math.round(tagTotals.get(tag.getName()) / currentMonthTotal * 100.0) / 100.0);
-//            }
-//
-//        }
-//
-//        return tagTotals;
-//    }
 
 //    private Map<String, Double> getTagTotalsLastMonth(User user, Date date) {
 //        Map<String, Double> tagTotals = new HashMap<>();
