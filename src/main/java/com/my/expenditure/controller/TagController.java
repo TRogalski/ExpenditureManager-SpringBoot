@@ -93,9 +93,8 @@ public class TagController {
     }
 
     @RequestMapping(value = "/list/{date}", method = RequestMethod.GET)
-    public String listTagsSelectedMonth(@RequestParam("date") Date date, Model model, Principal principal) {
-        List<Tag> tags = tagRepository.findAllByUser(userRepository.findFirstByEmail(principal.getName()));
-        model.addAttribute("tags", tags);
-        return "tag/list";
+    @ResponseBody
+    public String listTagsSelectedMonth(@PathVariable Date date, Principal principal) {
+        return tagService.getTagViewDashboardDataforDate(principal, date).toString();
     }
 }

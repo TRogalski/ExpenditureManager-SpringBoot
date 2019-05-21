@@ -45,6 +45,19 @@ public class TagService {
         return model;
     }
 
+    public JSONObject getTagViewDashboardDataforDate(Principal principal, Date date){
+        User user = userRepository.findFirstByEmail(principal.getName());
+
+        JSONObject jsonObject = new JSONObject()
+                .put("currentMonthName", new SimpleDateFormat("MMM", Locale.US).format(date))
+                .put("previousMonthName", new SimpleDateFormat("MMM", Locale.US).format(Date.valueOf(date.toLocalDate().minusMonths(1))))
+                .put("currentYearName", new SimpleDateFormat("yyyy", Locale.US).format(date))
+                .put("currentMonthAllTagTotals", getMonthTotalsForAllTags(user, date))
+                .put("previousMonthAllTagTotals", getMonthTotalsForAllTags(user, Date.valueOf(date.toLocalDate().minusMonths(1))))
+                .put("currentYearAllTagTotals", getYearTotalsForAllTags(user, date));
+        return jsonObject;
+    }
+
     private JSONObject getYearTotalsForAllTags(User user, Date date) {
         Map<Tag, Double> yearTotalsOnTags = new HashMap<>();
         Map<Tag, Integer> yearCountsOnTags = new HashMap<>();

@@ -15,15 +15,14 @@
                 <thead>
                 <tr>
                     <th>Name</th>
-                    <th th:text="${currentMonthName}"/>
-                    <th th:text="${previousMonthName}"/>
+                    <th th:text="${currentMonthName}" id="current_month_name"/>
+                    <th th:text="${previousMonthName}" id="previous_month_name"/>
                     <th>Change</th>
-                    <th th:text="${currentYearName}"/>
+                    <th th:text="${currentYearName}" id="current_year_name"/>
                     <td>#</td>
                 </tr>
                 </thead>
-                <tbody>
-                <p th:text="${tagIdsOldestToNewsest}"></p>
+                <tbody id="tag_records">
                 <tr th:each="key:${currentMonthAllTagTotals.keys()}">
                     <td th:text="${currentMonthAllTagTotals.get(key).get('name')}"></td>
                     <td th:text="${currentMonthAllTagTotals.get(key).get('total')}"></td>
@@ -31,7 +30,8 @@
                     <td th:text="${currentMonthAllTagTotals.get(key).get('total')-previousMonthAllTagTotals.get(key).get('total')}"></td>
                     <td th:text="${currentYearAllTagTotals.get(key).get('total')}"></td>
                     <td th:text="${currentMonthAllTagTotals.get(key).get('count')}"></td>
-                    <td th:if="${key}!='-1'">
+                    <!--<td th:if="${key}!='-1'">-->
+                    <td>
                         <a href="#modal_delete" data-toggle="modal" th:data-tag-id="${currentMonthAllTagTotals.get(key).get('id')}">
                             <span class="glyphicon glyphicon-remove"></span>
                         </a>
@@ -39,6 +39,7 @@
                             <span class="glyphicon glyphicon-pencil"></span>
                         </a>
                     </td>
+                    <!--</td>-->
                 </tr>
                 </tbody>
             </table>
@@ -67,5 +68,6 @@
 <script type="text/javascript" th:src="@{/js/tag/list/tagRemove.js}"></script>
 <script type="text/javascript" th:src="@{/js/tag/list/tagAdd.js}"></script>
 <script type="text/javascript" th:src="@{/js/tag/list/tagCharts.js}"></script>
+
 </body>
 </html>
