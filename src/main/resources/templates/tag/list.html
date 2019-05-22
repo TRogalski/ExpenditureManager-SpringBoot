@@ -15,31 +15,34 @@
                 <thead>
                 <tr>
                     <th>Name</th>
-                    <th th:text="${currentMonthName}" id="current_month_name"/>
-                    <th th:text="${previousMonthName}" id="previous_month_name"/>
+                    <th th:text="${tagDashboardData.get('currentMonthName')}" id="current_month_name"/>
+                    <th th:text="${tagDashboardData.get('previousMonthName')}" id="previous_month_name"/>
                     <th>Change</th>
-                    <th th:text="${currentYearName}" id="current_year_name"/>
+                    <th th:text="${tagDashboardData.get('currentYearName')}" id="current_year_name"/>
                     <td>#</td>
                 </tr>
                 </thead>
                 <tbody id="tag_records">
-                <tr th:each="key:${currentMonthAllTagTotals.keys()}">
-                    <td th:text="${currentMonthAllTagTotals.get(key).get('name')}"></td>
-                    <td th:text="${currentMonthAllTagTotals.get(key).get('total')}"></td>
-                    <td th:text="${previousMonthAllTagTotals.get(key).get('total')}"></td>
-                    <td th:text="${currentMonthAllTagTotals.get(key).get('total')-previousMonthAllTagTotals.get(key).get('total')}"></td>
-                    <td th:text="${currentYearAllTagTotals.get(key).get('total')}"></td>
-                    <td th:text="${currentMonthAllTagTotals.get(key).get('count')}"></td>
-                    <!--<td th:if="${key}!='-1'">-->
+                <tr th:each="key:${tagDashboardData.get('currentMonthAllTagTotals').keys()}">
+                    <td th:text="${tagDashboardData.get('currentMonthAllTagTotals').get(key).get('name')}"></td>
+                    <td th:text="${#numbers.formatDecimal(tagDashboardData.get('currentMonthAllTagTotals').get(key).get('total'),1,2)}"></td>
+                    <td th:text="${#numbers.formatDecimal(tagDashboardData.get('previousMonthAllTagTotals').get(key).get('total'),1,2)}"></td>
+                    <td th:text="${#numbers.formatDecimal(tagDashboardData.get('currentMonthAllTagTotals').get(key).get('total')-tagDashboardData.get('previousMonthAllTagTotals').get(key).get('total'),1,2)}"></td>
+                    <td th:text="${#numbers.formatDecimal(tagDashboardData.get('currentYearAllTagTotals').get(key).get('total'),1,2)}"></td>
                     <td>
-                        <a href="#modal_delete" data-toggle="modal" th:data-tag-id="${currentMonthAllTagTotals.get(key).get('id')}">
+                        <a th:href="${'/expenditure/list/'+tagDashboardData.get('date')+'/'+tagDashboardData.get('currentMonthAllTagTotals').get(key).get('id')}"
+                           th:text="${tagDashboardData.get('currentMonthAllTagTotals').get(key).get('count')}">
+                        </a>
+                    </td>
+                    <td>
+                        <a href="#modal_delete" data-toggle="modal"
+                           th:data-tag-id="${tagDashboardData.get('currentMonthAllTagTotals').get(key).get('id')}">
                             <span class="glyphicon glyphicon-remove"></span>
                         </a>
-                        <a th:href="@{'/tag/edit/'+${currentMonthAllTagTotals.get(key).get('id')}}">
+                        <a th:href="@{'/tag/edit/'+${tagDashboardData.get('currentMonthAllTagTotals').get(key).get('id')}}">
                             <span class="glyphicon glyphicon-pencil"></span>
                         </a>
                     </td>
-                    <!--</td>-->
                 </tr>
                 </tbody>
             </table>

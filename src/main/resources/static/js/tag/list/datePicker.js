@@ -46,7 +46,9 @@ function appendReceivedTags(jsonData) {
                                 <td>${previousMonthTagTotals[key].total.toFixed(2)}</td>
                                 <td>${(currentMonthTagTotals[key].total - previousMonthTagTotals[key].total).toFixed(2)}</td>
                                 <td>${currentYearAllTagTotals[key].total.toFixed(2)}</td>
-                                <td>${currentMonthTagTotals[key].count}</td>
+                                <td>
+                                    <a href="${window.location.origin}/expenditure/list/${jsonData.date}/${currentMonthTagTotals[key].id}">${currentMonthTagTotals[key].count}</a>
+                                </td>
                                 <td>
                                     <a href="#modal_delete" data-toggle="modal" data-tag-id=${currentMonthTagTotals[key].id}>
                                         <span class="glyphicon glyphicon-remove"></span>

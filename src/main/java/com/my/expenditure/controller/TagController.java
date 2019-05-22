@@ -16,10 +16,8 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.security.Principal;
 import java.sql.Date;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Locale;
 
 @Controller
 @RequestMapping("/tag")
@@ -88,13 +86,15 @@ public class TagController {
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public String listTagsCurrentMonth(Model model, Principal principal) {
-        tagService.getTagViewDashboardData(model, principal, Date.valueOf(LocalDate.now()));
+        User user = userRepository.findFirstByEmail(principal.getName());
+        model.addAttribute("tagDashboardData", tagService.getTagViewDashboardDataforDate(user, Date.valueOf(LocalDate.now())));
         return "tag/list";
     }
 
     @RequestMapping(value = "/list/{date}", method = RequestMethod.GET)
     @ResponseBody
     public String listTagsSelectedMonth(@PathVariable Date date, Principal principal) {
-        return tagService.getTagViewDashboardDataforDate(principal, date).toString();
+        User user = userRepository.findFirstByEmail(principal.getName());
+        return tagService.getTagViewDashboardDataforDate(user, date).toString();
     }
 }
