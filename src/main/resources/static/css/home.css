@@ -1,5 +1,5 @@
-.highlight{
-    background-color: rgba(175,188,201,.78);
+.highlight {
+    background-color: rgba(175, 188, 201, .78);
 }
 
 .tableFixHead {
@@ -21,4 +21,13 @@
     position: sticky;
     top: 0;
     background: #eee;
+}
+
+.table thead > tr > th {
+    background-color: #222222;
+    color: #eeeeee;
+}
+
+.table{
+    margin-top :10px
 }

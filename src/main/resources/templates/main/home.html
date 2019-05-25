@@ -7,14 +7,18 @@
 <body>
 <div class="container-fluid">
     <div th:insert="includes/navigationBar::navigation_bar"></div>
-    <input type="text" id="date_picker">
-    <div class="row">
-        <div class="col-lg-4">
+    <div class="row col-md-offset-1">
+        <div class="col-md-2">
+            <input type="text" id="date_picker">
+        </div>
+    </div>
+    <div class="row col-md-offset-1">
+        <div class="col-md-4">
             <canvas id="monthlyChart"></canvas>
         </div>
-        <div class="col-sm-8 tableFixHead">
+        <div class="col-md-6 tableFixHead">
 
-            <table id="top_tags_table" class="table table-hover table-bordered">
+            <table id="top_tags_table" class="table">
                 <thead>
                 <tr>
                     <th>Name</th>
@@ -28,39 +32,79 @@
             </table>
         </div>
     </div>
-    <div class="row">
-        <div class="col-lg-4">
-            <table class="table table-bordered">
-                <caption>Expenditures</caption>
-                <tbody>
-                <tr>
-                    <td>Current month total</td>
-                    <td colspan="2" class="text-center" id="this_month_total"></td>
-                </tr>
-                <tr>
-                    <td>Previous month total</td>
-                    <td colspan="2" class="text-center" id="previous_month_total"></td>
-                </tr>
-                <tr>
-                    <td>Current vs previous month</td>
-                    <td class="text-center" id="this_vs_previous_total"></td>
-                    <td class="text-center" id="this_vs_previous_percentage"></td>
-                </tr>
-                <tr>
-                    <td>Year total</td>
-                    <td colspan="2" class="text-center" id="this_year_total"></td>
-                </tr>
-                <tr>
-                    <td>Monthly average</td>
-                    <td colspan="2" class="text-center" id="this_year_monthly_average"></td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
-        <div class="col-lg-8">
-            <canvas style="position:absolute; width:400px; height:100px;"  id="dailyChart"></canvas>
+    <div class="row col-md-offset-1">
+        <div class="card-columns">
+            <div class="card col-md-2">
+                <div class="card-body text-success bg-white border border-success">
+                    <b><p class="card-text text-center" id="this_month_total"></p></b>
+                    <h5 class="card-title text-center">Current month total</h5>
+                </div>
+            </div>
+            <div class="card col-md-2">
+                <div class="card-body bg-info">
+                    <b><p class="card-text text-center" id="previous_month_total"></p></b>
+                    <h5 class="card-title text-center">Previous month</h5>
+                </div>
+            </div>
+            <div class="card col-md-2">
+                <div class="card-body text-danger bg-danger">
+                    <b><p class="card-text text-center">
+                        <span id="this_vs_previous_total"></span>
+                        <span id="this_vs_previous_percentage"></span>
+                    </p></b>
+                    <h5 class="card-title text-center">This vs Previous</h5>
+                </div>
+            </div>
+            <div class="card col-md-2">
+                <div class="card-body bg-white border-dark">
+                    <b><p class="card-text text-center" id="this_year_total"></p></b>
+                    <h5 class="card-title text-center">This year</h5>
+                </div>
+            </div>
+            <div class="card col-md-2">
+                <div class="card-body bg-white border">
+                    <b><p class="card-text text-center" id="this_year_monthly_average"></p></b>
+                    <h5 class="card-title text-center">Average</h5>
+                </div>
+            </div>
         </div>
     </div>
+
+    <!--        <div class="col-md-10 col-md-offset-1">-->
+    <!--            <table class="table table-bordered">-->
+    <!--                <caption>Expenditures</caption>-->
+    <!--                <tbody>-->
+    <!--                <tr>-->
+    <!--&lt;!&ndash;                    <td>Current month total</td>&ndash;&gt;-->
+    <!--                    <td>Current month total <span class="text-center" id="this_month_total"></span></td>-->
+    <!--&lt;!&ndash;                </tr>&ndash;&gt;-->
+    <!--&lt;!&ndash;                <tr>&ndash;&gt;-->
+    <!--&lt;!&ndash;                    <td>Previous month total</td>&ndash;&gt;-->
+    <!--                    <td>Previous month total <span class="text-center" id="previous_month_total"></span></td>-->
+    <!--&lt;!&ndash;                </tr>&ndash;&gt;-->
+    <!--&lt;!&ndash;                <tr>&ndash;&gt;-->
+    <!--&lt;!&ndash;                    <td>Current vs previous month</td>&ndash;&gt;-->
+    <!--                    <td><span class="text-center" id="this_vs_previous_total"></span></td>-->
+    <!--                    <td><span class="text-center" id="this_vs_previous_percentage"></span></td>-->
+    <!--&lt;!&ndash;                </tr>&ndash;&gt;-->
+    <!--&lt;!&ndash;                <tr>&ndash;&gt;-->
+    <!--&lt;!&ndash;                    <td>Year total</td>&ndash;&gt;-->
+    <!--                    <td><span class="text-center" id="this_year_total"></span></td>-->
+    <!--&lt;!&ndash;                </tr>&ndash;&gt;-->
+    <!--&lt;!&ndash;                <tr>&ndash;&gt;-->
+    <!--&lt;!&ndash;                    <td>Monthly average</td>&ndash;&gt;-->
+    <!--                    <td><span class="text-center" id="this_year_monthly_average"></span></td>-->
+    <!--                </tr>-->
+    <!--                </tbody>-->
+    <!--            </table>-->
+    <!--        </div>-->
+    <!--    </div>-->
+    <div class="row col-md-offset-1">
+        <div class="col-md-10">
+            <canvas style="position:absolute; width:400px; height:100px;" id="dailyChart"></canvas>
+        </div>
+    </div>
+
 </div>
 <script type="text/javascript" th:src="@{/js/main/home/datePicker.js}"></script>
 <script type="text/javascript" th:src="@{/js/main/home/homeCharts.js}"></script>

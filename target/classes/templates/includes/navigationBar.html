@@ -1,16 +1,18 @@
-<nav class="navbar navbar-inverse" th:fragment="navigation_bar"  xmlns="http://www.w3.org/1999/xhtml"
+<nav class="navbar navbar-inverse" th:fragment="navigation_bar" xmlns="http://www.w3.org/1999/xhtml"
      xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+     xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
     <div class="container-fluid">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="/">Expenditure manager</a>
+        <div class="col-md-10 col-md-offset-1">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/">Expenditure manager</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li sec:authorize="isAnonymous()"><a href="/user/login">login</a></li>
+                <li sec:authorize="isAnonymous()"><a href="/user/register">register</a></li>
+                <li sec:authorize="isAuthenticated()"><a href="/expenditure/menu">Expenditures</a></li>
+                <li sec:authorize="isAuthenticated()"><a href="/tag/list">Tags</a></li>
+                <li sec:authorize="isAuthenticated()"><a href="/logout">logout</a></li>
+            </ul>
         </div>
-        <ul class="nav navbar-nav">
-            <li sec:authorize="isAnonymous()"><a href="/user/login">login</a></li>
-            <li sec:authorize="isAnonymous()"><a href="/user/register">register</a></li>
-            <li sec:authorize="isAuthenticated()"><a href="/expenditure/menu">Expenditures</a></li>
-            <li sec:authorize="isAuthenticated()"><a href="/tag/list">Tags</a></li>
-            <li sec:authorize="isAuthenticated()"><a href="/logout">logout</a></li>
-        </ul>
     </div>
 </nav>

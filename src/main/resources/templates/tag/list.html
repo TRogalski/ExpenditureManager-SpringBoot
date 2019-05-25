@@ -7,8 +7,8 @@
 <body>
 <div class="container-fluid">
     <div th:insert="includes/navigationBar::navigation_bar"></div>
-    <div class="row">
-        <div class="col-lg-6">
+    <div class="row col-md-offset-1">
+        <div class="col-md-5">
             <button class="btn btn-sm btn-primary" id="add_tag">Add</button>
             <input id="date_picker">
             <table class="table">
@@ -19,7 +19,8 @@
                     <th th:text="${tagDashboardData.get('previousMonthName')}" id="previous_month_name"/>
                     <th>Change</th>
                     <th th:text="${tagDashboardData.get('currentYearName')}" id="current_year_name"/>
-                    <td>#</td>
+                    <th>#</th>
+                    <th></th>
                 </tr>
                 </thead>
                 <tbody id="tag_records">
@@ -47,7 +48,7 @@
                 </tbody>
             </table>
         </div>
-        <div class="col-lg-6">
+        <div class="col-md-5">
             <canvas id="tagChart"></canvas>
         </div>
     </div>

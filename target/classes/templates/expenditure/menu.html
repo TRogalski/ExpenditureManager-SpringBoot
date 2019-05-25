@@ -3,25 +3,31 @@
       xmlns:th="http://www.thymeleaf.org">
 <head th:insert="includes/header::header">
     <title>Expenditures</title>
+    <style>
+        th {
+            background-color: blue;
+            color: white;
+        }
+    </style>
 </head>
 <body>
 <div class="container-fluid">
     <div th:insert="includes/navigationBar::navigation_bar"></div>
-    <div class="row">
+    <div class="row col-md-offset-1">
         <div class="col-md-2">
             <div id="date_picker"></div>
         </div>
-        <div class="col-md-10">
+        <div class="col-md-8">
             <button class="btn btn-sm btn-primary" id="add_expenditure">Add</button>
             <table class="table">
                 <thead>
                 <tr>
-                    <th scope="col">Tag</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Amount</th>
-                    <th scope="col">Description</th>
-                    <th scope="col">Created</th>
-                    <th scope="col">#</th>
+                    <th>Tag</th>
+                    <th>Name</th>
+                    <th>Amount</th>
+                    <th>Description</th>
+                    <th>Created</th>
+                    <th>#</th>
                 </tr>
                 </thead>
                 <tbody id="expenditure_records">
