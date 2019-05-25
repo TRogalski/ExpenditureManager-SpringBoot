@@ -17,11 +17,10 @@
             <canvas id="monthlyChart"></canvas>
         </div>
         <div class="col-md-6 tableFixHead">
-
             <table id="top_tags_table" class="table">
                 <thead>
                 <tr>
-                    <th>Name</th>
+                    <th>Tag</th>
                     <th>Total</th>
                     <th>[%] of month total</th>
                     <th>#</th>
@@ -32,20 +31,20 @@
             </table>
         </div>
     </div>
-    <div class="row col-md-offset-1">
-        <div class="card-columns">
+    <div class="row col-md-offset-1 ">
+        <div class="card-deck ">
             <div class="card col-md-2">
-                <div class="card-body text-success bg-white border border-success">
+                <div class="card-body">
                     <b><p class="card-text text-center" id="this_month_total"></p></b>
                     <h5 class="card-title text-center">Current month total</h5>
                 </div>
             </div>
-            <div class="card col-md-2">
-                <div class="card-body bg-info">
-                    <b><p class="card-text text-center" id="previous_month_total"></p></b>
-                    <h5 class="card-title text-center">Previous month</h5>
-                </div>
-            </div>
+<!--            <div class="card col-md-2">-->
+<!--                <div class="card-body">-->
+<!--                    <b><p class="card-text text-center" id="previous_month_total"></p></b>-->
+<!--                    <h5 class="card-title text-center">Previous month</h5>-->
+<!--                </div>-->
+<!--            </div>-->
             <div class="card col-md-2">
                 <div class="card-body text-danger bg-danger">
                     <b><p class="card-text text-center">
@@ -56,15 +55,15 @@
                 </div>
             </div>
             <div class="card col-md-2">
-                <div class="card-body bg-white border-dark">
+                <div class="card-body bg-white">
                     <b><p class="card-text text-center" id="this_year_total"></p></b>
                     <h5 class="card-title text-center">This year</h5>
                 </div>
             </div>
             <div class="card col-md-2">
-                <div class="card-body bg-white border">
+                <div class="card-body bg-white">
                     <b><p class="card-text text-center" id="this_year_monthly_average"></p></b>
-                    <h5 class="card-title text-center">Average</h5>
+                    <h5 class="card-title text-center">Average monthly spendings</h5>
                 </div>
             </div>
         </div>
