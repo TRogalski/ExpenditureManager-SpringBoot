@@ -192,8 +192,8 @@ public class ExpenditureStatsService {
         Map<String, Double> monthlyTotalTimeSeries = new HashMap<>();
 
         for (Expenditure expenditure : expenditures) {
-            if (monthlyTotalTimeSeries.containsKey(expenditure.getDate())) {
-                monthlyTotalTimeSeries.put(String.valueOf(expenditure.getDate()), monthlyTotalTimeSeries.get(expenditure.getDate()) + expenditure.getAmount());
+            if (monthlyTotalTimeSeries.containsKey(String.valueOf(expenditure.getDate()))) {
+                monthlyTotalTimeSeries.put(String.valueOf(expenditure.getDate()), monthlyTotalTimeSeries.get(String.valueOf(expenditure.getDate())) + expenditure.getAmount());
             } else {
                 monthlyTotalTimeSeries.put(String.valueOf(expenditure.getDate()), expenditure.getAmount());
             }
