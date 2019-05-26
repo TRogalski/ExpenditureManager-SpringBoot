@@ -31,3 +31,9 @@
 .table{
     margin-top :10px
 }
+
+.card-deck {
+   display: flex;
+   flex-wrap: no-wrap;
+   justify-content: space-between;
+}
