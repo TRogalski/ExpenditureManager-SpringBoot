@@ -39,8 +39,25 @@ public class ExpenditureStatsService {
                 .put("currentYearMonthlyTimeSeries", getMonthlyTimeSeriesForYear(user, date))
                 .put("currentMonthDailyTimeSeries", getDailyTimeSeriesForMonth(user, date))
                 .put("previousMonthDailyTimeSeries", getDailyTimeSeriesForMonth(user, Date.valueOf(date.toLocalDate().minusMonths(1))))
-                .put("currentMonthTagTotals", getMonthTotalsForTags(user, date));
+                .put("currentMonthTagTotals", getMonthTotalsForTags(user, date))
+                .put("currentYearMonthlyAverage", getYearAverage(user, date));
         return jsonObject;
+    }
+
+    private Double getYearAverage(User user, Date date) {
+        List<Double> monthlySpendings = getMonthlyTimeSeriesForYear(user, date);
+
+        Double sum=0.0;
+        Integer count=0;
+
+        for(Double monthlySpending:monthlySpendings){
+            if(monthlySpending>0){
+                sum+=monthlySpending;
+                count++;
+            }
+        }
+
+        return sum/count;
     }
 
     public JSONObject getDatepickerMonthlyTotals(User user, Date date) {

@@ -3,10 +3,12 @@ package com.my.expenditure.controller;
 import com.my.expenditure.entity.User;
 import com.my.expenditure.repository.ExpenditureRepository;
 import com.my.expenditure.repository.UserRepository;
+import com.my.expenditure.service.expenditure.ExpenditureStatsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+
 import java.security.Principal;
 import java.sql.Date;
 import java.time.LocalDate;
@@ -15,7 +17,7 @@ import java.time.LocalDate;
 public class HomeController {
 
     @Autowired
-    private ExpenditureRepository expenditureRepository;
+    private ExpenditureStatsService expenditureStatsService;
 
     @Autowired
     private UserRepository userRepository;
@@ -23,9 +25,7 @@ public class HomeController {
     @RequestMapping("/")
     public String getHomeView(Model model, Principal principal) {
         User user = userRepository.findFirstByEmail(principal.getName());
-        Date date = Date.valueOf(LocalDate.now());
-        model.addAttribute("expenditures", expenditureRepository.findAllByUserAndDate(user,date));
+        model.addAttribute("dashboardData", expenditureStatsService.getMainDashboardData(user, Date.valueOf(LocalDate.now())));
         return "main/home";
     }
-
 }

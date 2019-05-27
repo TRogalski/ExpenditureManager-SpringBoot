@@ -5,13 +5,12 @@ document.addEventListener('DOMContentLoaded', function () {
         format: "yyyy-mm"
     }).datepicker("setDate", 'now');
 
-    getTopTagsAssignedToMonth($('#date_picker').datepicker('getFormattedDate'))
+//    getTopTagsAssignedToMonth($('#date_picker').datepicker('getFormattedDate'))
 
     $('#date_picker').on('changeDate', function () {
         getTopTagsAssignedToMonth($('#date_picker').datepicker('getFormattedDate'));
     });
 })
-
 
 function getTopTagsAssignedToMonth(date) {
     $.ajax({
@@ -19,11 +18,9 @@ function getTopTagsAssignedToMonth(date) {
         'dataType': "json",
         'success': function (jsonData) {
 
-            var toDelete = document.getElementById("top_tags_records");
+            $("#top_tags_records").empty()
 
-            if (toDelete != null) {
-                removeEnlistedTags(toDelete)
-            }
+//            removeEnlistedTags(toDelete)
             appendReceivedTags(jsonData)
             fillInStatistics(jsonData)
         }
@@ -31,19 +28,19 @@ function getTopTagsAssignedToMonth(date) {
 };
 
 
-function removeEnlistedTags(toDelete) {
-    while (toDelete.hasChildNodes()) {
-        toDelete.removeChild(toDelete.lastChild);
-    }
-}
+//function removeEnlistedTags(toDelete) {
+//    while (toDelete.hasChildNodes()) {
+//        toDelete.removeChild(toDelete.lastChild);
+//    }
+//}
 
 
 function appendReceivedTags(jsonData) {
     var tagTotals = jsonData.currentMonthTagTotals;
 
-    tagTotals.sort(function (a, b) {
-        return b.total - a.total;
-    });
+//    tagTotals.sort(function (a, b) {
+//        return b.total - a.total;
+//    });
 
     for (var i = 0; i < tagTotals.length; i++) {
         var listElement = $(`<tr>
