@@ -28,12 +28,42 @@
     color: #eeeeee;
 }
 
-.table{
-    margin-top :10px
-}
-
 .card-deck {
    display: flex;
    flex-wrap: no-wrap;
    justify-content: space-between;
+}
+
+.default-card{
+    height: 70px;
+    padding-left:10px;
+    padding-right:10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-top: 10px;
+    color:white;
+}
+
+.info-card {
+    background-color:#212121;
+}
+
+.info-card-success {
+    background-color:#5cb85c;
+}
+
+.info-card-failure {
+    background-color:#d9534f;
+}
+
+.card-figure{
+    font-size: 15px;
+}
+
+.card-description{
+    font-size: 12px;
+}
+
+.ui-margin{
+margin-bottom:10px;
 }

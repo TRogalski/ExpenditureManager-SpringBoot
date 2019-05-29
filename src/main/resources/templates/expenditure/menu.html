@@ -3,12 +3,6 @@
       xmlns:th="http://www.thymeleaf.org">
 <head th:insert="includes/header::header">
     <title>Expenditures</title>
-    <style>
-        th {
-            background-color: blue;
-            color: white;
-        }
-    </style>
 </head>
 <body>
 <div class="container-fluid">
@@ -18,16 +12,16 @@
             <div id="date_picker"></div>
         </div>
         <div class="col-md-8">
-            <button class="btn btn-sm btn-primary" id="add_expenditure">Add</button>
+            <button class="btn btn-sm btn-primary ui-margin" id="add_expenditure">Add</button>
             <table class="table">
                 <thead>
                 <tr>
-                    <th>Tag</th>
-                    <th>Name</th>
-                    <th>Amount</th>
-                    <th>Description</th>
-                    <th>Created</th>
-                    <th>#</th>
+                    <th class="col-md-2">Tag</th>
+                    <th class="col-md-2">Name</th>
+                    <th class="col-md-2">Amount</th>
+                    <th class="col-md-4">Description</th>
+                    <th class="col-md-1">Created</th>
+                    <th class="col-md-2">#</th>
                 </tr>
                 </thead>
                 <tbody id="expenditure_records">
