@@ -30,8 +30,8 @@
                     <tbody id="top_tags_records" >
                     <tr th:each="tag:${dashboardData.get('currentMonthTagTotals')}">
                         <td th:text="${tag.get('name')}"></td>
-                        <td th:text="${tag.get('total')}"></td>
-                        <td th:text="${#numbers.formatDecimal(tag.get('total')/dashboardData.get('currentMonthTotal')*100, 0, 'DEFAULT', 2, 'POINT')}"></td>
+                        <td th:text="${#numbers.formatDecimal(tag.get('total'), 0, 'DEFAULT', 0, 'POINT')}"></td>
+                        <td th:text="${#numbers.formatDecimal(tag.get('total')/dashboardData.get('currentMonthTotal')*100, 0, 'DEFAULT', 0, 'POINT')}"></td>
                         <td>
                             <a th:href="@{'/expenditure/list/'+${dashboardData.get('date')+'/'+tag.get('id')}}"
                                th:text="${tag.get('count')}">
@@ -45,7 +45,7 @@
                 <div class="card col-md-3">
                     <div class="card-body default-card info-card">
                         <b><p class="card-text text-center card-figure" id="this_month_total"
-                              th:text="${#numbers.formatDecimal(dashboardData.get('currentMonthTotal'), 0, 'COMMA', 2, 'POINT')}"></p>
+                              th:text="${#numbers.formatDecimal(dashboardData.get('currentMonthTotal'), 0, 'COMMA', 0, 'POINT')}"></p>
                         </b>
                         <h5 class="card-title text-center card-description" id="this_month_name"
                             th:text="${dashboardData.get('currentMonthName')}"></h5>
@@ -53,10 +53,11 @@
                 </div>
                 <div class="card col-md-3" th:with="nominalDifference=${dashboardData.get('currentMonthTotal')-dashboardData.get('previousMonthTotal')},
                                                 percentageDifference=${#numbers.formatDecimal((dashboardData.get('currentMonthTotal')-dashboardData.get('previousMonthTotal'))/dashboardData.get('previousMonthTotal')*100, 0, 'DEFAULT', 2, 'POINT')+'%'}">
-                    <div class="card-body default-card" th:classappend="${nominalDifference>0}?'info-card-failure':'info-card-success'">
+                    <div class="card-body default-card" th:classappend="${nominalDifference>0}?'info-card-failure':'info-card-success'"
+                    id="expenditure_change_info_card">
                         <b><p class="card-text text-center">
                             <span class="card-figure" id="this_vs_previous_total"
-                                  th:text="${#numbers.formatDecimal(nominalDifference, 0, 'COMMA', 2, 'POINT')}">
+                                  th:text="${#numbers.formatDecimal(nominalDifference, 0, 'COMMA', 0, 'POINT')}">
 
                             </span>
                             <span class="card-figure" id="this_vs_previous_percentage"
@@ -67,10 +68,12 @@
                             th:text="${'Compared to ' + dashboardData.get('previousMonthName')}"></h5>
                     </div>
                 </div>
+
+
                 <div class="card col-md-3">
                     <div class="card-body default-card info-card">
                         <b><p class="card-text text-center card-figure" id="this_year_total"
-                              th:text="${#numbers.formatDecimal(dashboardData.get('currentYearTotal'), 0, 'COMMA', 2, 'POINT')}"></p>
+                              th:text="${#numbers.formatDecimal(dashboardData.get('currentYearTotal'), 0, 'COMMA', 0, 'POINT')}"></p>
                         </b>
                         <h5 class="card-title text-center card-description" id="this_year_name"
                             th:text="${dashboardData.get('currentYearName')}"></h5>
@@ -79,7 +82,7 @@
                 <div class="card col-md-3">
                     <div class="card-body default-card info-card card-description">
                         <b><p class="card-text text-center card-figure" id="this_year_monthly_average"
-                              th:text="${#numbers.formatDecimal(dashboardData.get('currentYearMonthlyAverage'), 0, 'COMMA', 2, 'POINT')}"></p>
+                              th:text="${#numbers.formatDecimal(dashboardData.get('currentYearMonthlyAverage'), 0, 'COMMA', 0, 'POINT')}"></p>
                         </b>
                         <h5 class="card-title text-center card-description">Average monthly</h5>
                     </div>

@@ -64,7 +64,6 @@ function getExpendituresAssignedToDate(date) {
         'dataType': "json",
         'success': function (jsonData) {
             var toDelete = document.getElementById("expenditure_records");
-            console.log(jsonData)
             if (toDelete != null) {
                 removeEnlistedExpenditures(toDelete)
             }

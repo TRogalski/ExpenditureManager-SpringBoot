@@ -31,7 +31,7 @@
                       th:text="!${iterStat.last} ? ${tag.name} + '; ': ${tag.name}">No tags selected</span>
                     </td>
                     <td th:text="${expenditure.name}"/>
-                    <td th:text="${#numbers.formatDecimal(expenditure.amount,1,2)}"/>
+                    <td th:text="${#numbers.formatDecimal(expenditure.amount, 0, 'DEFAULT', 0, 'POINT')}"/>
                     <td th:text="${expenditure.description}"/>
                     <td th:text="${expenditure.created}"/>
                     <td>

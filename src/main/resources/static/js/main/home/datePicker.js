@@ -5,8 +5,6 @@ document.addEventListener('DOMContentLoaded', function () {
         format: "yyyy-mm"
     }).datepicker("setDate", 'now');
 
-//    getTopTagsAssignedToMonth($('#date_picker').datepicker('getFormattedDate'))
-
     $('#date_picker').on('changeDate', function () {
         getTopTagsAssignedToMonth($('#date_picker').datepicker('getFormattedDate'));
     });
@@ -20,19 +18,11 @@ function getTopTagsAssignedToMonth(date) {
 
             $("#top_tags_records").empty()
 
-//            removeEnlistedTags(toDelete)
             appendReceivedTags(jsonData)
             fillInStatistics(jsonData)
         }
     })
 };
-
-
-//function removeEnlistedTags(toDelete) {
-//    while (toDelete.hasChildNodes()) {
-//        toDelete.removeChild(toDelete.lastChild);
-//    }
-//}
 
 
 function appendReceivedTags(jsonData) {
@@ -45,7 +35,7 @@ function appendReceivedTags(jsonData) {
     for (var i = 0; i < tagTotals.length; i++) {
         var listElement = $(`<tr>
                                 <td>${tagTotals[i].name}</td>
-                                <td>${tagTotals[i].total}</td>
+                                <td>${formatNumber(tagTotals[i].total)}</td>
                                 <td>${(tagTotals[i].total / jsonData.currentMonthTotal * 100).toFixed(2)}</td>
                                 <td>
                                     <a href= "${window.location.origin}/expenditure/list/${jsonData.date}/${tagTotals[i].id}">
@@ -98,17 +88,33 @@ function getCurrentVsPreviousTotal(jsonData) {
     return jsonData.currentMonthTotal - jsonData.previousMonthTotal;
 }
 
+function markInfoBoxBasedOnMonthOverMonthChange(jsonData){
+
+    $('#expenditure_change_info_card').removeClass('info-card info-card-success info-card-failure');
+
+    if((jsonData.currentMonthTotal-jsonData.previousMonthTotal)>0){
+        $('#expenditure_change_info_card').addClass('info-card-failure');
+    } else if((jsonData.currentMonthTotal-jsonData.previousMonthTotal)<0){
+        $('#expenditure_change_info_card').addClass('info-card-success');
+    } else {
+        $('#expenditure_change_info_card').addClass('info-card');
+    }
+}
 
 function fillInStatistics(jsonData) {
     $('#this_month_total').html(jsonData.currentMonthTotal == null ? 0 : formatNumber(jsonData.currentMonthTotal))
     $('#previous_month_total').html(jsonData.previousMonthTotal == null ? 0 : formatNumber(jsonData.previousMonthTotal))
-    $('#this_vs_previous_total').html(getCurrentVsPreviousTotal(jsonData))
+    $('#this_vs_previous_total').html(formatNumber(getCurrentVsPreviousTotal(jsonData)))
     $('#this_vs_previous_percentage').html(getThisVsPreviousPercentage(jsonData))
     $('#this_year_total').html(formatNumber(jsonData.currentYearTotal))
     $('#this_year_monthly_average').html(formatNumber(getThisYearMonthlyAverage(jsonData)))
+    $('#this_month_name').html(jsonData.currentMonthName)
+    $('#this_vs_previous_month_names').html('Compared to '+jsonData.previousMonthName)
+    $('#this_year_name').html(jsonData.currentYearName)
+    markInfoBoxBasedOnMonthOverMonthChange(jsonData);
 }
 
 
 function formatNumber(num) {
-    return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
+    return isNaN(num)?"N/A":num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
 }

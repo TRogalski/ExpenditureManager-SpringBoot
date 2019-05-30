@@ -57,7 +57,7 @@ public class ExpenditureStatsService {
             }
         }
 
-        return sum/count;
+        return count==0?null:sum/count;
     }
 
     public JSONObject getDatepickerMonthlyTotals(User user, Date date) {

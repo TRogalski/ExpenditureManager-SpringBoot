@@ -29,10 +29,10 @@
                 <tbody id="tag_records">
                 <tr th:each="key:${tagDashboardData.get('currentMonthAllTagTotals').keys()}">
                     <td th:text="${tagDashboardData.get('currentMonthAllTagTotals').get(key).get('name')}"></td>
-                    <td th:text="${#numbers.formatDecimal(tagDashboardData.get('currentMonthAllTagTotals').get(key).get('total'),1,2)}"></td>
-                    <td th:text="${#numbers.formatDecimal(tagDashboardData.get('previousMonthAllTagTotals').get(key).get('total'),1,2)}"></td>
-                    <td th:text="${#numbers.formatDecimal(tagDashboardData.get('currentMonthAllTagTotals').get(key).get('total')-tagDashboardData.get('previousMonthAllTagTotals').get(key).get('total'),1,2)}"></td>
-                    <td th:text="${#numbers.formatDecimal(tagDashboardData.get('currentYearAllTagTotals').get(key).get('total'),1,2)}"></td>
+                    <td th:text="${#numbers.formatDecimal(tagDashboardData.get('currentMonthAllTagTotals').get(key).get('total'), 0, 'DEFAULT', 0, 'POINT')}"></td>
+                    <td th:text="${#numbers.formatDecimal(tagDashboardData.get('previousMonthAllTagTotals').get(key).get('total'), 0, 'DEFAULT', 0, 'POINT')}"></td>
+                    <td th:text="${#numbers.formatDecimal(tagDashboardData.get('currentMonthAllTagTotals').get(key).get('total')-tagDashboardData.get('previousMonthAllTagTotals').get(key).get('total'), 0, 'DEFAULT', 0, 'POINT')}"></td>
+                    <td th:text="${#numbers.formatDecimal(tagDashboardData.get('currentYearAllTagTotals').get(key).get('total'), 0, 'DEFAULT', 0, 'POINT')}"></td>
                     <td>
                         <a th:href="${'/expenditure/list/'+tagDashboardData.get('date')+'/'+tagDashboardData.get('currentMonthAllTagTotals').get(key).get('id')}"
                            th:text="${tagDashboardData.get('currentMonthAllTagTotals').get(key).get('count')}">
