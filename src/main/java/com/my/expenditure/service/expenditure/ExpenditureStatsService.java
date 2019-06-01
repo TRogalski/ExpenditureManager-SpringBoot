@@ -26,38 +26,71 @@ public class ExpenditureStatsService {
     private TagRepository tagRepository;
 
     public JSONObject getMainDashboardData(User user, Date date) {
+
+        Double currentMonthTotal = getMonthTotal(user, date);
+        Double previousMonthTotal = getMonthTotal(user, Date.valueOf(date.toLocalDate().minusMonths(1)));
+
+
         JSONObject jsonObject = new JSONObject()
                 .put("date", date)
                 .put("currentMonthName", getMonthName(date))
                 .put("previousMonthName", getMonthName(Date.valueOf(date.toLocalDate().minusMonths(1))))
                 .put("currentYearName", getYearName(date))
                 .put("previousYearName", getYearName(Date.valueOf(date.toLocalDate().minusYears(1))))
-                .put("currentMonthTotal", getMonthTotal(user, date))
-                .put("previousMonthTotal", getMonthTotal(user, Date.valueOf(date.toLocalDate().minusMonths(1))))
+                .put("currentMonthTotal", currentMonthTotal)
+                .put("previousMonthTotal", previousMonthTotal)
                 .put("currentYearTotal", getYearTotal(user, date))
-                .put("previousYearTotal", getYearTotal(user, Date.valueOf(date.toLocalDate().minusMonths(1))))
+                .put("previousYearTotal", getYearTotal(user, Date.valueOf(date.toLocalDate().minusYears(1))))
                 .put("currentYearMonthlyTimeSeries", getMonthlyTimeSeriesForYear(user, date))
                 .put("currentMonthDailyTimeSeries", getDailyTimeSeriesForMonth(user, date))
                 .put("previousMonthDailyTimeSeries", getDailyTimeSeriesForMonth(user, Date.valueOf(date.toLocalDate().minusMonths(1))))
                 .put("currentMonthTagTotals", getMonthTotalsForTags(user, date))
                 .put("currentYearMonthlyAverage", getYearAverage(user, date));
+
+        jsonObject
+                .put("currentVsPreviousMonthNominalChange",
+                        getNominalDifference(currentMonthTotal, previousMonthTotal))
+                .put("currentVsPreviousMonthPercentageChange",
+                        getPercentageDifference(currentMonthTotal, previousMonthTotal));
+
         return jsonObject;
     }
+
+    private String getPercentageDifference(Double currentMonthTotal, Double previousMonthTotal) {
+
+        Double percentageDifference;
+        String percentageDifferenceLimited;
+
+        if (previousMonthTotal > 0) {
+            percentageDifference = Math.round((currentMonthTotal - previousMonthTotal) / previousMonthTotal * 10000.0) / 100.0;
+            percentageDifferenceLimited = percentageDifference > 300 ? ">300": String.valueOf(percentageDifference);
+        } else {
+            return "N/A";
+        }
+
+        return (currentMonthTotal - previousMonthTotal) > 0 ? "+" + percentageDifferenceLimited + "%" : percentageDifferenceLimited + "%";
+    }
+
+    private String getNominalDifference(Double currentMonthTotal, Double previousMonthTotal) {
+        Double difference = Math.round((currentMonthTotal - previousMonthTotal) * 100.0) / 100.0;
+        return (currentMonthTotal - previousMonthTotal) > 0 ? "+" + difference : String.valueOf(difference);
+    }
+
 
     private Double getYearAverage(User user, Date date) {
         List<Double> monthlySpendings = getMonthlyTimeSeriesForYear(user, date);
 
-        Double sum=0.0;
-        Integer count=0;
+        Double sum = 0.0;
+        Integer count = 0;
 
-        for(Double monthlySpending:monthlySpendings){
-            if(monthlySpending>0){
-                sum+=monthlySpending;
+        for (Double monthlySpending : monthlySpendings) {
+            if (monthlySpending > 0) {
+                sum += monthlySpending;
                 count++;
             }
         }
 
-        return count==0?null:sum/count;
+        return count == 0 ? null : sum / count;
     }
 
     public JSONObject getDatepickerMonthlyTotals(User user, Date date) {
@@ -100,7 +133,8 @@ public class ExpenditureStatsService {
 
 
     private Double getMonthTotal(User user, Date date) {
-        return expenditureRepository.getMonthTotalForUser(user, date);
+        Double monthTotal = expenditureRepository.getMonthTotalForUser(user, date);
+        return monthTotal == null ? 0.0 : monthTotal;
     }
 
 

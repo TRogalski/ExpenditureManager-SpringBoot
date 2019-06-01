@@ -47,20 +47,6 @@ function appendReceivedTags(jsonData) {
     }
 }
 
-function getThisVsPreviousPercentage(jsonData) {
-    var thisMonth = jsonData.currentMonthTotal;
-    var previousMonth = jsonData.previousMonthTotal;
-
-    if (thisMonth == null ||
-        thisMonth == 0 ||
-        previousMonth == null ||
-        previousMonth == 0) {
-        return "N/A"
-    }
-    return ((thisMonth - previousMonth) / previousMonth * 100).toFixed(2);
-}
-
-
 function getThisYearMonthlyAverage(jsonData) {
     var average = 0;
     var count = 0;
@@ -73,19 +59,6 @@ function getThisYearMonthlyAverage(jsonData) {
         }
     }
     return (average / count).toFixed(2);
-}
-
-
-function getCurrentVsPreviousTotal(jsonData) {
-
-    if (jsonData.currentMonthTotal == null ||
-        jsonData.currentMonthTotal == 0 ||
-        jsonData.previousMonthTotal == null ||
-        jsonData.previousMonthTotal == 0) {
-        return "N/A";
-    }
-
-    return jsonData.currentMonthTotal - jsonData.previousMonthTotal;
 }
 
 function markInfoBoxBasedOnMonthOverMonthChange(jsonData){
@@ -104,8 +77,8 @@ function markInfoBoxBasedOnMonthOverMonthChange(jsonData){
 function fillInStatistics(jsonData) {
     $('#this_month_total').html(jsonData.currentMonthTotal == null ? 0 : formatNumber(jsonData.currentMonthTotal))
     $('#previous_month_total').html(jsonData.previousMonthTotal == null ? 0 : formatNumber(jsonData.previousMonthTotal))
-    $('#this_vs_previous_total').html(formatNumber(getCurrentVsPreviousTotal(jsonData)))
-    $('#this_vs_previous_percentage').html(getThisVsPreviousPercentage(jsonData))
+    $('#this_vs_previous_total').html(jsonData.currentVsPreviousMonthNominalChange)
+    $('#this_vs_previous_percentage').html(jsonData.currentVsPreviousMonthPercentageChange)
     $('#this_year_total').html(formatNumber(jsonData.currentYearTotal))
     $('#this_year_monthly_average').html(formatNumber(getThisYearMonthlyAverage(jsonData)))
     $('#this_month_name').html(jsonData.currentMonthName)

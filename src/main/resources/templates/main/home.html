@@ -51,17 +51,16 @@
                             th:text="${dashboardData.get('currentMonthName')}"></h5>
                     </div>
                 </div>
-                <div class="card col-md-3" th:with="nominalDifference=${dashboardData.get('currentMonthTotal')-dashboardData.get('previousMonthTotal')},
-                                                percentageDifference=${#numbers.formatDecimal((dashboardData.get('currentMonthTotal')-dashboardData.get('previousMonthTotal'))/dashboardData.get('previousMonthTotal')*100, 0, 'DEFAULT', 2, 'POINT')+'%'}">
+                <div class="card col-md-3" th:with="nominalDifference=${dashboardData.get('currentMonthTotal')-dashboardData.get('previousMonthTotal')}">
                     <div class="card-body default-card" th:classappend="${nominalDifference>0}?'info-card-failure':'info-card-success'"
                     id="expenditure_change_info_card">
                         <b><p class="card-text text-center">
                             <span class="card-figure" id="this_vs_previous_total"
-                                  th:text="${#numbers.formatDecimal(nominalDifference, 0, 'COMMA', 0, 'POINT')}">
+                                  th:text="${dashboardData.get('currentVsPreviousMonthNominalChange')}">
 
                             </span>
                             <span class="card-figure" id="this_vs_previous_percentage"
-                                  th:text="${percentageDifference}">
+                                  th:text="${dashboardData.get('currentVsPreviousMonthPercentageChange')}">
                             </span>
                         </p></b>
                         <h5 class="card-title text-center card-description" id="this_vs_previous_month_names"
