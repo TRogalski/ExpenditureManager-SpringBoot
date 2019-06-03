@@ -82,11 +82,19 @@ function createTagChart(jsonData) {
         },
         options: {
             tooltips: {
+                   filter: function (tooltipItem, data) {
+                       var label = tooltipItem.yLabel;
+                       if (label == 0) {
+                         return false;
+                       } else {
+                         return true;
+                       }
+                   },
                 callbacks: {
                     label: function (tooltipItem, data) {
-                        var datasetLabel = data.datasets[tooltipItem.datasetIndex].label || 'Other';
+                        var datasetLabel = data.datasets[tooltipItem.datasetIndex].label;
                         var label = (tooltipItem.yLabel*100).toFixed(2) + " [%]";
-                        return datasetLabel + ': ' + label;
+                        return  datasetLabel + ":" + label;
                     }
                 }
             },
