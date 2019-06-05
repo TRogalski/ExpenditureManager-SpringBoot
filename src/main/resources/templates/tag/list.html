@@ -16,21 +16,19 @@
             <table class="table">
                 <thead>
                 <tr>
-                    <th class="col-md-2">Name</th>
+                    <th class="col-md-4">Name</th>
                     <th class="col-md-2" th:text="${tagDashboardData.get('currentMonthName')}" id="current_month_name"/>
-                    <th class="col-md-2" th:text="${tagDashboardData.get('previousMonthName')}"
-                        id="previous_month_name"/>
-                    <th class="col-md-2">Change</th>
+                    <th class="col-md-2" th:text="${'vs ' + tagDashboardData.get('previousMonthName')}" id="previous_month_name">Change</th>
                     <th class="col-md-2" th:text="${tagDashboardData.get('currentYearName')}" id="current_year_name"/>
                     <th class="col-md-1">#</th>
                     <th class="col-md-1"></th>
+<!--                    <th class="col-md-1"></th>-->
                 </tr>
                 </thead>
                 <tbody id="tag_records">
                 <tr th:each="key:${tagDashboardData.get('currentMonthAllTagTotals').keys()}">
                     <td th:text="${tagDashboardData.get('currentMonthAllTagTotals').get(key).get('name')}"></td>
                     <td th:text="${#numbers.formatDecimal(tagDashboardData.get('currentMonthAllTagTotals').get(key).get('total'), 0, 'DEFAULT', 0, 'POINT')}"></td>
-                    <td th:text="${#numbers.formatDecimal(tagDashboardData.get('previousMonthAllTagTotals').get(key).get('total'), 0, 'DEFAULT', 0, 'POINT')}"></td>
                     <td th:text="${#numbers.formatDecimal(tagDashboardData.get('currentMonthAllTagTotals').get(key).get('total')-tagDashboardData.get('previousMonthAllTagTotals').get(key).get('total'), 0, 'DEFAULT', 0, 'POINT')}"></td>
                     <td th:text="${#numbers.formatDecimal(tagDashboardData.get('currentYearAllTagTotals').get(key).get('total'), 0, 'DEFAULT', 0, 'POINT')}"></td>
                     <td>
@@ -47,6 +45,11 @@
                             <span class="glyphicon glyphicon-pencil"></span>
                         </a>
                     </td>
+<!--                    <td>-->
+<!--                        <a>-->
+<!--                            <span class="glyphicon glyphicon-eye-open"></span>-->
+<!--                        </a>-->
+<!--                    </td>-->
                 </tr>
                 </tbody>
             </table>

@@ -100,7 +100,7 @@ public class ExpenditureController {
     }
 
 
-    @RequestMapping(value = "/test/{date}",method = RequestMethod.GET)
+    @RequestMapping(value = "/radarChart/{date}",method = RequestMethod.GET)
     @ResponseBody
     private String getTest(@PathVariable Date date, Principal principal){
         User user=userRepository.findFirstByEmail(principal.getName());

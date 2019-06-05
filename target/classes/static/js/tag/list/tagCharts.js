@@ -1,10 +1,10 @@
 document.addEventListener('DOMContentLoaded', function () {
     $.ajax({
         'async': true,
-        'url': window.location.origin + "/expenditure/test/" + $('#date_picker').datepicker('getFormattedDate') + "-01",
+        'url': window.location.origin + "/expenditure/radarChart/" + $('#date_picker').datepicker('getFormattedDate') + "-01",
         'dataType': "json",
         'success': function (jsonData) {
-            createTagChart(jsonData);
+            var tagRadarChart=createTagChart(jsonData);
         }
     })
 })
@@ -13,68 +13,80 @@ document.addEventListener('DOMContentLoaded', function () {
 function createTagChart(jsonData) {
     var ctx = document.getElementById('tagChart').getContext('2d');
     var chartData=jsonData.tagRadarChartMonthlyDataForYear;
-    var myRadarChart = new Chart(ctx, {
+    return new Chart(ctx, {
         type: 'radar',
         data: {
             labels: Object.keys(chartData.Jan),
             datasets: [
                 {
                     label: 'Jan',
+                    hidden: shouldDataBeShown('Jan', jsonData),
                     data: Object.values(chartData.Jan),
                     backgroundColor: 'rgba(170,164,225,.4)'
                 },
                 {
                     label: 'Feb',
+                    hidden: shouldDataBeShown('Feb', jsonData),
                     data: Object.values(chartData.Feb),
                     backgroundColor: 'rgba(155,27,92,.4)'
                 },
                 {
                     label: 'Mar',
+                    hidden: shouldDataBeShown('Mar', jsonData),
                     data: Object.values(chartData.Mar),
                     backgroundColor: 'rgba(106,102,140,.4)'
                 },
                 {
                     label: 'Apr',
+                    hidden: shouldDataBeShown('Apr', jsonData),
                     data: Object.values(chartData.Apr),
                     backgroundColor: 'rgba(203,102,234,.4)'
                 },
                 {
                     label: 'May',
+                    hidden: shouldDataBeShown('May', jsonData),
                     data: Object.values(chartData.May),
                     backgroundColor: 'rgba(66,51,166,.4)'
                 },
                 {
                     label: 'Jun',
+                    hidden: shouldDataBeShown('Jun', jsonData),
                     data: Object.values(chartData.Jun),
                     backgroundColor: 'rgba(222,113,85,.4)'
                 },
                 {
                     label: 'Jul',
+                    hidden: shouldDataBeShown('Jul', jsonData),
                     data: Object.values(chartData.Jul),
                     backgroundColor: 'rgba(138,27,7,.4)'
                 },
                 {
                     label: 'Aug',
+                    hidden: shouldDataBeShown('Aug', jsonData),
                     data: Object.values(chartData.Aug),
                     backgroundColor: 'rgba(199,164,144,.4)'
                 },
                 {
                     label: 'Sep',
+                    hidden: shouldDataBeShown('Sep', jsonData),
                     data: Object.values(chartData.Sep),
                     backgroundColor: 'rgba(241,192,57,.4)'
                 },
                 {
                     label: 'Oct',
+                    hidden: shouldDataBeShown('Oct', jsonData),
                     data: Object.values(chartData.Oct),
                     backgroundColor: 'rgba(247,57,58,.4)'
                 },
                 {
                     label: 'Nov',
+                    hidden: shouldDataBeShown('Nov', jsonData),
                     data: Object.values(chartData.Nov),
                     backgroundColor: 'rgba(255,0,135,.4)'
                 },
                 {
                     label: 'Dec',
+                    hidden: shouldDataBeShown('Dec', jsonData),
                     data: Object.values(chartData.Dec),
                     backgroundColor: 'rgba(171,123,5,.4)'
                 },
@@ -136,3 +148,26 @@ function getTodaysDate() {
     return yyyy + '-' + mm + '-' + dd;
 }
 
+function shouldDataBeShown(month, jsonData){
+console.log(month!=jsonData.currentMonthName&&month!=jsonData.previousMonthName)
+    return month!=jsonData.currentMonthName&&month!=jsonData.previousMonthName;
+}
+
+
+//TODO Add & remove dataset
+
+//function addData(chart, label, data) {
+//    chart.data.labels.push(label);
+//    chart.data.datasets.forEach((dataset) => {
+//        dataset.data.push(data);
+//    });
+//    chart.update();
+//}
+//
+//function removeData(chart) {
+//    chart.data.labels.pop();
+//    chart.data.datasets.forEach((dataset) => {
+//        dataset.data.pop();
+//    });
+//    chart.update();
+//}

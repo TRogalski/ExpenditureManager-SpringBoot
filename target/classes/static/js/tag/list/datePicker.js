@@ -6,7 +6,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }).datepicker("setDate", 'now');
 
     $('#date_picker').on('changeDate', function () {
-        console.log("potato")
         updateTagStatistics($('#date_picker').datepicker('getFormattedDate'));
     });
 })
@@ -43,7 +42,6 @@ function appendReceivedTags(jsonData) {
         var listElement = $(`<tr>
                                 <td>${currentMonthTagTotals[key].name}</td>
                                 <td>${currentMonthTagTotals[key].total.toFixed(2)}</td>
-                                <td>${previousMonthTagTotals[key].total.toFixed(2)}</td>
                                 <td>${(currentMonthTagTotals[key].total - previousMonthTagTotals[key].total).toFixed(2)}</td>
                                 <td>${currentYearAllTagTotals[key].total.toFixed(2)}</td>
                                 <td>
@@ -64,6 +62,6 @@ function appendReceivedTags(jsonData) {
 
 function updatePeriodsInHeaders(jsonData) {
     $('#current_month_name').text(jsonData.currentMonthName);
-    $('#previous_month_name').text(jsonData.previousMonthName);
+    $('#previous_month_name').text("vs " + jsonData.previousMonthName);
     $('#current_year_name').text(jsonData.currentYearName);
 }
