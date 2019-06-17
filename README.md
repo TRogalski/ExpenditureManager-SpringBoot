@@ -16,7 +16,7 @@ Java, Spring, Hibernate, JavaScript, ChartJS, Bootstrap, SpringBoot, Spring Data
 
 TODO:
 
--Add possibility to select which tags should be shown on the radar chart (tag view)
--Add quick way to add new tags from expenditure view
--Redesign views so that functionalities are more intuitive
--Consider adding earnings log
+- Add possibility to select which tags should be shown on the radar chart (tag view),
+- Add quick way to add new tags from expenditure view,
+- Redesign views so that functionalities are more intuitive,
+- Consider adding earnings log.
