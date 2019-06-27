@@ -1,6 +1,7 @@
 package com.my.expenditure.service.user;
 
-import com.my.expenditure.entity.User;
+import com.my.expenditure.model.MyUserPrincipal;
+import com.my.expenditure.model.User;
 import com.my.expenditure.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;

@@ -1,6 +1,6 @@
 package com.my.expenditure.controller;
 
-import com.my.expenditure.entity.User;
+import com.my.expenditure.model.User;
 import com.my.expenditure.model.UserDto;
 import com.my.expenditure.service.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;

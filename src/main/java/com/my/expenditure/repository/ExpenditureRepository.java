@@ -1,8 +1,8 @@
 package com.my.expenditure.repository;
 
-import com.my.expenditure.entity.Expenditure;
-import com.my.expenditure.entity.Tag;
-import com.my.expenditure.entity.User;
+import com.my.expenditure.model.Expenditure;
+import com.my.expenditure.model.Tag;
+import com.my.expenditure.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

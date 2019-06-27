@@ -1,8 +1,8 @@
 package com.my.expenditure.service.expenditure;
 
-import com.my.expenditure.entity.Expenditure;
-import com.my.expenditure.entity.Tag;
-import com.my.expenditure.entity.User;
+import com.my.expenditure.model.Expenditure;
+import com.my.expenditure.model.Tag;
+import com.my.expenditure.model.User;
 import com.my.expenditure.repository.ExpenditureRepository;
 import com.my.expenditure.repository.TagRepository;
 import org.json.JSONArray;

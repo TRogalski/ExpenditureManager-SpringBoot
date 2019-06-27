@@ -1,4 +1,4 @@
-package com.my.expenditure.entity;
+package com.my.expenditure.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.*;

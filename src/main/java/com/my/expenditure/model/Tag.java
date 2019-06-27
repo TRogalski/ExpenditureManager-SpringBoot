@@ -1,6 +1,7 @@
-package com.my.expenditure.entity;
+package com.my.expenditure.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.my.expenditure.model.Expenditure;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;

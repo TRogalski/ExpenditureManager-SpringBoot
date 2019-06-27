@@ -1,4 +1,4 @@
-package com.my.expenditure.entity;
+package com.my.expenditure.model;
 
 import javax.persistence.*;
 import java.util.ArrayList;

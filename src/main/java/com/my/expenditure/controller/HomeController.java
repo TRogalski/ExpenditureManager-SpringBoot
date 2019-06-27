@@ -1,7 +1,6 @@
 package com.my.expenditure.controller;
 
-import com.my.expenditure.entity.User;
-import com.my.expenditure.repository.ExpenditureRepository;
+import com.my.expenditure.model.User;
 import com.my.expenditure.repository.UserRepository;
 import com.my.expenditure.service.expenditure.ExpenditureStatsService;
 import org.springframework.beans.factory.annotation.Autowired;

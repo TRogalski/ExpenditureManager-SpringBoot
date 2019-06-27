@@ -1,6 +1,6 @@
-package com.my.expenditure.service.user;
+package com.my.expenditure.model;
 
-import com.my.expenditure.entity.User;
+import com.my.expenditure.model.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
