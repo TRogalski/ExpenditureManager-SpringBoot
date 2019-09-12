@@ -5,8 +5,9 @@ User can log and track expenditures. The app provides some insight on frequency 
 spendings.
 
 Sample user:
-Login - test@expenditure.com
-Password - test
+
+- Login - test@expenditure.com
+- Password - test
 
 Website:
 https://expendituretime.herokuapp.com
